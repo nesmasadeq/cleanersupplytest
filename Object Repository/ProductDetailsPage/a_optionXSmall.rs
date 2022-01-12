@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_optionXLarge</name>
+   <name>a_optionXSmall</name>
    <tag></tag>
-   <elementGuidId>4a546306-7ee0-4722-84eb-3508b33f7155</elementGuidId>
+   <elementGuidId>ea07641c-d693-4983-89dd-8377b6c48cc3</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>CSS</key>
+         <value>.option a[title*=&quot;X-Small&quot;]</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>.option a[title*=&quot;X-Large&quot;]</value>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

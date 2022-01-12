@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>h2_quastionAnswerTitle</name>
+   <name>div_firstProductRow</name>
    <tag></tag>
-   <elementGuidId>096e88ad-19f1-4a75-adab-976c78f2497f</elementGuidId>
+   <elementGuidId>812d7683-6bc5-4518-a0d2-5b86c2e0073e</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
@@ -11,7 +11,7 @@
       </entry>
       <entry>
          <key>CSS</key>
-         <value>#questions-answers-component h2.text-center</value>
+         <value>.product-list-container  div.row:nth-child(3) > div</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>
