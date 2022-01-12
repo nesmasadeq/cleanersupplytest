@@ -6,12 +6,11 @@
    <elementGuidId>54793bdb-de89-463e-a0ae-71a5b58fbd77</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value></value>
-      </entry>
-      <entry>
          <key>CSS</key>
          <value>.sale-list-value span.list-price</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

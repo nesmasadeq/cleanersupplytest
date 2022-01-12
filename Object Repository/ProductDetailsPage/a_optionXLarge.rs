@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>img_productImage</name>
+   <name>a_optionXLarge</name>
    <tag></tag>
-   <elementGuidId>9131627f-be8b-40d7-ae70-8a481e7073f5</elementGuidId>
+   <elementGuidId>4a546306-7ee0-4722-84eb-3508b33f7155</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>CSS</key>
+         <value>.option a[title*=&quot;X-Large&quot;]</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>.product-image img</value>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

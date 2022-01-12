@@ -23,10 +23,24 @@ import actions.HeaderActions
 import validations.HeaderValidations
 
 public class HeaderHelpers {
-	public static hoveringTagsAndFormLink() {
+
+	/**
+	 * Hover on Header tag
+	 * @author nesma
+	 */
+	public static void hoveringTagsAndFormLink() {
 		HeaderActions.hoverOnTagsAndFormsLink()
 		HeaderValidations.verifyDisplayingTagsAndFormMenu()
 		HeaderValidations.verifyTagsAndFormBackgroundColorChanged('rgb(255, 255, 255)')
 		HeaderValidations.verifyTagsAndFormColorChanged('rgba(82, 36, 127, 1)')
+	}
+
+	/**
+	 * Verify Cart in header is empty
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifyCartEmpty() {
+		HeaderValidations.verifyCartCount('0')
+		HeaderValidations.verifyCartLabel('Cart')
 	}
 }

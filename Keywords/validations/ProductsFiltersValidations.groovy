@@ -49,7 +49,7 @@ public class ProductsFiltersValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifySelectedFilters(String... filters) {
-		String selector ='Object Repository/scenario01/results_page/ul_selectedFilters'
+		String selector ='Object Repository/Filters/ul_selectedFilters'
 		boolean isSelectedFiltersSectionExist = WebUI.verifyElementPresent(findTestObject(selector),10, FailureHandling.OPTIONAL)
 		System.out.println(isSelectedFiltersSectionExist)
 
