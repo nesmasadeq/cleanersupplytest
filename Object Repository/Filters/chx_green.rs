@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>div_filtersCards</name>
+   <name>chx_green</name>
    <tag></tag>
-   <elementGuidId>2fc98b4c-400b-4ebc-8369-4f68181393a8</elementGuidId>
+   <elementGuidId>0dd9e5cf-dde6-45df-b6fa-27752863ef42</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>div.facet-group div.block-title</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//span[@class=&quot;color-green check&quot;]/ancestor::li</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>CSS</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

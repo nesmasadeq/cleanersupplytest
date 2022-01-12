@@ -9,11 +9,11 @@
          <key>CSS</key>
       </entry>
       <entry>
-         <key>BASIC</key>
-      </entry>
-      <entry>
          <key>XPATH</key>
          <value>//span[@class=&quot;color-packaging-products check&quot;]/following-sibling::span</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

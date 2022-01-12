@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>chx_packagingProducts</name>
+   <name>div_autoSuggestionSearchList</name>
    <tag></tag>
-   <elementGuidId>a8da3c02-714b-4fca-b3a1-42b3e5e8c578</elementGuidId>
+   <elementGuidId>955d7ea3-96dd-42c6-82b3-461b3943277b</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
+         <value>#header-search div.search-autocomplete</value>
       </entry>
       <entry>
          <key>BASIC</key>
       </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//span[@class=&quot;color-packaging-products check&quot;]/ancestor::li</value>
-      </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>ul_selectedFilters</name>
+   <name>span_cartLabel</name>
    <tag></tag>
-   <elementGuidId>ac54e3cd-8000-4ba5-9efe-98d232ae25fe</elementGuidId>
+   <elementGuidId>0f07bede-1699-4efc-a7d9-e6b227cca25f</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>.selected-filters a</value>
+         <value>.cart-holder span.cart-label</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

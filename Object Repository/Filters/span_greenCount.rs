@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>div_autoSuggestionSearchList</name>
+   <name>span_greenCount</name>
    <tag></tag>
-   <elementGuidId>955d7ea3-96dd-42c6-82b3-461b3943277b</elementGuidId>
+   <elementGuidId>1e990ed9-583f-4d31-84f5-1fd3c641e0e8</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-         <value>#header-search div.search-autocomplete</value>
+         <key>XPATH</key>
+         <value>//span[@class=&quot;color-green check&quot;]/following-sibling::span</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>CSS</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

@@ -1,5 +1,7 @@
 package helpers
 
+
+import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import actions.Navigations
@@ -18,5 +20,15 @@ public class GeneralHelpers {
 		Navigations.navigateToHomePage()
 		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimout)
 		GeneralValidations.verifyCurrentPageURL(GlobalVariable.baseUrl)
+	}
+
+	/**
+	 * Remove non-digits from String and convert it to Integer
+	 * @param testObject
+	 * @return integer
+	 * @author Eng. Amal Hamad
+	 */
+	public static int covertStringToInteger(TestObject testObject) {
+		return Integer.parseInt(WebUI.getText(testObject).replaceAll('\\D+', ''))
 	}
 }

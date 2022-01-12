@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>span_cartLabel</name>
+   <name>strong_autoSuggestionsInnerItems</name>
    <tag></tag>
-   <elementGuidId>0f07bede-1699-4efc-a7d9-e6b227cca25f</elementGuidId>
+   <elementGuidId>7bf9b11d-063e-4e88-b441-99b6acfc8ce9</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>.cart-holder span.cart-label</value>
+         <value>#header-search div.search-autocomplete .dropdown-menu span strong</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>
