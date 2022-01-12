@@ -21,7 +21,7 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable
 
 public class HeaderValidations {
-	
+
 	static TestObject tagsAndFormLink = findTestObject('Object Repository/Header/a_tagsAndForms')
 	/***
 	 * Verify displaying tags and form menu
@@ -32,22 +32,35 @@ public class HeaderValidations {
 		String TagsAndFormMenuClasses = WebUI.getAttribute(TagsAndFormMenu, 'class')
 		assert TagsAndFormMenuClasses.contains('open-desktop')
 	}
-	
+
 	/***
 	 * verify tags and form background color match expected background color
+	 * @param expectedBackgroundColor
 	 * @author nesma
 	 */
 	public static void verifyTagsAndFormBackgroundColorChanged(String expectedBackgroundColor) {
 		String tagsAndFormBackgroundColor= WebUI.getCSSValue(tagsAndFormLink, 'background')
 		assert tagsAndFormBackgroundColor.contains(expectedBackgroundColor)
 	}
-	
+
 	/***
 	 * verify tags and form color match expected color
+	 * @param expectedColor
 	 * @author nesma
 	 */
 	public static void verifyTagsAndFormColorChanged(String expectedColor) {
 		String tagsAndFormBackgroundColor= WebUI.getCSSValue(tagsAndFormLink, 'color')
 		assert tagsAndFormBackgroundColor.equals(expectedColor)
+	}
+
+	/***
+	 * verify computer And register link color match expected color
+	 * @param expectedColor
+	 * @author nesma
+	 */
+	public static void VerifyComputerAndRegisterColorChanged(String expectedColor) {
+		TestObject computerAndRegisterLink = findTestObject('Object Repository/Header/a_computerAndRegister')
+		String ComputerAndRegisterColor = WebUI.getCSSValue(computerAndRegisterLink, 'color')
+		assert ComputerAndRegisterColor.contains(expectedColor)
 	}
 }

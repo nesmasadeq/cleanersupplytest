@@ -12,4 +12,12 @@ public class HeaderActions {
 	public static void hoverOnTagsAndFormsLink() {
 		WebUI.mouseOver(findTestObject('Object Repository/Header/a_tagsAndForms'))
 	}
+
+	/***
+	 * Clicking on computers and register link
+	 * @author nesma
+	 */
+	public static void clickOnComputersAndRegisterLink() {
+		WebUI.click(findTestObject('Object Repository/Header/a_computerAndRegister'))
+	}
 }
