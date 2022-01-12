@@ -46,4 +46,15 @@ public class ProductsFiltersHelpers {
 			}
 		}
 	}
+
+	/***
+	 * selecting casio manufacturer
+	 * @author nesma
+	 */
+	public static void selectingManufacturer() {
+		ProductsFiltersValidations.verifyManufactorSelectedByDefault()
+		ProductsFiltersValidations.verifyModelSelectIsDisabled()
+		ProductsFiltersValidations.verifySelectedOptionValue()
+		ProductsFiltersValidations.verifySelectedFilters('Casio','')
+	}
 }

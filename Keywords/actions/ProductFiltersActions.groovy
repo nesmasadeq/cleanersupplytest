@@ -24,13 +24,6 @@ import internal.GlobalVariable
 
 public class ProductFiltersActions {
 
-
-	//	public static  void checkPackagingProductsFilter() {
-	//		TestObject chx_PackagingProducts = findTestObject('Object Repository/Filters/chx_packagingProducts')
-	//
-	//		WebUI.click(chx_PackagingProducts)
-	//	}
-
 	/**
 	 * Click on specific filter checkBox
 	 * @param testObject
@@ -39,5 +32,16 @@ public class ProductFiltersActions {
 	public static  void checkSpecificFilter(TestObject testObject) {
 		//WebUI.scrollToElement(chx_PackagingProducts, GlobalVariable.actionsTimeout)
 		WebUI.click(testObject)
+	}
+
+	/***
+	 * select casio manufacturer
+	 * @author nesma
+	 */
+	public static  selectManufactor() {
+		TestObject manufactorSelect = findTestObject('Object Repository/Filters/select_manufactor')
+		WebUI.selectOptionByValue(manufactorSelect,
+				'https://www.cleanersupply.com/Tags-Forms/Computer-Register/?Manufacturer=Casio', false)
+		return manufactorSelect
 	}
 }

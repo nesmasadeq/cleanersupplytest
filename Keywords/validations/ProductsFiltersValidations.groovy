@@ -9,6 +9,7 @@ import com.kms.katalon.core.model.FailureHandling
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
+import actions.ProductFiltersActions
 import helpers.GeneralHelpers
 import internal.GlobalVariable
 
@@ -49,7 +50,7 @@ public class ProductsFiltersValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifySelectedFilters(String... filters) {
-		String selector ='Object Repository/scenario01/results_page/ul_selectedFilters'
+		String selector ='Object Repository/Filters/ul_selectedFilters'
 		boolean isSelectedFiltersSectionExist = WebUI.verifyElementPresent(findTestObject(selector),10, FailureHandling.OPTIONAL)
 		System.out.println(isSelectedFiltersSectionExist)
 
@@ -74,5 +75,32 @@ public class ProductsFiltersValidations {
 				GlobalVariable.elementVisibilityTimeOut)
 
 		assert paginationLinks.size() == size
+	}
+
+	/***
+	 * Verify casio value reflected
+	 * @author nesma 
+	 */
+	public static void verifySelectedOptionValue() {
+		TestObject selectedManufactorer= ProductFiltersActions.selectManufactor()
+		WebUI.verifyOptionSelectedByValue(selectedManufactorer,
+				'https://www.cleanersupply.com/Tags-Forms/Computer-Register/?Manufacturer=Casio', false,
+				GlobalVariable.actionsTimeout)
+	}
+	/***
+	 * verify manufacturer selected by default
+	 * @author nesma
+	 */
+	public static void verifyManufactorSelectedByDefault() {
+		WebUI.verifyElementAttributeValue(findTestObject('Object Repository/Filters/btn_manufacture'), 'title',
+				'Manufacturer', GlobalVariable.actionsTimeout)
+	}
+	/***
+	 * verify model selection is disabled
+	 * @author nesma
+	 */
+	public static void verifyModelSelectIsDisabled() {
+		TestObject selectModel = findTestObject('Object Repository/Filters/select_modelFilter')
+		WebUI.verifyElementNotClickable(selectModel)
 	}
 }
