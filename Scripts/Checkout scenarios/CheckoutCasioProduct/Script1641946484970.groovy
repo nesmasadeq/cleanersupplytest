@@ -1,0 +1,7 @@
+import helpers.ComputerAndRegisterPageHelpers
+import helpers.GeneralHelpers
+import helpers.HeaderHelpers
+
+GeneralHelpers.initScenario()
+HeaderHelpers.hoveringTagsAndFormLink()
+ComputerAndRegisterPageHelpers.clickingOnComputerAndRegisterLink()
