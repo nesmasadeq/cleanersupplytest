@@ -1,4 +1,4 @@
-package helpers
+package validations
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -19,14 +19,31 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
-import actions.HeaderActions
-import validations.HeaderValidations
+import org.openqa.selenium.WebElement
 
-public class HeaderHelpers {
-	public static hoveringTagsAndFormLink() {
-		HeaderActions.hoverOnTagsAndFormsLink()
-		HeaderValidations.verifyDisplayingTagsAndFormMenu()
-		HeaderValidations.verifyTagsAndFormBackgroundColorChanged('rgb(255, 255, 255)')
-		HeaderValidations.verifyTagsAndFormColorChanged('rgba(82, 36, 127, 1)')
+public class ComputerAndRegisterPageValidations {
+
+	/***
+	 * Verify current page heading match the expected heading
+	 * @param expectedHeading
+	 * @author nesma
+	 */
+	public static void verfiyCurrentPageHeading(String expectedHeading) {
+		TestObject computerAndRegisterHeading =
+				findTestObject('Object Repository/ComputerAndRegisterPage/h1_computerAndRegisterHeading')
+		assert WebUI.getText(computerAndRegisterHeading).equalsIgnoreCase(expectedHeading)
+	}
+
+	/***
+	 * verify breadcrumb content match the expected content
+	 * @param expectedContent
+	 * @param expectedContentTwo
+	 */
+	public static void verifyBreadcrumbContent(String expectedContent, String expectedContentTwo) {
+		List <WebElement> breadcrumbList =
+				WebUI.findWebElements(findTestObject("Object Repository/ComputerAndRegisterPage/li_breadcrumb"),
+				GlobalVariable.elementVisibilityTimeOut)
+		breadcrumbList.get(0).getText().contains(expectedContent)
+		breadcrumbList.get(1).getText().contains(expectedContentTwo)
 	}
 }
