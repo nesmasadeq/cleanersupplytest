@@ -63,4 +63,27 @@ public class HeaderValidations {
 		String ComputerAndRegisterColor = WebUI.getCSSValue(computerAndRegisterLink, 'color')
 		assert ComputerAndRegisterColor.contains(expectedColor)
 	}
+
+	/**
+	 * Verify cart items count match expected count
+	 * @param expectedCount
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifyCartCount(String expectedCount) {
+		TestObject cartCount = findTestObject('Header/span_cartCount')
+
+		assert WebUI.getText(cartCount).equals(expectedCount)
+	}
+
+
+	/**
+	 * Verify cart label match expected label
+	 * @param expectedCount
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifyCartLabel(String expactedLabel) {
+		TestObject cartLabel = findTestObject('Header/span_cartLabel')
+
+		assert WebUI.getText(cartLabel).equals(expactedLabel)
+	}
 }

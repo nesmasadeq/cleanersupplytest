@@ -3,10 +3,14 @@ import org.openqa.selenium.Keys as Keys
 import org.openqa.selenium.WebElement as WebElement
 import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+import actions.ProductFiltersActions
 import helpers.GeneralHelpers as GeneralHelpers
 import helpers.ProductsFiltersHelpers as ProductsFiltersHelpers
 import internal.GlobalVariable as GlobalVariable
-import models.Product as Product
+import models.Product
+import validations.GeneralValidations
+import validations.HeaderValidations
 import validations.ProductsFiltersValidations as ProductsFiltersValidations
 
 //---------------- Open Site ----------------
@@ -17,26 +21,19 @@ System.out.println('Page Title:' + WebUI.getWindowTitle())
 assert WebUI.getWindowTitle().equals('Cleaner\'s Supply - Dry Cleaning Supplies')
 
 //----------------Check cart is empty ----------------
-TestObject cartCount = findTestObject('Object Repository/scenario01/header/span_cartCount')
-
-assert WebUI.getText(cartCount).equals('0')
-
-TestObject cartLabel = findTestObject('scenario01/header/span_cartLabel')
-
-assert WebUI.getText(cartLabel).equals('Cart')
+HeaderValidations.verifyCartCount('0')
+HeaderValidations.verifyCartLabel('Cart')
 
 //---------------- Search for plastic ---------------- 
 //------ inputSearch -------- 
-TestObject inputSearch = findTestObject('scenario01/header/input_headerSearch')
+TestObject inputSearch = findTestObject('Header/input_headerSearch')
 
 assert WebUI.getAttribute(inputSearch, 'placeholder').equals('Search by Stock # or Keyword')
 
-String searchTerm = 'plastic'
-
-WebUI.setText(inputSearch, searchTerm)
+WebUI.setText(inputSearch, GlobalVariable.searchTerm)
 
 //------ autoSuggestionSearchList -------- 
-TestObject div_autoSuggestionSearchList = findTestObject('scenario01/header/div_autoSuggestionSearchList')
+TestObject div_autoSuggestionSearchList = findTestObject('Header/div_autoSuggestionSearchList')
 
 System.out.println(WebUI.getAttribute(div_autoSuggestionSearchList, 'style'))
 
@@ -47,16 +44,14 @@ System.out.println('getClass: ' + WebUI.getAttribute(div_autoSuggestionSearchLis
 assert WebUI.getAttribute(div_autoSuggestionSearchList, 'class').contains('open')
 
 //------ searchForLabel -------- 
-TestObject p_searchForLabel = findTestObject('scenario01/header/p_searchForLabel')
+TestObject p_searchForLabel = findTestObject('Header/p_searchForLabel')
 
 System.out.println(WebUI.getText(p_searchForLabel))
 
-assert WebUI.getText(p_searchForLabel).toLowerCase().contains(searchTerm)
+assert WebUI.getText(p_searchForLabel).toLowerCase().contains(GlobalVariable.searchTerm)
 
 //------ autoSuggestionSearchList inner items --------
-//List<TestObject> autoSuggestionsInnerItems = WebUI.findWebElements(findTestObject('Object Repository/strong_autoSuggestionsInnerItems'), 
-//    5)
-List<TestObject> autoSuggestionsInnerItems = WebUI.findWebElements(findTestObject('scenario01/header/strong_autoSuggestionsInnerItems'), 
+List<TestObject> autoSuggestionsInnerItems = WebUI.findWebElements(findTestObject('Header/strong_autoSuggestionsInnerItems'), 
     5)
 
 println('autoSuggestionsInnerItems: ' + autoSuggestionsInnerItems.size())
@@ -66,12 +61,9 @@ for (WebElement element : autoSuggestionsInnerItems) {
 
     System.out.println('autoSuggestionsInnerItems: ' + WebUI.getText(object))
 
-    assert WebUI.getText(object).toLowerCase().contains(searchTerm)
+    assert WebUI.getText(object).toLowerCase().contains(GlobalVariable.searchTerm)
 }
 
-//for (int i = 0; i < autoSuggestionsInnerItems.size(); i++) {
-//    println('autoSuggestionsInnerItems: ' + WebUI.getText(autoSuggestionsInnerItems.get(0)))
-//}
 //------ Press Enter -------- 
 WebUI.sendKeys(inputSearch, Keys.chord(Keys.ENTER))
 
@@ -93,11 +85,11 @@ TestObject subPageHeader = findTestObject('scenario01/results_page/h2_pageSubHea
 
 System.out.println('subPageHeader: ' + WebUI.getText(subPageHeader))
 
-assert WebUI.getText(subPageHeader).toLowerCase().contains(searchTerm)
+assert WebUI.getText(subPageHeader).toLowerCase().contains(GlobalVariable.searchTerm)
 
 //------ Verify filtersProductType --------
 //ProductsFiltersHelpers.openFiltersCard()
-//List<TestObject> filtersProductType = WebUI.findWebElements(findTestObject('scenario01/results_page/div_filtersProductType'), 
+//List<TestObject> filtersProductType = WebUI.findWebElements(findTestObject('Filters/div_filtersProductType'), 
 //    5)
 //
 //println('filtersProductType: ' + filtersProductType.size())
@@ -118,43 +110,19 @@ assert WebUI.getText(subPageHeader).toLowerCase().contains(searchTerm)
 /***********************************************************************/
 //------ Check packaging products filter --------
 //ProductsFiltersHelpers.openFiltersCard()
-TestObject chx_PackagingProducts = findTestObject('Object Repository/scenario01/results_page/chx_PackagingProducts')
-
-//WebUI.scrollToElement(chx_PackagingProducts, GlobalVariable.actionsTimeout)
-WebUI.click(chx_PackagingProducts)
-
-System.out.println('getClass: ' + WebUI.getAttribute(chx_PackagingProducts, 'class'))
-
-assert WebUI.getAttribute(chx_PackagingProducts, 'class').contains('selected')
-
-//------ Verify Page URL --------
-assert WebUI.getUrl().equals('https://www.cleanersupply.com/search-results/?Category=Packaging+Products&q=plastic&r=true')
-
+ProductsFiltersHelpers.checkingPackagingProductFilter()
+GeneralValidations.verifyCurrentPageURL('Category=Packaging+Products')
 //------ Verify filter count match product count --------
-TestObject span_PackagingProductsCount = findTestObject('Object Repository/scenario01/results_page/span_PackagingProductsCount')
-
-int packagingProductsCount = Integer.parseInt(WebUI.getText(span_PackagingProductsCount).replaceAll('\\D+', ''))
-
-System.out.println('packagingProductsCount: ' + packagingProductsCount)
-
-int productsCountInHeader = Integer.parseInt(WebUI.getText(subPageHeader).replaceAll('\\D+', ''))
-
-System.out.println('productsCountInHeader: ' + productsCountInHeader)
-
-assert packagingProductsCount == productsCountInHeader
-
+TestObject span_PackagingProductsCount = findTestObject('Object Repository/Filters/span_packagingProductsCount')
+ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(span_PackagingProductsCount, subPageHeader)
 //------ Verify packagingProducts found in selected filters--------
 ProductsFiltersValidations.verifySelectedFilters('Packaging Products')
-
 //------ Verify pagination is changed --------
-List<TestObject> paginationLinks = WebUI.findWebElements(findTestObject('Object Repository/scenario01/results_page/a_paginationLinks'), 
-    5)
-
-assert paginationLinks.size() == 3
+ProductsFiltersValidations.verifyPaginationIsChanged(3)
 
 /***********************************************************************/
 //------ Check PalsticBags products filter --------
-TestObject chx_plasticBags = findTestObject('Object Repository/scenario01/results_page/chx_plasticBags')
+TestObject chx_plasticBags = findTestObject('Filters/chx_plasticBags')
 
 //WebUI.scrollToElement(chx_plasticBags, GlobalVariable.actionsTimeout)
 WebUI.click(chx_plasticBags)
@@ -167,7 +135,7 @@ assert WebUI.getAttribute(chx_plasticBags, 'class').contains('selected')
 assert WebUI.getUrl().equals('https://www.cleanersupply.com/search-results/?Category=Packaging+Products_Plastic+Bags&q=plastic&r=true')
 
 //------ Verify filter count match product count --------
-TestObject span_plasticBagsCount = findTestObject('Object Repository/scenario01/results_page/span_plasticBagsCount')
+TestObject span_plasticBagsCount = findTestObject('Filters/span_plasticBagsCount')
 
 int plasticBagsCount = Integer.parseInt(WebUI.getText(span_plasticBagsCount).replaceAll('\\D+', ''))
 
@@ -191,7 +159,7 @@ assert paginationLinks.size() == 3
 ProductsFiltersHelpers.openFiltersCard()
 
 //------ Check Green Color filter --------
-TestObject chx_green = findTestObject('Object Repository/scenario01/results_page/chx_green')
+TestObject chx_green = findTestObject('Filters/chx_green')
 
 WebUI.waitForElementVisible(chx_green, 10)
 
@@ -208,7 +176,7 @@ assert WebUI.getAttribute(chx_green, 'class').contains('selected')
 assert WebUI.getUrl().equals('https://www.cleanersupply.com/search-results/?Color+Group=Green&Category=Packaging+Products_Plastic+Bags&q=plastic&r=true')
 
 //------ Verify filter count match product count --------
-TestObject span_greenCount = findTestObject('Object Repository/scenario01/results_page/span_greenCount')
+TestObject span_greenCount = findTestObject('Filters/span_greenCount')
 
 int greenCount = Integer.parseInt(WebUI.getText(span_greenCount).replaceAll('\\D+', ''))
 
@@ -271,12 +239,12 @@ System.out.println('Page Title:' + WebUI.getWindowTitle())
 
 //assert WebUI.getWindowTitle().equals('Search Results - Cleaner\'s Supply')
 //------ Verify Heading --------
-TestObject productTitleObject = WebUI.convertWebElementToTestObject('Object Repository/scenario01/product_details_page/h1_productTitle')
+TestObject productTitleObject =findTestObject('Object Repository/scenario01/product_details_page/h1_productTitle')
 
 assert WebUI.getText(productTitleObject).toLowerCase().contains(product.getTitle())
 
 //------ Verify Price --------
-TestObject productPriceObject = WebUI.convertWebElementToTestObject('Object Repository/scenario01/product_details_page/span_productPrice')
+TestObject productPriceObject = findTestObject('Object Repository/scenario01/product_details_page/span_productPrice')
 
 assert WebUI.getText(productPriceObject).contains('$')
 
@@ -285,7 +253,7 @@ double price = Double.parseDouble(WebUI.getText(productPriceObject).replaceAll('
 assert (price >= product.getMinPrice()) && (price <= product.getMaxPrice())
 
 //------ Verify List Price --------
-TestObject productListPriceObject = WebUI.convertWebElementToTestObject('Object Repository/scenario01/product_details_page/span_productListPrice')
+TestObject productListPriceObject = findTestObject('Object Repository/scenario01/product_details_page/span_productListPrice')
 
 assert WebUI.getText(productListPriceObject).contains('$')
 
@@ -293,4 +261,11 @@ double listPrice = Double.parseDouble(WebUI.getText(productListPriceObject).repl
 
 assert (listPrice >= product.getMinList()) && (listPrice <= product.getMaxList())
 //------ Verify Image --------
-TestObject productListPriceObject = WebUI.convertWebElementToTestObject('Object Repository/scenario01/product_details_page/span_productListPrice')
+TestObject productImageObject =findTestObject('Object Repository/scenario01/product_details_page/img_productImage')
+assert WebUI.getAttribute(productImageObject, 'src').equals(product.getImage())
+//------ Save SKy --------
+TestObject productSkuObject =findTestObject('Object Repository/scenario01/product_details_page/span_productSku')
+product.setSku(WebUI.getText(productSkuObject))
+
+
+
