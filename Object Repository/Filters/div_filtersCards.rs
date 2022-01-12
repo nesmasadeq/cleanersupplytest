@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_headerSearch</name>
+   <name>div_filtersCards</name>
    <tag></tag>
-   <elementGuidId>e35b6db3-2e15-4795-b005-ed4971902060</elementGuidId>
+   <elementGuidId>2fc98b4c-400b-4ebc-8369-4f68181393a8</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>#header-search input</value>
+         <value>div.facet-group div.block-title</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

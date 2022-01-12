@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>chx_plasticBags</name>
+   <name>ul_selectedFilters</name>
    <tag></tag>
-   <elementGuidId>2ef51f2a-e35f-40e5-b9be-4ff6d6b1631c</elementGuidId>
+   <elementGuidId>ac54e3cd-8000-4ba5-9efe-98d232ae25fe</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
+         <value>.selected-filters a</value>
       </entry>
       <entry>
          <key>BASIC</key>
       </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//span[@class=&quot;color-plastic-bags check&quot;]/ancestor::li</value>
-      </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

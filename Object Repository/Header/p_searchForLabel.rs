@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>chx_green</name>
+   <name>p_searchForLabel</name>
    <tag></tag>
-   <elementGuidId>0dd9e5cf-dde6-45df-b6fa-27752863ef42</elementGuidId>
+   <elementGuidId>6269382c-d77e-47af-9f53-7979b9c96a66</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
+         <value>#header-search div.search-autocomplete p.search-for</value>
       </entry>
       <entry>
          <key>BASIC</key>
       </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//span[@class=&quot;color-green check&quot;]/ancestor::li</value>
-      </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>
