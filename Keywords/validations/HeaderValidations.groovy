@@ -33,12 +33,21 @@ public class HeaderValidations {
 		assert TagsAndFormMenuClasses.contains('open-desktop')
 	}
 	
-	public static void verifyTagsAndFormBackgroundColorChanged() {
+	/***
+	 * verify tags and form background color match expected background color
+	 * @author nesma
+	 */
+	public static void verifyTagsAndFormBackgroundColorChanged(String expectedBackgroundColor) {
 		String tagsAndFormBackgroundColor= WebUI.getCSSValue(tagsAndFormLink, 'background')
-		assert tagsAndFormBackgroundColor.contains('rgb(255, 255, 255)')
+		assert tagsAndFormBackgroundColor.contains(expectedBackgroundColor)
 	}
-	public static void verifyTagsAndFormColorChanged() {
+	
+	/***
+	 * verify tags and form color match expected color
+	 * @author nesma
+	 */
+	public static void verifyTagsAndFormColorChanged(String expectedColor) {
 		String tagsAndFormBackgroundColor= WebUI.getCSSValue(tagsAndFormLink, 'color')
-		assert tagsAndFormBackgroundColor.equals('rgba(82, 36, 127, 1)')
+		assert tagsAndFormBackgroundColor.equals(expectedColor)
 	}
 }

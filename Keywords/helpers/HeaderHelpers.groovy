@@ -26,7 +26,7 @@ public class HeaderHelpers {
 	public static hoveringTagsAndFormLink() {
 		HeaderActions.hoverOnTagsAndFormsLink()
 		HeaderValidations.verifyDisplayingTagsAndFormMenu()
-		HeaderValidations.verifyTagsAndFormBackgroundColorChanged()
-		HeaderValidations.verifyTagsAndFormColorChanged()
+		HeaderValidations.verifyTagsAndFormBackgroundColorChanged('rgb(255, 255, 255)')
+		HeaderValidations.verifyTagsAndFormColorChanged('rgba(82, 36, 127, 1)')
 	}
 }
