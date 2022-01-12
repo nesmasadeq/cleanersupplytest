@@ -24,11 +24,31 @@ public class ProductsFiltersHelpers {
 	}
 
 	/**
+	 * Click & Verify plasticBags filter checkBox
+	 * @author Eng. Amal Hamad
+	 */
+	public static void checkingPlasticBagsFilter() {
+		TestObject chx_plasticBags = findTestObject('Object Repository/Filters/chx_plasticBags')
+		ProductFiltersActions.checkSpecificFilter(chx_plasticBags)
+		ProductsFiltersValidations.verifyFilterIsChecked(chx_plasticBags)
+	}
+
+	/**
+	 * Click & Verify GreenColor filter checkBox
+	 * @author Eng. Amal Hamad
+	 */
+	public static void checkingGreenColorFilter() {
+		TestObject chx_green = findTestObject('Object Repository/Filters/chx_green')
+		ProductFiltersActions.checkSpecificFilter(chx_green)
+		ProductsFiltersValidations.verifyFilterIsChecked(chx_green)
+	}
+
+	/**
 	 * Open all products filters cards in left side
 	 * @author Eng. Amal Hamad
 	 */
 	public static void openFiltersCard() {
-		List<TestObject> filtersCards = WebUI.findWebElements(findTestObject('Filters/div_filtersCards'),
+		List<TestObject> filtersCards = WebUI.findWebElements(findTestObject('Object Repository/Filters/div_filtersCards'),
 				5)
 
 		System.out.println('filtersCards: ' + filtersCards.size())

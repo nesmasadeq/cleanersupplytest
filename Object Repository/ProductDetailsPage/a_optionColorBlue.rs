@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_optionColorBlack</name>
+   <name>a_optionColorBlue</name>
    <tag></tag>
-   <elementGuidId>a4c382c6-05e3-4cfa-baf4-81e3fc20258e</elementGuidId>
+   <elementGuidId>263dd635-5329-471f-a01a-d83f970b29bf</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>CSS</key>
+         <value>.option a[title=&quot;Royal Blue&quot;]</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>.option a[title=&quot;Black&quot;]</value>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

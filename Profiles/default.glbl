@@ -24,4 +24,14 @@
       <initValue>5</initValue>
       <name>elementVisibilityTimeOut</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'plastic'</initValue>
+      <name>searchTerm</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'$'</initValue>
+      <name>siteCurrency</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

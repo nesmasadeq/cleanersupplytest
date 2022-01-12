@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_optionXSmall</name>
+   <name>span_productPrice</name>
    <tag></tag>
-   <elementGuidId>ea07641c-d693-4983-89dd-8377b6c48cc3</elementGuidId>
+   <elementGuidId>7071be14-478d-4486-9492-1e5b652efa2d</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>CSS</key>
+         <value>.product-price span.price</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>.option a[title*=&quot;X-Small&quot;]</value>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

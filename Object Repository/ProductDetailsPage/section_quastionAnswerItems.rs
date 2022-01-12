@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_optionColorGreen</name>
+   <name>section_quastionAnswerItems</name>
    <tag></tag>
-   <elementGuidId>f10441f8-d7dd-4658-87f9-693d0eb9a0af</elementGuidId>
+   <elementGuidId>3161e669-e365-4c8f-bb00-fd915198b168</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>CSS</key>
+         <value>#questions-items-holder section.item</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>.option a[title=&quot;Green&quot;]</value>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>
