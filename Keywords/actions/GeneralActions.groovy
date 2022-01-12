@@ -6,5 +6,4 @@ import internal.GlobalVariable
 
 
 public class GeneralActions {
-	
 }
