@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_optionLarge</name>
+   <name>div_volumeTablePrice</name>
    <tag></tag>
-   <elementGuidId>c983d608-dc17-4f44-aed5-f3daebc3d909</elementGuidId>
+   <elementGuidId>7790e5ce-f4ba-4e18-a456-7f5c1f65fa1d</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>.option a[title='Large - 24&quot; x 27&quot; x 8&quot;']</value>
+         <value>.volume-table td span.price-accent</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

@@ -1,24 +1,11 @@
 package helpers
 
-import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
-import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
-import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
 
 import org.openqa.selenium.WebElement
 
-import com.kms.katalon.core.annotation.Keyword
-import com.kms.katalon.core.checkpoint.Checkpoint
-import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
-import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
-import com.kms.katalon.core.model.FailureHandling
-import com.kms.katalon.core.testcase.TestCase
-import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
-import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
 import models.Product
@@ -32,7 +19,6 @@ public class ProductRowHelper {
 	 * @author nesma
 	 */
 	public static Product saveProductRowData(TestObject productUrl) {
-
 		Product product = new Product()
 
 		//----- Save href
@@ -52,28 +38,27 @@ public class ProductRowHelper {
 
 		//----- Save price
 		List<WebElement> span_productPrice = WebUI.findWebElements(findTestObject('Object Repository/scenario01/product_row/span_productPrice'),
-				5)
+				GlobalVariable.elementVisibilityTimeOut)
 
 		TestObject minPrice = WebUI.convertWebElementToTestObject(span_productPrice.get(0))
 
-		product.setMinPrice(GeneralHelpers.covertStringToInteger(minPrice))
+		product.setMinPrice(GeneralHelpers.convertStringToDouble(minPrice))
 
 		TestObject maxPrice = WebUI.convertWebElementToTestObject(span_productPrice.get(1))
 
-		product.setMaxPrice(GeneralHelpers.covertStringToInteger(maxPrice))
+		product.setMaxPrice(GeneralHelpers.convertStringToDouble(maxPrice))
 
 		//----- Save price list
 		List<WebElement> span_productListValue = WebUI.findWebElements(findTestObject('Object Repository/scenario01/product_row/span_productListValue'),
-				5)
+				GlobalVariable.elementVisibilityTimeOut)
 
 		TestObject minList = WebUI.convertWebElementToTestObject(span_productListValue.get(0))
 
-		product.setMinList(GeneralHelpers.covertStringToInteger(minList))
+		product.setMinList(GeneralHelpers.convertStringToDouble(minList))
 
 		//check if price list is in range or has one value
 		if(span_productListValue.size()>1) {
 			TestObject maxList = WebUI.convertWebElementToTestObject(span_productListValue.get(1))
-
 			product.setMaxList(GeneralHelpers.covertStringToInteger(maxList))
 		}
 		//----- Print product data
