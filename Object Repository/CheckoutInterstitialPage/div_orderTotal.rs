@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>td_productTotal</name>
+   <name>div_orderTotal</name>
    <tag></tag>
-   <elementGuidId>ca9a38ba-5bf7-41a2-88d9-c095df39473c</elementGuidId>
+   <elementGuidId>96f7f437-8301-4330-a812-1b5eb37e43c6</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>table.product-table div.product-table__total</value>
+         <value>div.box__title--big span</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

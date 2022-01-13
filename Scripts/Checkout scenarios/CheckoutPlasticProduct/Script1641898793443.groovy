@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement as WebElement
 import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import actions.CartPageActions as CartPageActions
+import actions.CheckoutInterstitialPageActions as CheckoutInterstitialPageActions
 import actions.HeaderActions as HeaderActions
 import actions.ProductDetailsPageActions as ProductDetailsPageActions
 import helpers.GeneralHelpers as GeneralHelpers
@@ -13,6 +14,7 @@ import helpers.ProductsFiltersHelpers as ProductsFiltersHelpers
 import internal.GlobalVariable as GlobalVariable
 import models.Product as Product
 import validations.CartPageValidations as CartPageValidations
+import validations.CheckoutInterstitialPageValidations as CheckoutInterstitialPageValidations
 import validations.GeneralValidations as GeneralValidations
 import validations.HeaderValidations as HeaderValidations
 import validations.ProductDetailsPageValidations as ProductDetailsPageValidations
@@ -338,18 +340,45 @@ GeneralValidations.verifyPageHeading('SHOPPING CART')
 CartPageValidations.verifyCartProductsData(secondProduct, firstProduct)
 
 //------ Verify cart summary --------
-CartPageValidations.verifyCartSummary('NOT AVAILABLE')
+CartPageValidations.verifyCartSummary(true, 'NOT AVAILABLE', 'T.B.D.')
 
 //------ Change firstProduct cart quantity --------
-CartPageActions.clickPlusQtyButton(firstProduct)
+CartPageActions.clickMinusQtyButton(0)
 
-CartPageValidations.verifyCartSummary('NOT AVAILABLE')
+CartPageValidations.verifyCartSummary(true, 'NOT AVAILABLE', 'T.B.D.')
 
-CartPageValidations.verifyProductTotalAfterChangeQty(firstProduct)
+CartPageValidations.verifyProductTotalAfterChangeQty(0, secondProduct)
 
 //------ Change secondProduct cart quantity --------
-CartPageActions.clickMinusQtyButton(secondProduct)
+CartPageActions.clickPlusQtyButton(1)
 
-CartPageValidations.verifyCartSummary('NOT AVAILABLE')
+CartPageValidations.verifyCartSummary(true, 'NOT AVAILABLE', 'T.B.D.')
 
-CartPageValidations.verifyProductTotalAfterChangeQty(secondProduct)
+CartPageValidations.verifyProductTotalAfterChangeQty(1, firstProduct)
+
+//------ Click ProceedToCheckout Button --------
+CartPageActions.clickProceedToCheckoutButton()
+
+/***********************************************************************/
+/******************* Checkout Interstitial Page ************************/
+/***********************************************************************/
+//------ Verify Page URL --------
+GeneralValidations.verifyCurrentPageURL('https://www.cleanersupply.com/checkout-interstitial/')
+
+//------ Verify Page Title --------
+GeneralValidations.verifyCurrentPageTitleValue('Checkout Interstitial - Cleaner\'s Supply')
+
+//------ Verify Page Heading --------
+CheckoutInterstitialPageValidations.verifyPageHeading('SECURE CHECKOUT')
+
+//------ Verify products data in cart --------
+CartPageValidations.verifyCartProductsData(secondProduct, firstProduct)
+
+//------ Verify cart summary --------
+CartPageValidations.verifyCartSummary(false, 'FREE', 'T.B.D.')
+
+//------ Verify guest radion is checked --------
+CheckoutInterstitialPageValidations.verifyGuestRadionIsChecked()
+
+//------ Click Continue button --------
+CheckoutInterstitialPageActions.clickContinueButton()

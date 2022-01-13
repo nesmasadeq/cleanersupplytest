@@ -6,12 +6,11 @@
    <elementGuidId>1a511fb8-ea78-400a-b21e-809c32ec2d49</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>CSS</key>
+         <value>table.product-table div.product-table__quantity input[name=&quot;quantity&quot;]</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>table.product-table td.product-table__quantity input[name=&quot;quantity&quot;]</value>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>
