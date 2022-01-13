@@ -44,4 +44,15 @@ public class ProductFiltersActions {
 				'https://www.cleanersupply.com/Tags-Forms/Computer-Register/?Manufacturer=Casio', false)
 		return manufactorSelect
 	}
+	
+	/***
+	 * select SP1000 model
+	 * @author nesma
+	 */
+	public static  selectModel() {
+		TestObject modelSelect = findTestObject('Object Repository/Filters/select_modelFilter')
+		WebUI.selectOptionByValue(modelSelect,
+				'https://www.cleanersupply.com/Tags-Forms/Computer-Register/?Model+%23=SP1000&Manufacturer=Casio', false)
+		return modelSelect
+	}
 }
