@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>input_address1</name>
+   <tag></tag>
+   <elementGuidId>21b5af23-6c2a-4140-8e5c-3b64d6f89d17</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>#shp1-address-line</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>CSS</selectorMethod>
+   <useRalativeImagePath>false</useRalativeImagePath>
+</WebElementEntity>

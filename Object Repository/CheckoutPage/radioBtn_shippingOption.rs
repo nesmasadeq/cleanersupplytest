@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>radioBtn_shippingOption</name>
+   <tag></tag>
+   <elementGuidId>fb67f6c0-2f58-4c38-ab08-2924f9fcdbf2</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>input[name=&quot;shippingOption&quot;]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>CSS</selectorMethod>
+   <useRalativeImagePath>false</useRalativeImagePath>
+</WebElementEntity>
