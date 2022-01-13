@@ -11,6 +11,7 @@
       </entry>
       <entry>
          <key>CSS</key>
+
          <value>button.add-to-cart</value>
       </entry>
    </selectorCollection>

@@ -62,7 +62,7 @@ public class QuickActionValidations {
 	public static void verifyAddMoreButtonExist() {
 		assert WebUI.verifyElementPresent(findTestObject('Object Repository/QuickAction/AddMoreOrders'), GlobalVariable.elementVisibilityTimeOut)
 	}
-	
+
 	/**
 	 * verify SKU input in all orders and that contains default placeholder
 	 * 
@@ -70,7 +70,7 @@ public class QuickActionValidations {
 	 */
 	public static void verifySKUFieldInEveryOrder() {
 		List<WebElement> quickOrders = WebUI.findWebElements(findTestObject('Object Repository/QuickAction/QuickOrders') , GlobalVariable.elementVisibilityTimeOut)
-		
+
 		for(WebElement order in quickOrders) {
 			assert WebUI.verifyElementPresent(WebUI.convertWebElementToTestObject(order.findElement(By.tagName("input"))) , GlobalVariable.elementVisibilityTimeOut)
 			assert WebUI.getAttribute(WebUI.convertWebElementToTestObject(order.findElement(By.tagName("input"))) , "placeholder").contains("Enter Stock #")
