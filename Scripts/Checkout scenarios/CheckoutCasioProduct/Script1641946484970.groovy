@@ -1,9 +1,12 @@
 import helpers.ComputerAndRegisterPageHelpers
 import helpers.GeneralHelpers
 import helpers.HeaderHelpers
+import helpers.ProductRowHelper
 import helpers.ProductsFiltersHelpers
+import models.Product
 
 GeneralHelpers.initScenario()
 HeaderHelpers.hoveringTagsAndFormLink()
 ComputerAndRegisterPageHelpers.clickingOnComputerAndRegisterLink()
 ProductsFiltersHelpers.selectingManufacturer()
+ProductsFiltersHelpers.selectingModel()

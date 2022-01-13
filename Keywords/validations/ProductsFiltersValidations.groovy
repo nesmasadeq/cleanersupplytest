@@ -78,14 +78,13 @@ public class ProductsFiltersValidations {
 	}
 
 	/***
-	 * Verify casio value reflected
+	 * Verify selected value reflected
+	 * @param expectedValue
+	 * @param selectFeild
 	 * @author nesma 
 	 */
-	public static void verifySelectedOptionValue() {
-		TestObject selectedManufactorer= ProductFiltersActions.selectManufactor()
-		WebUI.verifyOptionSelectedByValue(selectedManufactorer,
-				'https://www.cleanersupply.com/Tags-Forms/Computer-Register/?Manufacturer=Casio', false,
-				GlobalVariable.actionsTimeout)
+	public static void verifySelectedOptionValue(String expectedValue, TestObject selectField) {
+		WebUI.verifyOptionSelectedByValue(selectField,expectedValue, false,GlobalVariable.actionsTimeout)
 	}
 	/***
 	 * verify manufacturer selected by default
@@ -103,4 +102,25 @@ public class ProductsFiltersValidations {
 		TestObject selectModel = findTestObject('Object Repository/Filters/select_modelFilter')
 		WebUI.verifyElementNotClickable(selectModel)
 	}
+	/***
+	 * verify specific filter disappeared
+	 * @param filterSection
+	 * @author nesma
+	 */
+	public static void verifyFilterDisappeared(TestObject... filterSection) {
+		for(int i=0 ; i<filterSection.length ; i++) {
+		WebUI.verifyElementNotPresent(filterSection[i],GlobalVariable.actionsTimeout )
+		}
+	}
+	
+	/***
+	 * verify model selection is enabled
+	 * @author nesma
+	 */
+	public static void verifyModelSelectIsEnabled() {
+		TestObject selectModel = findTestObject('Object Repository/Filters/select_modelFilter')
+		WebUI.verifyElementClickable(selectModel)
+	}
+	
+	
 }
