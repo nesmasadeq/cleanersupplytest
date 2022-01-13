@@ -42,7 +42,7 @@ public class HeaderHelpers {
 			int quantity = product.getQuantity()
 			//			double price = ProductDetailsPageHelpers.getProductPriceByQuantity(quantity)
 			double price = product.getPrice()
-//			product.setPrice(price)
+			//			product.setPrice(price)
 			total += price * quantity
 			System.out.println("Price: " + product.getPrice()  + " #Quantity:" + product.getQuantity())
 		}

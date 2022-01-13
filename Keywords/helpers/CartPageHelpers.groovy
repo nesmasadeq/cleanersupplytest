@@ -35,7 +35,8 @@ public class CartPageHelpers {
 		double total = 0;
 		for(WebElement element: productTotalList) {
 			TestObject productTotal = WebUI.convertWebElementToTestObject(element)
-			total += GeneralHelpers.convertStringToDouble(productTotal)
+			String textWithNumber = WebUI.getAttribute(productTotal , 'innerText').replaceAll("[^\\d.]", "")
+			total +=  Double.parseDouble(textWithNumber)
 		}
 		return GeneralHelpers.formatePrice(total)
 	}
@@ -47,10 +48,13 @@ public class CartPageHelpers {
 	 */
 	public static String calculateSummaryTotal() {
 		List<WebElement> summaryValuesList = WebUI.findWebElements(findTestObject(CartPageActions.summaryValues),GlobalVariable.elementVisibilityTimeOut)
+
 		double total = 0;
-		for(WebElement element: summaryValuesList) {
-			TestObject productTotal = WebUI.convertWebElementToTestObject(element)
-			if(WebUI.getText(productTotal).contains("[0-9]+")) {
+		for(int i = 0 ;  i < summaryValuesList.size()-1 ; i++) {
+			TestObject productTotal = WebUI.convertWebElementToTestObject(summaryValuesList.get(i))
+			String currentText = WebUI.getText(productTotal)
+			System.out.println("currentText: " + currentText)
+			if(currentText.contains(GlobalVariable.siteCurrency)) {
 				total += GeneralHelpers.convertStringToDouble(productTotal)
 			}
 		}
@@ -64,7 +68,7 @@ public class CartPageHelpers {
 	 * @return TestObject
 	 * @author Eng. Amal Hamad
 	 */
-	public static TestObject getProductFiledBySku(Product product , String dataSelector) {
+	public static TestObject getCartProductDataBySku(Product product , String dataSelector) {
 		String productSku = product.getSku()
 
 		List<WebElement> productSkuList = WebUI.findWebElements(findTestObject(CartPageActions.productSku),GlobalVariable.elementVisibilityTimeOut)

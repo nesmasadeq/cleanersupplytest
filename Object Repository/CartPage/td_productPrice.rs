@@ -6,12 +6,11 @@
    <elementGuidId>978270bf-8f62-4823-bedb-ac59313ae743</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>CSS</key>
+         <value>table.product-table div.product-table__price</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>table.product-table td.product-table__price</value>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

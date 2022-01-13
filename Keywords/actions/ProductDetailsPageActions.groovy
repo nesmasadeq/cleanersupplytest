@@ -11,6 +11,7 @@ import helpers.ProductDetailsPageHelpers
 import models.Product
 
 
+
 public class ProductDetailsPageActions {
 
 	//----------- Product Data
