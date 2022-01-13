@@ -24,7 +24,7 @@ import internal.GlobalVariable
 import models.Product
 
 public class ProductRowHelper {
-	
+
 	/***
 	 * save product data form search result in to product object
 	 * @return product

@@ -1,29 +1,18 @@
 package validations
 
-import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
-import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
-import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
 
-import com.kms.katalon.core.annotation.Keyword
-import com.kms.katalon.core.checkpoint.Checkpoint
-import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
-import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
-import com.kms.katalon.core.model.FailureHandling
-import com.kms.katalon.core.testcase.TestCase
-import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
-import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import actions.ProductDetailsPageActions
 import helpers.GeneralHelpers
+import helpers.ProductDetailsPageHelper
 import internal.GlobalVariable
 import models.Product
 
 public class ProductDetailsPageValidations {
+	static TestObject priceLable = findTestObject('Object Repository/ProductDetailsPage/span_productPrice')
 
 	/**
 	 * Verify product title in productDetailsPage match expected title
@@ -107,13 +96,35 @@ public class ProductDetailsPageValidations {
 		System.out .println("getClass: " + WebUI.getAttribute(testObject, "class"))
 		assert WebUI.getAttribute(testObject, "class").contains("selected")
 	}
-	
+
 	/***
 	 * verify entered quantity match the expected quantity
 	 * @param expectedQuantity
+	 * @author nesma
 	 */
 	public static void verifyEnterdQuantityValue(String expectedQuantity){
 		TestObject quantityField = ProductDetailsPageActions.enterQuantity("10")
 		assert WebUI.getAttribute(quantityField, 'value').contains(expectedQuantity)
+	}
+	
+	/***
+	 * verify the price label change reflected when change quantity
+	 * @param product
+	 * @author nesma
+	 */
+	public static void verifyThePriceChangeReflected(Product product) {
+		TestObject QuantityFeild = findTestObject('Object Repository/ProductDetailsPage/input_quantityFeild')
+		Double totalPrice= ProductDetailsPageHelper.QuantityMultiblePrice(product.getMinPrice(),WebUI.getText(QuantityFeild))
+		assert WebUI.getText(priceLable).contains(totalPrice+"")		
+	}
+	
+	/***
+	 * verify the price in volume table equal the price in label
+	 * @param cellPrice
+	 * @author nesma
+	 */
+	public static void verifyThePriceInCellEqualPrice(TestObject cellPrice) {
+		String cellPriceTxt= WebUI.getText(cellPrice).replace('$', '')
+		assert WebUI.getText(priceLable).equals(cellPriceTxt)
 	}
 }

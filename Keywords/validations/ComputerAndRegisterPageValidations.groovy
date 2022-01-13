@@ -19,7 +19,7 @@ public class ComputerAndRegisterPageValidations {
 	 */
 	public static void verfiyCurrentPageHeading(String expectedHeading) {
 		TestObject computerAndRegisterHeading =
-		findTestObject('Object Repository/ComputerAndRegisterPage/h1_computerAndRegisterHeading')
+				findTestObject('Object Repository/ComputerAndRegisterPage/h1_computerAndRegisterHeading')
 		assert WebUI.getText(computerAndRegisterHeading).equalsIgnoreCase(expectedHeading)
 	}
 
@@ -29,10 +29,10 @@ public class ComputerAndRegisterPageValidations {
 	 */
 	public static void verifyBreadcrumbContent(String ... expectedContent) {
 		List <WebElement> breadcrumbList =
-		WebUI.findWebElements(findTestObject("Object Repository/ComputerAndRegisterPage/li_breadcrumb"),
-		GlobalVariable.elementVisibilityTimeOut)
+				WebUI.findWebElements(findTestObject("Object Repository/ComputerAndRegisterPage/li_breadcrumb"),
+				GlobalVariable.elementVisibilityTimeOut)
 		for(int i=0 ; i<breadcrumbList.size() ; i++) {
-		breadcrumbList.get(i).getText().contains(expectedContent[i])
+			breadcrumbList.get(i).getText().contains(expectedContent[i])
 		}
 	}
 	/***
@@ -40,7 +40,7 @@ public class ComputerAndRegisterPageValidations {
 	 */
 	public static void verifyHeaderResultCount() {
 		List <WebElement> materialList = WebUI.findWebElements(findTestObject('Object Repository/Filters/span_materailOptionCount'),
-		GlobalVariable.elementVisibilityTimeOut)
+				GlobalVariable.elementVisibilityTimeOut)
 		TestObject headerResult = findTestObject('Object Repository/ComputerAndRegisterPage/h2_headerResult')
 		int productsCountInHeader=0
 		for(WebElement materialOption : materialList) {
