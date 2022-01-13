@@ -1,25 +1,14 @@
 package validations
 
-import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
-import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
-import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
 
-import com.kms.katalon.core.annotation.Keyword
-import com.kms.katalon.core.checkpoint.Checkpoint
-import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
-import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
-import com.kms.katalon.core.model.FailureHandling
-import com.kms.katalon.core.testcase.TestCase
-import com.kms.katalon.core.testdata.TestData
-import com.kms.katalon.core.testobject.TestObject
-import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
-import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
-
-import internal.GlobalVariable
 import org.openqa.selenium.WebElement
+
+import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+import helpers.GeneralHelpers
+import internal.GlobalVariable
 
 public class ComputerAndRegisterPageValidations {
 
@@ -37,13 +26,26 @@ public class ComputerAndRegisterPageValidations {
 	/***
 	 * verify breadcrumb content match the expected content
 	 * @param expectedContent
-	 * @param expectedContentTwo
 	 */
-	public static void verifyBreadcrumbContent(String expectedContent, String expectedContentTwo) {
+	public static void verifyBreadcrumbContent(String ... expectedContent) {
 		List <WebElement> breadcrumbList =
 				WebUI.findWebElements(findTestObject("Object Repository/ComputerAndRegisterPage/li_breadcrumb"),
 				GlobalVariable.elementVisibilityTimeOut)
-		breadcrumbList.get(0).getText().contains(expectedContent)
-		breadcrumbList.get(1).getText().contains(expectedContentTwo)
+		for(int i=0 ; i<breadcrumbList.size() ; i++) {
+			breadcrumbList.get(i).getText().contains(expectedContent[i])
+		}
+	}
+	/***
+	 * verify result count in header match the total count in filter
+	 */
+	public static void verifyHeaderResultCount() {
+		List <WebElement> materialList = WebUI.findWebElements(findTestObject('Object Repository/Filters/span_materailOptionCount'),
+				GlobalVariable.elementVisibilityTimeOut)
+		TestObject headerResult = findTestObject('Object Repository/ComputerAndRegisterPage/h2_headerResult')
+		int productsCountInHeader=0
+		for(WebElement materialOption : materialList) {
+			productsCountInHeader += Integer.parseInt(materialOption.getText().replaceAll('\\D+', ''))
+		}
+		assert WebUI.getText(headerResult).contains(productsCountInHeader+"")
 	}
 }

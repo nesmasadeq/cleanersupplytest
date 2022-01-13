@@ -11,10 +11,12 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import actions.ProductDetailsPageActions
 import helpers.GeneralHelpers
 import helpers.ProductDetailsPageHelpers
+import helpers.ProductDetailsPageHelper
 import internal.GlobalVariable
 import models.Product
 
 public class ProductDetailsPageValidations {
+	static TestObject priceLable = findTestObject('Object Repository/ProductDetailsPage/span_productPrice')
 
 	/**
 	 * Verify product title in productDetailsPage match expected title
@@ -395,5 +397,36 @@ public class ProductDetailsPageValidations {
 		String expectedValue = String.valueOf(quantity)
 		TestObject inputProductQty = findTestObject(ProductDetailsPageActions.inputProductQty)
 		assert WebUI.getAttribute(inputProductQty, 'value').equals(expectedValue)
+	}
+
+	/***
+	 * verify entered quantity match the expected quantity
+	 * @param expectedQuantity
+	 * @author nesma
+	 */
+	public static void verifyEnterdQuantityValue(String expectedQuantity){
+		TestObject quantityField = ProductDetailsPageActions.enterQuantity("10")
+		assert WebUI.getAttribute(quantityField, 'value').contains(expectedQuantity)
+	}
+	
+	/***
+	 * verify the price label change reflected when change quantity
+	 * @param product
+	 * @author nesma
+	 */
+	public static void verifyThePriceChangeReflected(Product product) {
+		TestObject QuantityFeild = findTestObject('Object Repository/ProductDetailsPage/input_quantityFeild')
+		Double totalPrice= ProductDetailsPageHelper.QuantityMultiblePrice(product.getMinPrice(),WebUI.getText(QuantityFeild))
+		assert WebUI.getText(priceLable).contains(totalPrice+"")		
+	}
+	
+	/***
+	 * verify the price in volume table equal the price in label
+	 * @param cellPrice
+	 * @author nesma
+	 */
+	public static void verifyThePriceInCellEqualPrice(TestObject cellPrice) {
+		String cellPriceTxt= WebUI.getText(cellPrice).replace('$', '')
+		assert WebUI.getText(priceLable).equals(cellPriceTxt)
 	}
 }

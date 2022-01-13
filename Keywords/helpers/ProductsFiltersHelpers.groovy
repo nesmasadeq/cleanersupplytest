@@ -9,6 +9,8 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import actions.ProductFiltersActions
 import internal.GlobalVariable
+import validations.ComputerAndRegisterPageValidations
+import validations.GeneralValidations
 import validations.ProductsFiltersValidations
 
 
@@ -66,5 +68,54 @@ public class ProductsFiltersHelpers {
 				WebUI.click(object)
 			}
 		}
+	}
+
+	/***
+	 * selecting casio manufacturer
+	 * @author nesma
+	 */
+	public static void selectingManufacturer() {
+		ProductsFiltersValidations.verifyManufactorSelectedByDefault()
+
+		ProductsFiltersValidations.verifyModelSelectIsDisabled()
+
+		TestObject selectedManufactorer= ProductFiltersActions.selectManufactor()
+
+		ProductsFiltersValidations.
+				verifySelectedOptionValue('https://www.cleanersupply.com/Tags-Forms/Computer-Register/?Manufacturer=Casio',
+				selectedManufactorer)
+
+		ProductsFiltersValidations.verifySelectedFilters('Casio','')
+
+		ProductsFiltersValidations.verifyFilterDisappeared(
+				findTestObject('Object Repository/Filters/div_brandFilter'),
+				findTestObject('Object Repository/Filters/div_colorGroupFilter'),
+				findTestObject('Object Repository/Filters/div_designFilter'),
+				findTestObject('Object Repository/Filters/div_filtersProductType'),
+				findTestObject('Object Repository/Filters/div_lengthFilter'),
+				findTestObject('Object Repository/Filters/div_sizeFilter'),
+				findTestObject('Object Repository/Filters/div_styleFilter'))
+
+		ProductsFiltersValidations.verifyModelSelectIsEnabled()
+		ComputerAndRegisterPageValidations.verifyHeaderResultCount()
+		GeneralValidations.verifyCurrentPageURL('Manufacturer=Casio')
+	}
+
+	/***
+	 * selecting SP1000 model filter
+	 * @author nesma
+	 */
+	public static void selectingModel() {
+		TestObject selectedModel= ProductFiltersActions.selectModel()
+
+		//		ProductsFiltersValidations.
+		//		verifySelectedOptionValue('https://www.cleanersupply.com/Tags-Forms/Computer-Register/?Model+%23=SP1000&Manufacturer=Casio',
+		//			selectedModel)
+		ProductsFiltersValidations.verifySelectedFilters('Casio','SP1000')
+
+		ProductsFiltersValidations.verifyFilterDisappeared(findTestObject('Object Repository/Filters/div_materialFilter'))
+
+		GeneralValidations.verifyCurrentPageURL('Model+%23=SP1000')
+
 	}
 }

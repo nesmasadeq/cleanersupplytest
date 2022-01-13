@@ -80,6 +80,16 @@ public class ProductDetailsPageActions {
 		//		ProductDetailsPageValidations.verifyHoverOverColorOption(testObject)
 		WebUI.click(testObject)
 	}
+	/***
+	 * filling quantity field
+	 * @param productQuantity
+	 * @return quantityFeild
+	 */
+	public static enterQuantity(String productQuantity) {
+		TestObject quantityFeild = findTestObject('Object Repository/ProductDetailsPage/input_quantityFeild')
+		WebUI.sendKeys(quantityFeild, productQuantity)
+		return quantityFeild
+	}
 
 	/**
 	 * Clear & type in product quantity input field

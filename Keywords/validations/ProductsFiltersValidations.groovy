@@ -9,6 +9,7 @@ import com.kms.katalon.core.model.FailureHandling
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
+import actions.ProductFiltersActions
 import helpers.GeneralHelpers
 import internal.GlobalVariable
 
@@ -75,5 +76,50 @@ public class ProductsFiltersValidations {
 				GlobalVariable.elementVisibilityTimeOut)
 
 		assert paginationLinks.size() == size
+	}
+
+	/***
+	 * Verify selected value reflected
+	 * @param expectedValue
+	 * @param selectFeild
+	 * @author nesma 
+	 */
+	public static void verifySelectedOptionValue(String expectedValue, TestObject selectField) {
+		WebUI.verifyOptionSelectedByValue(selectField,expectedValue, false,GlobalVariable.actionsTimeout)
+	}
+	/***
+	 * verify manufacturer selected by default
+	 * @author nesma
+	 */
+	public static void verifyManufactorSelectedByDefault() {
+		WebUI.verifyElementAttributeValue(findTestObject('Object Repository/Filters/btn_manufacture'), 'title',
+				'Manufacturer', GlobalVariable.actionsTimeout)
+	}
+	/***
+	 * verify model selection is disabled
+	 * @author nesma
+	 */
+	public static void verifyModelSelectIsDisabled() {
+		TestObject selectModel = findTestObject('Object Repository/Filters/select_modelFilter')
+		WebUI.verifyElementNotClickable(selectModel)
+	}
+	/***
+	 * verify specific filter disappeared
+	 * @param filterSection
+	 * @author nesma
+	 */
+	public static void verifyFilterDisappeared(TestObject... filterSection) {
+		for(int i=0 ; i<filterSection.length ; i++) {
+			WebUI.verifyElementNotPresent(filterSection[i],GlobalVariable.actionsTimeout )
+		}
+	}
+
+	/***
+	 * verify model selection is enabled
+	 * @author nesma
+	 */
+	public static void verifyModelSelectIsEnabled() {
+		TestObject selectModel = findTestObject('Object Repository/Filters/select_modelFilter')
+		WebUI.verifyElementClickable(selectModel)
 	}
 }
