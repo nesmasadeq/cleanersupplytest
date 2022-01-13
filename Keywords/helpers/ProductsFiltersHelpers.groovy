@@ -8,6 +8,7 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import actions.ProductFiltersActions
+import internal.GlobalVariable
 import validations.ComputerAndRegisterPageValidations
 import validations.GeneralValidations
 import validations.ProductsFiltersValidations
@@ -51,7 +52,7 @@ public class ProductsFiltersHelpers {
 	 */
 	public static void openFiltersCard() {
 		List<TestObject> filtersCards = WebUI.findWebElements(findTestObject('Object Repository/Filters/div_filtersCards'),
-				5)
+				GlobalVariable.elementVisibilityTimeOut)
 
 		System.out.println('filtersCards: ' + filtersCards.size())
 
@@ -59,7 +60,7 @@ public class ProductsFiltersHelpers {
 			TestObject object = WebUI.convertWebElementToTestObject(element)
 
 			String objectClasses =  WebUI.getAttribute(object, 'class')
-			System.out.println('filtersCards: ' +objectClasses)
+			System.out.println('filtersCards: ' + objectClasses)
 
 			if( objectClasses.contains('collapsed')) {
 				//				WebUI.scrollToElement(object, 5)

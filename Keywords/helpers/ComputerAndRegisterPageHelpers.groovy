@@ -26,6 +26,7 @@ public class ComputerAndRegisterPageHelpers {
 		ComputerAndRegisterPageValidations.verfiyCurrentPageHeading('Computer & Register Tags & Forms')
 		ComputerAndRegisterPageValidations.verifyBreadcrumbContent('Tags & Forms', 'Computer & Register')
 	}
+
 	/***
 	 * clicking on product item and save product details in model object
 	 * @return casioProduct

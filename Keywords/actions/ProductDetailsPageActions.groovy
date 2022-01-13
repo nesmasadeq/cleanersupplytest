@@ -1,62 +1,84 @@
 package actions
 
-import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
-import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
-import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
 
-import com.kms.katalon.core.annotation.Keyword
-import com.kms.katalon.core.checkpoint.Checkpoint
-import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
-import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
-import com.kms.katalon.core.model.FailureHandling
-import com.kms.katalon.core.testcase.TestCase
-import com.kms.katalon.core.testdata.TestData
+import org.openqa.selenium.Keys
+
 import com.kms.katalon.core.testobject.TestObject
-import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
-import com.sun.org.apache.bcel.internal.generic.RETURN
 
-import internal.GlobalVariable
+import helpers.ProductDetailsPageHelpers
+import models.Product
+
 
 public class ProductDetailsPageActions {
 
+	//----------- Product Data
 	public static String productTitle = 'Object Repository/ProductDetailsPage/h1_productTitle'
 	public static String productSku = 'Object Repository/ProductDetailsPage/span_productSku'
 	public static String productImage = 'Object Repository/ProductDetailsPage/img_productImage'
 	public static String productPrice = 'Object Repository/ProductDetailsPage/span_productPrice'
 	public static String productListValue = 'Object Repository/ProductDetailsPage/span_productListPrice'
-	public static String productQestionsAnswerTitle = 'Object Repository/ProductDetailsPage/h2_quastionAnswerTitle'
-	public static String productQestionsAnswerCount = 'Object Repository/ProductDetailsPage/section_quastionAnswerItems'
 	public static String productBreadcrumb = 'Object Repository/ProductDetailsPage/span_productBreadcrumb'
 	public static String productSpecificationDimension = 'Object Repository/ProductDetailsPage/span_productSpecificationsDimension'
+
+	public static String productQestionsAnswer = 'Object Repository/ProductDetailsPage/a_productQustionsAnswers'
+	public static String QestionsAnswerSectionTitle = 'Object Repository/ProductDetailsPage/h2_quastionAnswerTitle'
+	public static String QestionsAnswerSectionItems = 'Object Repository/ProductDetailsPage/section_quastionAnswerItems'
 
 	//----------- Product Size Options
 	public static String optionSizeXSmall = 'Object Repository/ProductDetailsPage/a_optionXSmall'
 	public static String optionSizeLarge = 'Object Repository/ProductDetailsPage/a_optionLarge'
-	public static String optionSizeXLarge = 'Object RObject Repository/ProductDetailsPage/a_optionXLarge'
+	public static String optionSizeXLarge = 'Object Repository/ProductDetailsPage/a_optionXLarge'
 
 	//----------- Product Color Options
+	public static String spanSelectedColor = 'Object Repository/ProductDetailsPage/span_selectedColor'
 	public static String optionColorBlack = 'Object Repository/ProductDetailsPage/a_optionColorBlack'
 	public static String optionColorBlue = 'Object Repository/ProductDetailsPage/a_optionColorBlue'
 	public static String optionColorGreen = 'Object Repository/ProductDetailsPage/a_optionColorGreen'
 
-	//	public static String getCurrentProductTitle() {
-	//		TestObject testObject = findTestObject(productTitle)
-	//		return  WebUI.getText(testObject);
-	//	}
+	//----------- Add To Cart Section
+	public static String divAddToCartSection = 'Object Repository/ProductDetailsPage/div_addToCartSection'
+	public static String divInStock = 'Object Repository/ProductDetailsPage/div_inStock'
+	public static String divOutOfStock = 'Object Repository/ProductDetailsPage/div_outOfStock'
+	public static String inputProductQty = 'Object Repository/ProductDetailsPage/input_productQty'
+	public static String btnAddToCart = 'Object Repository/ProductDetailsPage/button_addToCart'
+
+	//----------- Volume Pricing Table
+	public static String div_volumeTableQty = 'Object Repository/ProductDetailsPage/div_volumeTableQty'
+	public static String div_volumeTablePrice = 'Object Repository/ProductDetailsPage/div_volumeTablePrice'
+
 
 	/**
-	 * Get current text by this selector
-	 * @param selector
-	 * @return String of current value for this field
+	 * Save product Sku form details page to local product object
+	 * @param product
 	 * @author Eng. Amal Hamad
 	 */
-	public static String getCurrentText(String selector) {
+	public static void saveProductSkuToObject(Product product) {
+		String sku = ProductDetailsPageHelpers.getCurrentText(ProductDetailsPageActions.productSku)
+		product.setSku(sku)
+	}
+
+	/**
+	 * Select Size option for product
+	 * @param selector
+	 * @author Eng. Amal Hamad
+	 */
+	public static void selectSizeOption(String selector) {
 		TestObject testObject = findTestObject(selector)
-		return  WebUI.getText(testObject);
+		//		ProductDetailsPageValidations.verifyHoverOverSizeOption(testObject)
+		WebUI.click(testObject)
+	}
+
+	/**
+	 * Select Color option for product
+	 * @param selector
+	 * @author Eng. Amal Hamad
+	 */
+	public static void selectColorOption(String selector) {
+		TestObject testObject = findTestObject(selector)
+		//		ProductDetailsPageValidations.verifyHoverOverColorOption(testObject)
+		WebUI.click(testObject)
 	}
 	/***
 	 * filling quantity field
@@ -68,6 +90,29 @@ public class ProductDetailsPageActions {
 		WebUI.sendKeys(quantityFeild, productQuantity)
 		return quantityFeild
 	}
+
+	/**
+	 * Clear & type in product quantity input field
+	 * @param selector
+	 * @author Eng. Amal Hamad
+	 */
+	public static void setProductQuantityText(int quantity) {
+		TestObject inputProductQty = findTestObject(ProductDetailsPageActions.inputProductQty)
+		WebUI.clearText(inputProductQty)
+		WebUI.sendKeys(inputProductQty, Keys.chord(Keys.BACK_SPACE))
+		WebUI.setText(inputProductQty, String.valueOf(quantity))
+		WebUI.sendKeys(inputProductQty, Keys.chord(Keys.TAB))
+	}
+
+	/**
+	 * Click on AddToCart button
+	 * @author Eng. Amal Hamad
+	 */
+	public static void clickAddToCart() {
+		TestObject btnAddToCart = findTestObject(ProductDetailsPageActions.btnAddToCart)
+		WebUI.click(btnAddToCart)
+	}
+
 
 
 }

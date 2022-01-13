@@ -3,7 +3,7 @@
    <description></description>
    <name>button_addToCart</name>
    <tag></tag>
-   <elementGuidId>38479425-6d49-4b9e-920d-3add8dcb0a80</elementGuidId>
+   <elementGuidId>c64990ec-48ea-4aa7-b750-dcd446376ef4</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
@@ -11,7 +11,8 @@
       </entry>
       <entry>
          <key>CSS</key>
-         <value>.add-to-cart</value>
+
+         <value>button.add-to-cart</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

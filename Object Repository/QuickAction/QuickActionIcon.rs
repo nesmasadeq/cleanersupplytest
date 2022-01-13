@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_optionLarge</name>
+   <name>QuickActionIcon</name>
    <tag></tag>
-   <elementGuidId>c983d608-dc17-4f44-aed5-f3daebc3d909</elementGuidId>
+   <elementGuidId>1d33a735-1847-4ba3-81c2-07fda8c84d13</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>.option a[title='Large - 24&quot; x 27&quot; x 8&quot;']</value>
+         <value>.tactical-item[href=&quot;/quick-order/&quot;] i</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

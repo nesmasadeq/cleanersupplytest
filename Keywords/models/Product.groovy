@@ -29,12 +29,16 @@ public class Product {
 	private String image;
 	private String sku;
 	private double minPrice;
+	private double price;
 	private double maxPrice;
 	private double minList;
+	private double listValue;
 	private double maxList;
 	private String optionSize;
 	private String optionColor;
 	private int qustionsAnswerCount;
+	private String description;
+	private int quantity;
 
 	public String getHref() {
 		return href;
@@ -103,11 +107,35 @@ public class Product {
 	public void setQustionsAnswerCount(int qustionsAnswerCount) {
 		this.qustionsAnswerCount = qustionsAnswerCount;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	public double getListValue() {
+		return listValue;
+	}
+	public void setListValue(double listValue) {
+		this.listValue = listValue;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	@Override
 	public String toString() {
-		return "Product [href=" + href + "\n, title=" + title + "\n, image=" + image + "\n, sku=" + sku + "\n, minPrice="
-		+ minPrice + "\n, maxPrice=" + maxPrice + "\n, minList=" + minList + "\n, maxList=" + maxList
-		+ "\n, optionSize=" + optionSize + "\n, optionColor=" + optionColor + "\n, qustionsAnswerCount="
-		+ qustionsAnswerCount + "]";
+		return "Product [price="+ price + ", quantity=" + quantity ;
 	}
 }
