@@ -22,7 +22,7 @@ import internal.GlobalVariable
 
 public class ProductDetailsPageHelper {
 	public static float QuantityMultiblePrice(double productPrice, String productQuantiy) {
-		
+
 		return Float.parseFloat(productPrice) * Integer.parseInt(productQuantiy)
 	}
 }

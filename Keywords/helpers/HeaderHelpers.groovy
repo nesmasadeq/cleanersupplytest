@@ -2,10 +2,7 @@ package helpers
 
 import java.text.DecimalFormat
 
-import com.kms.katalon.core.testobject.TestObject
-
 import actions.HeaderActions
-import internal.GlobalVariable
 import models.Product
 import validations.HeaderValidations
 
@@ -43,12 +40,12 @@ public class HeaderHelpers {
 		for (Product product: cartProducts) {
 			System.out.println("product:" +product.toString())
 			int quantity = product.getQuantity()
-			double price = ProductDetailsPageHelpers.getProductPriceByQuantity(quantity)
-			product.setPrice(price)
+			//			double price = ProductDetailsPageHelpers.getProductPriceByQuantity(quantity)
+			double price = product.getPrice()
+//			product.setPrice(price)
 			total += price * quantity
 			System.out.println("Price: " + product.getPrice()  + " #Quantity:" + product.getQuantity())
 		}
-		String expectedCartTotal = new DecimalFormat("#.00").format(total)
-		return (GlobalVariable.siteCurrency + expectedCartTotal)
+		return GeneralHelpers.formatePrice(total)
 	}
 }

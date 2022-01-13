@@ -1,6 +1,8 @@
 package helpers
 
 
+import java.text.DecimalFormat
+
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
@@ -42,5 +44,16 @@ public class GeneralHelpers {
 	public static double convertStringToDouble(TestObject testObject) {
 		String textWithNumber = WebUI.getText(testObject).replaceAll("[^\\d.]", "")
 		return Double.parseDouble(textWithNumber)
+	}
+
+	/**
+	 * Format double price to string with currency
+	 * @param price
+	 * @return String formated price
+	 * @author Eng. Amal Hamad
+	 */
+	public static String formatePrice(double price) {
+		String priceStr = new DecimalFormat("#.00").format(price)
+		return (GlobalVariable.siteCurrency + priceStr)
 	}
 }

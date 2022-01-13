@@ -59,7 +59,7 @@ public class ProductRowHelper {
 		//check if price list is in range or has one value
 		if(span_productListValue.size()>1) {
 			TestObject maxList = WebUI.convertWebElementToTestObject(span_productListValue.get(1))
-			product.setMaxList(GeneralHelpers.covertStringToInteger(maxList))
+			product.setMaxList(GeneralHelpers.convertStringToInteger(maxList))
 		}
 		//----- Print product data
 		System.out.println(product.toString())

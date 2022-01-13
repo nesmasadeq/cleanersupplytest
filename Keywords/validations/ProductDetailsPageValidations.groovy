@@ -129,6 +129,9 @@ public class ProductDetailsPageValidations {
 
 		ProductDetailsPageValidations.verifyProductPrice(product)
 		ProductDetailsPageValidations.verifyProductPriceMatchPricingTable()
+
+		double price = ProductDetailsPageHelpers.getProductPriceByQuantity(product.getQuantity())
+		product.setPrice(price)
 	}
 
 	/**
