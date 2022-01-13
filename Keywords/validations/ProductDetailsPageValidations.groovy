@@ -106,7 +106,7 @@ public class ProductDetailsPageValidations {
 		TestObject quantityField = ProductDetailsPageActions.enterQuantity("10")
 		assert WebUI.getAttribute(quantityField, 'value').contains(expectedQuantity)
 	}
-	
+
 	/***
 	 * verify the price label change reflected when change quantity
 	 * @param product
@@ -115,9 +115,9 @@ public class ProductDetailsPageValidations {
 	public static void verifyThePriceChangeReflected(Product product) {
 		TestObject QuantityFeild = findTestObject('Object Repository/ProductDetailsPage/input_quantityFeild')
 		Double totalPrice= ProductDetailsPageHelper.QuantityMultiblePrice(product.getMinPrice(),WebUI.getText(QuantityFeild))
-		assert WebUI.getText(priceLable).contains(totalPrice+"")		
+		assert WebUI.getText(priceLable).contains(totalPrice+"")
 	}
-	
+
 	/***
 	 * verify the price in volume table equal the price in label
 	 * @param cellPrice
