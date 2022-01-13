@@ -9,9 +9,9 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import actions.CartPageActions
 import internal.GlobalVariable
+import models.Product
 
 public class CartPageHelpers {
-
 
 	/**
 	 * Get cart product specific data by product index in cart list
@@ -56,7 +56,14 @@ public class CartPageHelpers {
 		}
 		return GeneralHelpers.formatePrice(total)
 	}
-	
+
+	/**
+	 * Get product field by selector in Cart product row
+	 * @param product
+	 * @param dataSelector
+	 * @return TestObject
+	 * @author Eng. Amal Hamad
+	 */
 	public static TestObject getProductFiledBySku(Product product , String dataSelector) {
 		String productSku = product.getSku()
 

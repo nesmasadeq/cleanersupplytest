@@ -117,7 +117,7 @@ public class CartPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifySummaryTotal() {
-		String expectedTotal = CartPageActions.calculateSummaryTotal()
+		String expectedTotal = CartPageHelpers.calculateSummaryTotal()
 		TestObject testObject = findTestObject(CartPageActions.summaryTotalValue)
 		assert WebUI.getText(testObject).equals(expectedTotal)
 	}
@@ -128,8 +128,8 @@ public class CartPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyProductTotalAfterChangeQty(Product product) {
-		TestObject productTotal = CartPageActions.getProductFiledBySku(product , CartPageActions.productTotal)
-		TestObject inputProductQty = CartPageActions.getProductFiledBySku(product , CartPageActions.inputProductQty)
+		TestObject productTotal = CartPageHelpers.getProductFiledBySku(product , CartPageActions.productTotal)
+		TestObject inputProductQty = CartPageHelpers.getProductFiledBySku(product , CartPageActions.inputProductQty)
 
 		int currentQuantity = Integer.parseInt(WebUI.getAttribute(inputProductQty, "value"))
 		String expectedTotal = GeneralHelpers.formatePrice(product.getPrice() * currentQuantity)
