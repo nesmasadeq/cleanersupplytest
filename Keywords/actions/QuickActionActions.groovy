@@ -25,7 +25,7 @@ public class QuickActionActions {
 
 		WebUI.mouseOver(findTestObject('Object Repository/QuickAction/QuickActionIcon'))
 	}
-	
+
 	public static void clickOverQuickActionIcon() {
 		WebUI.click(findTestObject('Object Repository/QuickAction/QuickActionIcon'))
 	}
