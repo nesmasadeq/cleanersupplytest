@@ -7,6 +7,7 @@ import validations.ComputerAndRegisterPageValidations
 import validations.GeneralValidations
 import validations.HeaderValidations
 import validations.ProductDetailsPageValidations
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
 GeneralHelpers.initScenario()
 
@@ -38,4 +39,6 @@ HeaderValidations.verifyCartCount('0')
 
 ProductDetailsPageValidations.verifyEnterdQuantityValue('10')
 
+ProductDetailsPageValidations.verifyThePriceChangeReflected(casioProduct)
+ProductDetailsPageValidations.verifyThePriceInCellEqualPrice(findTestObject('Object Repository/ProductDetailsPage/span_tablePriceMoreThan10'))
 
