@@ -8,7 +8,7 @@ import validations.HeaderValidations
 
 
 public class ComputerAndRegisterPageHelpers {
-	
+
 	/**
 	 * clicking on computer and register link
 	 * @author nesma
@@ -21,5 +21,4 @@ public class ComputerAndRegisterPageHelpers {
 		ComputerAndRegisterPageValidations.verfiyCurrentPageHeading('Computer & Register Tags & Forms')
 		ComputerAndRegisterPageValidations.verifyBreadcrumbContent('Tags & Forms', 'Computer & Register')
 	}
-	
 }

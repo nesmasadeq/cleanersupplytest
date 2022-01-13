@@ -1,20 +1,23 @@
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import java.text.DecimalFormat as DecimalFormat
 import org.openqa.selenium.Keys as Keys
 import org.openqa.selenium.WebElement as WebElement
 import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-
-import actions.ProductDetailsPageActions
-import actions.ProductFiltersActions
-import helpers.GeneralHelpers
-import helpers.HeaderHelpers
-import helpers.ProductRowHelper
+import actions.GeneralActions
+import actions.HeaderActions
+import actions.ProductDetailsPageActions as ProductDetailsPageActions
+import actions.ProductFiltersActions as ProductFiltersActions
+import helpers.GeneralHelpers as GeneralHelpers
+import helpers.HeaderHelpers as HeaderHelpers
+import helpers.ProductDetailsPageHelpers as ProductDetailsPageHelpers
+import helpers.ProductRowHelper as ProductRowHelper
 import helpers.ProductsFiltersHelpers as ProductsFiltersHelpers
 import internal.GlobalVariable as GlobalVariable
-import models.Product
-import validations.GeneralValidations
-import validations.HeaderValidations
-import validations.ProductDetailsPageValidations
+import models.Product as Product
+import validations.GeneralValidations as GeneralValidations
+import validations.HeaderValidations as HeaderValidations
+import validations.ProductDetailsPageValidations as ProductDetailsPageValidations
 import validations.ProductsFiltersValidations as ProductsFiltersValidations
 
 //---------------- Open Site ----------------
@@ -25,7 +28,7 @@ System.out.println('Page Title:' + WebUI.getWindowTitle())
 assert WebUI.getWindowTitle().equals('Cleaner\'s Supply - Dry Cleaning Supplies')
 
 //----------------Check cart is empty ----------------
-HeaderHelpers.verifyCartEmpty()
+HeaderHelpers.checkCartIsEmpty()
 
 //---------------- Search for plastic ---------------- 
 //------ inputSearch -------- 
@@ -55,7 +58,7 @@ assert WebUI.getText(p_searchForLabel).toLowerCase().contains(GlobalVariable.sea
 
 //------ autoSuggestionSearchList inner items --------
 List<TestObject> autoSuggestionsInnerItems = WebUI.findWebElements(findTestObject('Header/strong_autoSuggestionsInnerItems'), 
-    5)
+    GlobalVariable.elementVisibilityTimeOut)
 
 println('autoSuggestionsInnerItems: ' + autoSuggestionsInnerItems.size())
 
@@ -70,14 +73,14 @@ for (WebElement element : autoSuggestionsInnerItems) {
 //------ Press Enter -------- 
 WebUI.sendKeys(inputSearch, Keys.chord(Keys.ENTER))
 
-//---------------- Search Results page ---------------- 
-System.out.println('Page Title:' + WebUI.getWindowTitle())
-
+/***********************************************************************/
+/*********************** Search Results Page **************************/
+/***********************************************************************/
 //------ Verify Page URL --------
-assert WebUI.getUrl().equals('https://www.cleanersupply.com/search-results/?q=plastic')
+GeneralValidations.verifyCurrentPageURL('search-results/?q=plastic')
 
 //------ Verify Page Title --------
-assert WebUI.getWindowTitle().equals('Search Results - Cleaner\'s Supply')
+GeneralValidations.verifyCurrentPageTitleValue('Search Results - Cleaner\'s Supply')
 
 //------ Verify Heading --------
 TestObject pageHeader = findTestObject('scenario01/results_page/h1_pageHeader')
@@ -93,7 +96,7 @@ assert WebUI.getText(subPageHeader).toLowerCase().contains(GlobalVariable.search
 //------ Verify filtersProductType --------
 //ProductsFiltersHelpers.openFiltersCard()
 //List<TestObject> filtersProductType = WebUI.findWebElements(findTestObject('Filters/div_filtersProductType'), 
-//    5)
+//    GlobalVariable.elementVisibilityTimeOut)
 //
 //println('filtersProductType: ' + filtersProductType.size())
 //
@@ -114,78 +117,215 @@ assert WebUI.getText(subPageHeader).toLowerCase().contains(GlobalVariable.search
 //------ Check packaging products filter --------
 //ProductsFiltersHelpers.openFiltersCard()
 ProductsFiltersHelpers.checkingPackagingProductFilter()
+
 GeneralValidations.verifyCurrentPageURL('Category=Packaging+Products')
+
 //------ Verify filter count match product count --------
 TestObject span_packagingProductsCount = findTestObject('Object Repository/Filters/span_packagingProductsCount')
+
 ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(span_packagingProductsCount, subPageHeader)
+
 //------ Verify packagingProducts found in selected filters--------
 ProductsFiltersValidations.verifySelectedFilters('Packaging Products')
+
 //------ Verify pagination is changed --------
 ProductsFiltersValidations.verifyPaginationIsChanged(3)
 
 /***********************************************************************/
 //------ Check PalsticBags products filter --------
 ProductsFiltersHelpers.checkingPlasticBagsFilter()
+
 GeneralValidations.verifyCurrentPageURL('Category=Packaging+Products_Plastic+Bags')
+
 //------ Verify filter count match product count --------
 TestObject span_plasticBagsCount = findTestObject('Filters/span_plasticBagsCount')
+
 //ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(span_plasticBagsCount, subPageHeader)
 //------ Verify packagingProducts found in selected filters--------
 ProductsFiltersValidations.verifySelectedFilters('Packaging Products', 'Plastic Bags')
+
 //------ Verify pagination is changed --------
 ProductsFiltersValidations.verifyPaginationIsChanged(3)
 
 /***********************************************************************/
 //------ Check Green Color filter --------
 ProductsFiltersHelpers.openFiltersCard()
+
 WebUI.scrollToPosition(50, 60)
+
 ProductsFiltersHelpers.checkingGreenColorFilter()
+
 GeneralValidations.verifyCurrentPageURL('Color+Group=Green')
+
 //------ Verify filter count match product count --------
 TestObject span_greenCount = findTestObject('Filters/span_greenCount')
+
 ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(span_greenCount, subPageHeader)
+
 ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(span_packagingProductsCount, subPageHeader)
+
 ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(span_plasticBagsCount, subPageHeader)
+
 //------ Verify packagingProducts found in selected filters--------
 ProductsFiltersValidations.verifySelectedFilters('Packaging Products', 'Plastic Bags', 'Green')
 
 /***********************************************************************/
 //Save Product data in this Cell & Click product
-Product product = ProductRowHelper.saveProductRowData()
+Product firstProduct = ProductRowHelper.saveProductRowData()
+
 TestObject div_firstProductRow = findTestObject('Object Repository/scenario01/product_row/div_firstProductRow')
+
 WebUI.click(div_firstProductRow)
 
 /***********************************************************************/
+/*********************** Product Details Page **************************/
+/***********************************************************************/
 //------ Verify Page URL --------
-GeneralValidations.verifyCurrentPageURL(product.getHref())
+GeneralValidations.verifyCurrentPageURL(firstProduct.getHref())
 
 //------ Verify Page Title --------
 System.out.println('Page Title:' + WebUI.getWindowTitle())
 
 //assert WebUI.getWindowTitle().equals('Search Results - Cleaner\'s Supply')
-//------ Verify Heading & Image --------
+//------ Verify Title & Image --------
+//GeneralValidations.verifyCurrentPageURL(firstProduct.getTitle().toLowerCase().replaceAll(' ', '-'))
 //ProductDetailsPageValidations.verifyProductTitle(product.getTitle())
 //ProductDetailsPageValidations.verifyProductImage(product.getImage())
-//ProductDetailsPageValidations.verifyProductSku(product.getSku())
+//------ Verify Page Breadcrumb --------
+ProductDetailsPageValidations.verifyPageBreadcrumb('Bags', 'Plastic Bags', 'Comforter')
 
 //------ Verify Price --------
-ProductDetailsPageValidations.verifyProductPrice(product)
-ProductDetailsPageValidations.verifyProductListValue(product)
+ProductDetailsPageValidations.verifyProductPrice(firstProduct)
 
-//------ Save Curent SKy --------
-String sku = ProductDetailsPageActions.getCurrentText(ProductDetailsPageActions.productSku)
-product.setSku(sku)
+ProductDetailsPageValidations.verifyProductPriceMatchPricingTable()
 
-//------ Default options selected Price --------
-ProductDetailsPageValidations.verifyProductOptionIsSelected(ProductDetailsPageActions.optionSizeXSmall)
-ProductDetailsPageValidations.verifyProductOptionIsSelected(ProductDetailsPageActions.optionColorBlack)
+//------ Verify List Value --------
+ProductDetailsPageValidations.verifyProductListValue(firstProduct)
 
-String optionSizeXSmall = ProductDetailsPageActions.getCurrentText(ProductDetailsPageActions.optionSizeXSmall)
-ProductDetailsPageValidations.verifyProductTitle(optionSizeXSmall)
-String optionColorBlack = ProductDetailsPageActions.getCurrentText(ProductDetailsPageActions.optionColorBlack)
-ProductDetailsPageValidations.verifyProductTitle(optionColorBlack)
+//------ Verify Sku --------
+ProductDetailsPageActions.saveProductSkuToObject(firstProduct)
 
+ProductDetailsPageValidations.verifyProductSku(firstProduct.getSku())
 
+//------ Verify Q&A count --------
+ProductDetailsPageValidations.verifyProductQuestionsAnswersItemsCount()
 
+//------ Verify XSmall size selected by default --------
+ProductDetailsPageValidations.verifyProductSelectedSizeOption(ProductDetailsPageActions.optionSizeXSmall)
 
+//------ Verify Black Color selected by default --------
+ProductDetailsPageValidations.verifyProductSelectedColorOption(ProductDetailsPageActions.optionColorBlack)
+
+//------ Verify AddToCartSection is hidden --------
+ProductDetailsPageValidations.verifyOutOfStockMessageIsVisible()
+
+ProductDetailsPageValidations.verifyAddToCartSectionVisibility(false)
+
+/***********************************************************************/
+/******************** Add First Product to Cart ************************/
+/***********************************************************************/
+//------------------------------- Select XLarge Size Option ---------------------------
+ProductDetailsPageActions.selectSizeOption(ProductDetailsPageActions.optionSizeXLarge)
+
+ProductDetailsPageValidations.verifyProductSelectedSizeOption(ProductDetailsPageActions.optionSizeXLarge)
+
+//------ Verify AddToCartSection is Visibile --------
+ProductDetailsPageValidations.verifyInStockMessageIsVisible()
+
+ProductDetailsPageValidations.verifyAddToCartSectionVisibility(true)
+
+//------ Verify Product data is changed --------
+ProductDetailsPageValidations.verifyProductDataChangesAfterSizeOption(firstProduct)
+
+//------------------------------- Select Green Color Option ---------------------------
+ProductDetailsPageActions.selectColorOption(ProductDetailsPageActions.optionColorGreen)
+
+ProductDetailsPageValidations.verifyProductSelectedColorOption(ProductDetailsPageActions.optionColorGreen)
+
+ProductDetailsPageValidations.verifyProductDataChangesAfterColorOption(firstProduct)
+
+//------------------------------- Type 5 in quantity input  ---------------------------
+firstProduct.setQuantity(5)
+
+ProductDetailsPageActions.setProductQuantityText(firstProduct.getQuantity())
+
+//------ Verify Product Price is changed --------
+ProductDetailsPageValidations.verifyPrductQuantityInputValue(firstProduct.getQuantity())
+
+ProductDetailsPageValidations.verifyProductPriceIsChanged(firstProduct)
+
+//------------------------------- Click AddToCart button  ---------------------------
+ProductDetailsPageActions.clickAddToCart()
+
+//ArrayList cartProducts = new ArrayList()
+//cartProducts.add(firstProduct)
+//------ Verify Product Quantity is changed --------
+WebUI.waitForElementClickable(findTestObject(ProductDetailsPageActions.btnAddToCart), GlobalVariable.elementVisibilityTimeOut)
+
+ProductDetailsPageValidations.verifyPrductQuantityInputValue(1)
+
+//------ Verify Cart Count is change --------
+HeaderValidations.verifyCartCount('1')
+
+//------ Verify Product Price return to default price --------
+ProductDetailsPageValidations.verifyProductPriceIsChanged(firstProduct)
+
+HeaderValidations.verifyCartLabel(HeaderHelpers.calculateCartTotal(firstProduct))
+
+/***********************************************************************/
+/******************** Add Second Product to Cart ***********************/
+/***********************************************************************/
+Product secondProduct = firstProduct
+
+//secondProduct = cartProducts.get(0)
+//------------------------------- Select Large Size Option ---------------------------
+ProductDetailsPageActions.selectSizeOption(ProductDetailsPageActions.optionSizeLarge)
+
+ProductDetailsPageValidations.verifyProductSelectedSizeOption(ProductDetailsPageActions.optionSizeLarge)
+
+//------ Verify Product data is changed --------
+ProductDetailsPageValidations.verifyProductDataChangesAfterSizeOption(secondProduct)
+
+//------------------------------- Select Green Color Option ---------------------------
+ProductDetailsPageActions.selectColorOption(ProductDetailsPageActions.optionColorBlue)
+
+ProductDetailsPageValidations.verifyProductSelectedColorOption(ProductDetailsPageActions.optionColorBlue)
+
+ProductDetailsPageValidations.verifyProductDataChangesAfterColorOption(secondProduct)
+
+//------------------------------- Type 3 in quantity input  ---------------------------
+secondProduct.setQuantity(3)
+
+ProductDetailsPageActions.setProductQuantityText(secondProduct.getQuantity())
+
+//------ Verify Product Price is changed --------
+ProductDetailsPageValidations.verifyPrductQuantityInputValue(secondProduct.getQuantity())
+
+ProductDetailsPageValidations.verifyProductPriceIsChanged(secondProduct)
+
+//------------------------------- Click AddToCart button  ---------------------------
+ProductDetailsPageActions.clickAddToCart()
+
+//cartProducts.clear()
+//cartProducts.add(firstProduct)
+//cartProducts.add(secondProduct)
+//------ Verify Product Quantity is changed --------
+WebUI.waitForElementClickable(findTestObject(ProductDetailsPageActions.btnAddToCart), GlobalVariable.elementVisibilityTimeOut)
+
+ProductDetailsPageValidations.verifyPrductQuantityInputValue(1)
+
+//------ Verify Cart Count is change --------
+HeaderValidations.verifyCartCount('2')
+
+//------ Verify Product Price return to default price --------
+ProductDetailsPageValidations.verifyProductPriceIsChanged(secondProduct)
+
+//HeaderValidations.verifyCartLabel(HeaderHelpers.calculateCartTotal(firstProduct, secondProduct))
+
+/***********************************************************************/
+/***************************** Cart Page *******************************/
+/***********************************************************************/
+HeaderActions.clickCartIcon()
+GeneralValidations.verifyCurrentPageURL("https://www.cleanersupply.com/shopping-cart/")
+GeneralValidations.verifyCurrentPageTitleValue("SHOPPING CART")
 

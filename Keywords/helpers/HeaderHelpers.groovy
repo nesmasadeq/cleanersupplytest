@@ -2,6 +2,8 @@ package helpers
 
 import java.text.DecimalFormat
 
+import com.kms.katalon.core.testobject.TestObject
+
 import actions.HeaderActions
 import internal.GlobalVariable
 import models.Product
@@ -35,10 +37,11 @@ public class HeaderHelpers {
 	 * @return expectedCartTotal
 	 * @author Eng. Amal Hamad
 	 */
-	public static String calculateCartTotal(List<Product> cartProducts) {
-		System.out.println("cartProductsSize:" + cartProducts.size())
+	public static String calculateCartTotal(Product... cartProducts) {
+		System.out.println("cartProductsSize:" + cartProducts.length)
 		double total = 0;
 		for (Product product: cartProducts) {
+			System.out.println("product:" +product.toString())
 			int quantity = product.getQuantity()
 			double price = ProductDetailsPageHelpers.getProductPriceByQuantity(quantity)
 			product.setPrice(price)

@@ -21,7 +21,7 @@ public class ProductsFiltersValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyFilterIsChecked(TestObject testObject) {
-		System.out .println("getClass: " +WebUI.getAttribute(testObject, "class"))
+		System.out .println("getClass: " + WebUI.getAttribute(testObject, "class"))
 		assert WebUI.getAttribute(testObject, "class").contains("selected")
 	}
 
@@ -33,11 +33,11 @@ public class ProductsFiltersValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyFilterProductsCountMatchResultsCount(TestObject filterCount , TestObject resultsCount) {
-		int filterProductsCount = GeneralHelpers.covertStringToInteger(filterCount)
+		int filterProductsCount = GeneralHelpers.convertStringToInteger(filterCount)
 
 		System.out.println('filterProductsCount: ' + filterProductsCount)
 
-		int productsCountInHeader = GeneralHelpers.covertStringToInteger(resultsCount)
+		int productsCountInHeader = GeneralHelpers.convertStringToInteger(resultsCount)
 
 		System.out.println('productsCountInHeader: ' + productsCountInHeader)
 
@@ -45,6 +45,7 @@ public class ProductsFiltersValidations {
 	}
 
 	/**
+	 * Verify selected filters found in selectedFiltersSections
 	 * @param filters
 	 * @author Eng. Amal Hamad
 	 */
@@ -55,8 +56,8 @@ public class ProductsFiltersValidations {
 
 		if (isSelectedFiltersSectionExist) {
 			List<WebElement> selectedFilters = WebUI.findWebElements(findTestObject(selector),
-					5)
-			for(int i=0 ; i<selectedFilters.size() ; i++) {
+					GlobalVariable.elementVisibilityTimeOut)
+			for(int i = 0 ; i<selectedFilters.size() ; i++) {
 				TestObject object = WebUI.convertWebElementToTestObject(selectedFilters.get(i))
 				System.out.println('selectedFilters: ' + WebUI.getText(object))
 				assert filters[i].equals( WebUI.getText(object))

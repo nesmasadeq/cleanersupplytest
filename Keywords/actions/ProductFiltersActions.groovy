@@ -24,13 +24,6 @@ import internal.GlobalVariable
 
 public class ProductFiltersActions {
 
-
-	//	public static  void checkPackagingProductsFilter() {
-	//		TestObject chx_PackagingProducts = findTestObject('Object Repository/Filters/chx_packagingProducts')
-	//
-	//		WebUI.click(chx_PackagingProducts)
-	//	}
-
 	/**
 	 * Click on specific filter checkBox
 	 * @param testObject
