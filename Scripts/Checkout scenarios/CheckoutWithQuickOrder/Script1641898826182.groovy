@@ -14,6 +14,26 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
-import internal.GlobalVariable as GlobalVariable
+
+import actions.QuickActionActions
+import helpers.GeneralHelpers
+import internal.GlobalVariable
+import validations.GeneralValidations
+import validations.QuickActionValidations
+
 import org.openqa.selenium.Keys as Keys
 
+GeneralHelpers.initScenario()
+
+QuickActionActions.hoverOverQuickActionIcon()
+
+QuickActionValidations.verifyOnActiveIcon()
+
+QuickActionActions.clickOverQuickActionIcon()
+
+GeneralValidations.verifyCurrentPageTitleValue("Quick Order - Cleaner's Supply")
+
+GeneralValidations.verifyCurrentPageURL("https://www.cleanersupply.com/quick-order/")
+
+
+WebUI.closeBrowser()
