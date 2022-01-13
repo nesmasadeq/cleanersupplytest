@@ -39,20 +39,20 @@ public class CartPageValidations {
 			System.out.println('productTitle: ' + WebUI.getText(productTitle))
 			//			assert  WebUI.getText(productTitle).toLowerCase().contains(currentProduct.getTitle().toLowerCase())
 
-			TestObject productSku = CartPageActions.getCartProductDataByIndex(i, CartPageActions.productSku)
+			TestObject productSku = CartPageHelpers.getCartProductDataByIndex(i, CartPageActions.productSku)
 			System.out.println('productSku: ' + WebUI.getText(productSku))
 			assert  WebUI.getText(productSku).equals(currentProduct.getSku())
 
-			TestObject productPrice = CartPageActions.getCartProductDataByIndex(i, CartPageActions.productPrice)
+			TestObject productPrice = CartPageHelpers.getCartProductDataByIndex(i, CartPageActions.productPrice)
 			System.out.println('productPrice: ' + WebUI.getText(productPrice))
 			assert  WebUI.getText(productPrice).equals(GeneralHelpers.formatePrice(currentProduct.getPrice()))
 
-			TestObject productTotal = CartPageActions.getCartProductDataByIndex(i, CartPageActions.productTotal)
+			TestObject productTotal = CartPageHelpers.getCartProductDataByIndex(i, CartPageActions.productTotal)
 			System.out.println('productTotal: ' + WebUI.getText(productTotal))
 			double total = currentProduct.getPrice() * currentProduct.getQuantity()
 			assert  WebUI.getText(productTotal).equals(GeneralHelpers.formatePrice(total))
 
-			TestObject inputProductQty = CartPageActions.getCartProductDataByIndex(i, CartPageActions.inputProductQty)
+			TestObject inputProductQty = CartPageHelpers.getCartProductDataByIndex(i, CartPageActions.inputProductQty)
 			System.out.println('inputProductQty: ' + WebUI.getAttribute(inputProductQty, "value"))
 			assert  WebUI.getAttribute(inputProductQty ,"value").equals( currentProduct.getQuantity() +"")
 		}
