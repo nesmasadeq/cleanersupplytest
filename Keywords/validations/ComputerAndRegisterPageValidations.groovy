@@ -19,34 +19,33 @@ public class ComputerAndRegisterPageValidations {
 	 */
 	public static void verfiyCurrentPageHeading(String expectedHeading) {
 		TestObject computerAndRegisterHeading =
-				findTestObject('Object Repository/ComputerAndRegisterPage/h1_computerAndRegisterHeading')
+		findTestObject('Object Repository/ComputerAndRegisterPage/h1_computerAndRegisterHeading')
 		assert WebUI.getText(computerAndRegisterHeading).equalsIgnoreCase(expectedHeading)
 	}
 
 	/***
 	 * verify breadcrumb content match the expected content
 	 * @param expectedContent
-	 * @param expectedContentTwo
 	 */
-	public static void verifyBreadcrumbContent(String expectedContent, String expectedContentTwo) {
+	public static void verifyBreadcrumbContent(String ... expectedContent) {
 		List <WebElement> breadcrumbList =
-				WebUI.findWebElements(findTestObject("Object Repository/ComputerAndRegisterPage/li_breadcrumb"),
-				GlobalVariable.elementVisibilityTimeOut)
-		breadcrumbList.get(0).getText().contains(expectedContent)
-		breadcrumbList.get(1).getText().contains(expectedContentTwo)
+		WebUI.findWebElements(findTestObject("Object Repository/ComputerAndRegisterPage/li_breadcrumb"),
+		GlobalVariable.elementVisibilityTimeOut)
+		for(int i=0 ; i<breadcrumbList.size() ; i++) {
+		breadcrumbList.get(i).getText().contains(expectedContent[i])
+		}
 	}
 	/***
 	 * verify result count in header match the total count in filter
 	 */
 	public static void verifyHeaderResultCount() {
 		List <WebElement> materialList = WebUI.findWebElements(findTestObject('Object Repository/Filters/span_materailOptionCount'),
-			GlobalVariable.elementVisibilityTimeOut)
+		GlobalVariable.elementVisibilityTimeOut)
 		TestObject headerResult = findTestObject('Object Repository/ComputerAndRegisterPage/h2_headerResult')
 		int productsCountInHeader=0
 		for(WebElement materialOption : materialList) {
-			 productsCountInHeader += Integer.parseInt(materialOption.getText().replaceAll('\\D+', ''))
+			productsCountInHeader += Integer.parseInt(materialOption.getText().replaceAll('\\D+', ''))
 		}
 		assert WebUI.getText(headerResult).contains(productsCountInHeader+"")
 	}
-
 }

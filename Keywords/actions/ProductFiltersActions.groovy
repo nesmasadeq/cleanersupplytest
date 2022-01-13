@@ -44,7 +44,7 @@ public class ProductFiltersActions {
 				'https://www.cleanersupply.com/Tags-Forms/Computer-Register/?Manufacturer=Casio', false)
 		return manufactorSelect
 	}
-	
+
 	/***
 	 * select SP1000 model
 	 * @author nesma

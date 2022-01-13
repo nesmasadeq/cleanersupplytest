@@ -109,10 +109,10 @@ public class ProductsFiltersValidations {
 	 */
 	public static void verifyFilterDisappeared(TestObject... filterSection) {
 		for(int i=0 ; i<filterSection.length ; i++) {
-		WebUI.verifyElementNotPresent(filterSection[i],GlobalVariable.actionsTimeout )
+			WebUI.verifyElementNotPresent(filterSection[i],GlobalVariable.actionsTimeout )
 		}
 	}
-	
+
 	/***
 	 * verify model selection is enabled
 	 * @author nesma
@@ -121,6 +121,4 @@ public class ProductsFiltersValidations {
 		TestObject selectModel = findTestObject('Object Repository/Filters/select_modelFilter')
 		WebUI.verifyElementClickable(selectModel)
 	}
-	
-	
 }

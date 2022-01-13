@@ -107,4 +107,13 @@ public class ProductDetailsPageValidations {
 		System.out .println("getClass: " + WebUI.getAttribute(testObject, "class"))
 		assert WebUI.getAttribute(testObject, "class").contains("selected")
 	}
+	
+	/***
+	 * verify entered quantity match the expected quantity
+	 * @param expectedQuantity
+	 */
+	public static void verifyEnterdQuantityValue(String expectedQuantity){
+		TestObject quantityField = ProductDetailsPageActions.enterQuantity("10")
+		assert WebUI.getAttribute(quantityField, 'value').contains(expectedQuantity)
+	}
 }

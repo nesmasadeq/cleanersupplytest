@@ -24,15 +24,21 @@ import internal.GlobalVariable
 import models.Product
 
 public class ProductRowHelper {
-
-	public static Product saveProductRowData() {
+	
+	/***
+	 * save product data form search result in to product object
+	 * @return product
+	 * @author Eng. Amal Hamad
+	 * @author nesma
+	 */
+	public static Product saveProductRowData(TestObject productUrl) {
 
 		Product product = new Product()
 
 		//----- Save href
-		TestObject a_productUrl = findTestObject('Object Repository/scenario01/product_row/a_productUrl')
+		//		TestObject a_productUrl = findTestObject('Object Repository/scenario01/product_row/a_productUrl')
 
-		product.setHref(WebUI.getAttribute(a_productUrl, 'href'))
+		product.setHref(WebUI.getAttribute(productUrl, 'href'))
 
 		//----- Save title
 		TestObject h2_productTitle = findTestObject('Object Repository/scenario01/product_row/h2_productTitle')
@@ -64,10 +70,12 @@ public class ProductRowHelper {
 
 		product.setMinList(GeneralHelpers.covertStringToInteger(minList))
 
-		TestObject maxList = WebUI.convertWebElementToTestObject(span_productListValue.get(1))
+		//check if price list is in range or has one value
+		if(span_productListValue.size()>1) {
+			TestObject maxList = WebUI.convertWebElementToTestObject(span_productListValue.get(1))
 
-		product.setMaxList(GeneralHelpers.covertStringToInteger(maxList))
-
+			product.setMaxList(GeneralHelpers.covertStringToInteger(maxList))
+		}
 		//----- Print product data
 		System.out.println(product.toString())
 
