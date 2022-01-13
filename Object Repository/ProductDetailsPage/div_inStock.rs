@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_optionLarge</name>
+   <name>div_inStock</name>
    <tag></tag>
-   <elementGuidId>c983d608-dc17-4f44-aed5-f3daebc3d909</elementGuidId>
+   <elementGuidId>a2f03025-2676-4fae-83c6-f58a6620c9fb</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-         <value>.option a[title='Large - 24&quot; x 27&quot; x 8&quot;']</value>
+         <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
-         <key>BASIC</key>
+         <key>CSS</key>
+         <value>div.stock-notification.in-stock</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

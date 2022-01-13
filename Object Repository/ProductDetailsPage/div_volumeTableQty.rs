@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_optionLarge</name>
+   <name>div_volumeTableQty</name>
    <tag></tag>
-   <elementGuidId>c983d608-dc17-4f44-aed5-f3daebc3d909</elementGuidId>
+   <elementGuidId>e68021f5-87c8-46f6-be81-43e2f4322420</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>.option a[title='Large - 24&quot; x 27&quot; x 8&quot;']</value>
+         <value>.volume-table th div</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

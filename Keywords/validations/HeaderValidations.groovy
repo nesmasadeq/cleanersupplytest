@@ -18,6 +18,7 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
+import actions.HeaderActions
 import internal.GlobalVariable
 
 public class HeaderValidations {
@@ -70,8 +71,7 @@ public class HeaderValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyCartCount(String expectedCount) {
-		TestObject cartCount = findTestObject('Header/span_cartCount')
-
+		TestObject cartCount = findTestObject(HeaderActions.cartCount)
 		assert WebUI.getText(cartCount).equals(expectedCount)
 	}
 
@@ -82,8 +82,8 @@ public class HeaderValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyCartLabel(String expactedLabel) {
-		TestObject cartLabel = findTestObject('Header/span_cartLabel')
-
+		TestObject cartLabel = findTestObject(HeaderActions.cartLabel)
+		System.out.println("cartLabel: " + WebUI.getText(cartLabel))
 		assert WebUI.getText(cartLabel).equals(expactedLabel)
 	}
 }
