@@ -42,4 +42,9 @@ public class CheckoutPageItems {
 	static TestObject billingAddressCheckbox = findTestObject('Object Repository/CheckoutPage/checkbox_billingAddress')
 	static TestObject poField = findTestObject('Object Repository/CheckoutPage/input_po')
 	static TestObject commentsField = findTestObject('Object Repository/CheckoutPage/textarea_comments')
+	static TestObject mounthOptions = findTestObject('Object Repository/CheckoutPage/option_month')
+	static TestObject yearOptions = findTestObject('Object Repository/CheckoutPage/option_year')
+	static TestObject reviewOrderButton = findTestObject('Object Repository/CheckoutPage/button_reviewOrder')
+	
+	
 }

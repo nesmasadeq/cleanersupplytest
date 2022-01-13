@@ -86,7 +86,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'555-999-9995'</initValue>
+      <initValue>'555-999-9999'</initValue>
       <name>phone</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
