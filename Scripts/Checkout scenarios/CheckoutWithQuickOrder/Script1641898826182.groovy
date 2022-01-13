@@ -36,4 +36,12 @@ GeneralValidations.verifyCurrentPageTitleValue("Quick Order - Cleaner's Supply")
 GeneralValidations.verifyCurrentPageURL("https://www.cleanersupply.com/quick-order/")
 
 
+QuickActionValidations.verifyQuickOrderTabText()
+
+QuickActionValidations.verifyDefaultQuickItemsCount()
+
+QuickActionValidations.verifyAddMoreButtonExist()
+
+QuickActionValidations.verifySKUFieldInEveryOrder()
+
 WebUI.closeBrowser()
