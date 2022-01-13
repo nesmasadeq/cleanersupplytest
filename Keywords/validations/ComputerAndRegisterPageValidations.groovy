@@ -27,7 +27,7 @@ public class ComputerAndRegisterPageValidations {
 	 * verify breadcrumb content match the expected content
 	 * @param expectedContent
 	 */
-	public static void verifyBreadcrumbContent(String ... expectedContent) {
+	public static void verifyBreadcrumbContent(String... expectedContent) {
 		List <WebElement> breadcrumbList =
 				WebUI.findWebElements(findTestObject("Object Repository/ComputerAndRegisterPage/li_breadcrumb"),
 				GlobalVariable.elementVisibilityTimeOut)
