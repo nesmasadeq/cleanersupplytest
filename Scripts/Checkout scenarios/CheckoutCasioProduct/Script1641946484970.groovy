@@ -40,5 +40,7 @@ HeaderValidations.verifyCartCount('0')
 ProductDetailsPageValidations.verifyEnterdQuantityValue('10')
 
 ProductDetailsPageValidations.verifyThePriceChangeReflected(casioProduct)
-ProductDetailsPageValidations.verifyThePriceInCellEqualPrice(findTestObject('Object Repository/ProductDetailsPage/span_tablePriceMoreThan10'))
+
+ProductDetailsPageValidations.verifyThePriceInCellEqualPrice(
+	findTestObject('Object Repository/ProductDetailsPage/span_tablePriceMoreThan10'))
 
