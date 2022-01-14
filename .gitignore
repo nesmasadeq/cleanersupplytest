@@ -19,3 +19,4 @@ build
 .cache/*
 settings/
 settings/*
+./settings

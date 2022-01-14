@@ -39,6 +39,7 @@ public class Product {
 	private int qustionsAnswerCount;
 	private String description;
 	private int quantity;
+	private double totalPrice;
 
 	public String getHref() {
 		return href;
@@ -47,6 +48,13 @@ public class Product {
 		this.href = href;
 	}
 
+	public String getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	
 	public String getTitle() {
 		return title;
 	}

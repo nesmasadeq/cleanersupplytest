@@ -14,34 +14,39 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
-
-import actions.QuickActionActions
-import helpers.GeneralHelpers
-import internal.GlobalVariable
-import validations.GeneralValidations
-import validations.QuickActionValidations
-
+import actions.QuickActionActions as QuickActionActions
+import helpers.GeneralHelpers as GeneralHelpers
+import helpers.QuickActionsHelper as QuickActionsHelper
+import internal.GlobalVariable as GlobalVariable
+import models.Product as Product
+import validations.GeneralValidations as GeneralValidations
+import validations.QuickOrdersValidations as QuickOrdersValidations
 import org.openqa.selenium.Keys as Keys
 
 GeneralHelpers.initScenario()
 
 QuickActionActions.hoverOverQuickActionIcon()
 
-QuickActionValidations.verifyOnActiveIcon()
+QuickOrdersValidations.verifyOnActiveIcon()
 
 QuickActionActions.clickOverQuickActionIcon()
 
-GeneralValidations.verifyCurrentPageTitleValue("Quick Order - Cleaner's Supply")
+GeneralValidations.verifyCurrentPageTitleValue('Quick Order - Cleaner\'s Supply')
 
-GeneralValidations.verifyCurrentPageURL("https://www.cleanersupply.com/quick-order/")
+GeneralValidations.verifyCurrentPageURL('https://www.cleanersupply.com/quick-order/')
 
+QuickOrdersValidations.verifyQuickOrderTabText()
 
-QuickActionValidations.verifyQuickOrderTabText()
+QuickOrdersValidations.verifyDefaultQuickItemsCount()
 
-QuickActionValidations.verifyDefaultQuickItemsCount()
+QuickOrdersValidations.verifyAddMoreButtonExist()
 
-QuickActionValidations.verifyAddMoreButtonExist()
+QuickOrdersValidations.verifySKUFieldInEveryOrder()
 
-QuickActionValidations.verifySKUFieldInEveryOrder()
+int orders = QuickActionsHelper.fillOrders()
+
+println("products count " + orders.size())
+//QuickActionsHelper.fillOrders()
 
 WebUI.closeBrowser()
+
