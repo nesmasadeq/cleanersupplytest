@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>span_productListValue</name>
+   <name>input_orderPo</name>
    <tag></tag>
-   <elementGuidId>5b0868e6-e8ba-4c51-8002-67130454451c</elementGuidId>
+   <elementGuidId>927659ca-a6f2-4717-8abd-d1a0bb3664c8</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>.product-list-container .list-value span.list-price</value>
+         <value>#po</value>
       </entry>
       <entry>
          <key>BASIC</key>

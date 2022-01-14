@@ -18,49 +18,39 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
+import actions.SelectCheckoutPageActions
 import internal.GlobalVariable
-import items.HeaderItems
+import items.CartPageItems
+import items.SelectCheckoutPageItems
 
-public class GeneralValidations {
-
-	/***
-	 * verify current page title match the expected title
-	 * @param expectedTitle
-	 * @author nesma
-	 */
-	public static void verifyCurrentPageTitleValue(String expectedTitle) {
-		assert WebUI.getWindowTitle().equals(expectedTitle)
-	}
+public class SelectCheckoutPageValidations {
 
 	/**
-	 * Verify Current Page URL matched the passed url
-	 * @param expectedURL expectedURL or part of expectedURL
-	 * @author nesma
-	 */
-	public static void verifyCurrentPageURL(String expectedURL) {
-		assert WebUI.getUrl().contains(expectedURL)
-		HeaderValidations.verifyHeaderLogo()
-	}
-
-	/**
-	 * Verify Current Page Heading match expected heading
+	 * Verify Checkout interstitial page heading
 	 * @param expectedHeading
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyPageHeading(String expectedHeading) {
-		TestObject pageHeader = findTestObject(HeaderItems.pageHeading)
+		TestObject pageHeader = findTestObject(SelectCheckoutPageItems.pageHeading)
 		assert WebUI.getText(pageHeader).contains(expectedHeading)
 	}
 
 	/**
-	 * Verify shadow after button hovering
-	 * @param button
+	 * Verify guest radio is checked
 	 * @author Eng. Amal Hamad
 	 */
-	public static void verifyButtonShadowHover(TestObject button) {
-		WebUI.mouseOver(button)
-		//------ After Hover -------
-		System.out.println("box-shadow: " +  WebUI.getCSSValue(button, "box-shadow"))
-		assert  WebUI.getCSSValue(button, "box-shadow").contains("rgba(0, 0, 0, 0.3) 0px 0px 10px 2px")
+	public static void verifyGuestRadionIsChecked() {
+		TestObject guestCheckoutRadio = findTestObject(SelectCheckoutPageItems.guestCheckoutRadio)
+		assert WebUI.getAttribute(guestCheckoutRadio, 'checked').equals('true')
+	}
+
+	/**
+	 * Verify order total match summary total
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifyOrderTotal() {
+		TestObject summaryTotalValue = findTestObject(CartPageItems.summaryTotalValue)
+		TestObject orderTotal = findTestObject(SelectCheckoutPageItems.orderTotal)
+		assert WebUI.getText(orderTotal).equals(WebUI.getText(summaryTotalValue))
 	}
 }

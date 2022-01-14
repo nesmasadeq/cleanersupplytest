@@ -19,14 +19,15 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
+import items.OrderReviewPageItems
 
-public class Navigations {
-
+public class OrderReviewPageActions {
+	
 	/**
-	 * Navigate to home page
-	 * @author nesma
+	 * Click submit order button
+	 * @author Eng. Amal Hamad
 	 */
-	public static void navigateToHomePage() {
-		WebUI.navigateToUrl(GlobalVariable.baseUrl)
+	public static void clickSubmitOrderButton() {
+		WebUI.click(OrderReviewPageItems.submitOrderButton)
 	}
 }

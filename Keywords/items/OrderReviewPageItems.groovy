@@ -1,4 +1,4 @@
-package actions
+package items
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -20,13 +20,11 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
 
-public class Navigations {
+public class OrderReviewPageItems {
 
-	/**
-	 * Navigate to home page
-	 * @author nesma
-	 */
-	public static void navigateToHomePage() {
-		WebUI.navigateToUrl(GlobalVariable.baseUrl)
-	}
+	public static TestObject shippingData = findTestObject('Object Repository/OrderReview/span_orderShippingAddress')
+	public static TestObject paymentData = findTestObject('Object Repository/OrderReview/span_orderInfoHolder')
+	public static TestObject inputPo = findTestObject('Object Repository/OrderReview/input_orderPo')
+	public static TestObject inputComments = findTestObject('Object Repository/OrderReview/input_comments')
+	public static TestObject submitOrderButton = findTestObject('Object Repository/OrderReview/a_submitOrder')
 }

@@ -45,6 +45,4 @@ public class CheckoutPageItems {
 	static TestObject mounthOptions = findTestObject('Object Repository/CheckoutPage/option_month')
 	static TestObject yearOptions = findTestObject('Object Repository/CheckoutPage/option_year')
 	static TestObject reviewOrderButton = findTestObject('Object Repository/CheckoutPage/button_reviewOrder')
-	
-	
 }

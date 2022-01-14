@@ -11,6 +11,16 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
+      <initValue>'Cleaner\'s Supply - Dry Cleaning Supplies'</initValue>
+      <name>siteTitle</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'/49857c/globalassets/csius/homepage/logo.svg'</initValue>
+      <name>siteLogo</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
       <initValue>10</initValue>
       <name>pageLoadTimout</name>
    </GlobalVariableEntity>
@@ -23,11 +33,6 @@
       <description></description>
       <initValue>10</initValue>
       <name>elementVisibilityTimeOut</name>
-   </GlobalVariableEntity>
-   <GlobalVariableEntity>
-      <description></description>
-      <initValue>'plastic'</initValue>
-      <name>searchTerm</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>

@@ -1,4 +1,4 @@
-package validations
+package items
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -18,27 +18,13 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
-import actions.CheckoutInterstitialPageActions
 import internal.GlobalVariable
 
-public class CheckoutInterstitialPageValidations {
+public class SelectCheckoutPageItems {
 
-	/**
-	 * Verify Checkout interstitial page heading
-	 * @param expectedHeading
-	 * @author Eng. Amal Hamad
-	 */
-	public static void verifyPageHeading(String expectedHeading) {
-		TestObject pageHeader = findTestObject(CheckoutInterstitialPageActions.pageHeading)
-		assert WebUI.getText(pageHeader).contains(expectedHeading)
-	}
-
-	/**
-	 * Verify guest radio is checked
-	 * @author Eng. Amal Hamad
-	 */
-	public static void verifyGuestRadionIsChecked() {
-		TestObject guestCheckoutRadio = findTestObject(CheckoutInterstitialPageActions.guestCheckoutRadio)
-		assert WebUI.getAttribute(guestCheckoutRadio, 'checked').equals('true')
-	}
+	public static String pageHeading = 'Object Repository/SelectCheckoutPage/div_pageHeading'
+	public static String guestCheckoutRadio = 'Object Repository/SelectCheckoutPage/chx_guestCheckout'
+	public static String orderTotal = 'Object Repository/SelectCheckoutPage/div_orderTotal'
+	public static String buttonContinue = 'Object Repository/SelectCheckoutPage/button_continue'
+	
 }

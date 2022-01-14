@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>h2_productTitle</name>
+   <name>a_headerCustumerServicePhone</name>
    <tag></tag>
-   <elementGuidId>1cd709c7-1ab3-4fd6-8d9c-bde682e09c46</elementGuidId>
+   <elementGuidId>b364921d-8711-4873-bad8-b79bd9dd4dea</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>.product-list-container .item-body h2.product-title</value>
+         <value>.customer-service a.hidden-xs</value>
       </entry>
       <entry>
          <key>BASIC</key>

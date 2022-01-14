@@ -9,6 +9,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import actions.CartPageActions
 import internal.GlobalVariable
+import items.CartPageItems
 import models.Product
 
 public class CartPageHelpers {
@@ -31,7 +32,7 @@ public class CartPageHelpers {
 	 * @author Eng. Amal Hamad
 	 */
 	public static String calculateCartProductsTotal() {
-		List<WebElement> productTotalList = WebUI.findWebElements(findTestObject(CartPageActions.productTotal),GlobalVariable.elementVisibilityTimeOut)
+		List<WebElement> productTotalList = WebUI.findWebElements(findTestObject(CartPageItems.productTotal),GlobalVariable.elementVisibilityTimeOut)
 		double total = 0;
 		for(WebElement element: productTotalList) {
 			TestObject productTotal = WebUI.convertWebElementToTestObject(element)
@@ -47,7 +48,7 @@ public class CartPageHelpers {
 	 * @author Eng. Amal Hamad
 	 */
 	public static String calculateSummaryTotal() {
-		List<WebElement> summaryValuesList = WebUI.findWebElements(findTestObject(CartPageActions.summaryValues),GlobalVariable.elementVisibilityTimeOut)
+		List<WebElement> summaryValuesList = WebUI.findWebElements(findTestObject(CartPageItems.summaryValues),GlobalVariable.elementVisibilityTimeOut)
 
 		double total = 0;
 		for(int i = 0 ;  i < summaryValuesList.size()-1 ; i++) {
@@ -71,7 +72,7 @@ public class CartPageHelpers {
 	public static TestObject getCartProductDataBySku(Product product , String dataSelector) {
 		String productSku = product.getSku()
 
-		List<WebElement> productSkuList = WebUI.findWebElements(findTestObject(CartPageActions.productSku),GlobalVariable.elementVisibilityTimeOut)
+		List<WebElement> productSkuList = WebUI.findWebElements(findTestObject(CartPageItems.productSku),GlobalVariable.elementVisibilityTimeOut)
 
 		for (int i = 0 ; i < productSkuList.size() ; i++) {
 			TestObject productSkuTestObject = WebUI.convertWebElementToTestObject(productSkuList.get(i))

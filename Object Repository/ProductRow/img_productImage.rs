@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>div_firstProductRow</name>
+   <name>img_productImage</name>
    <tag></tag>
-   <elementGuidId>812d7683-6bc5-4518-a0d2-5b86c2e0073e</elementGuidId>
+   <elementGuidId>742d77af-0760-4a54-b4b1-e9e93525cfb2</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>.product-list-container  div.row:nth-child(3) > div</value>
+         <value>.product-list-container .img-container img</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

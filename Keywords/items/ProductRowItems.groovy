@@ -1,4 +1,4 @@
-package helpers
+package items
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -20,8 +20,16 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
 
-public class CheckoutInterstitialPageHelpers {
-	
-	
-	
+public class ProductRowItems {
+
+	//----------- Product Data
+	public static String productHref = 'Object Repository/ProductRow/a_productUrl'
+	public static String productTitle = 'Object Repository/ProductRow/h2_productTitle'
+	public static String productImage = 'Object Repository/ProductRow/img_productImage'
+	public static String productPrice = 'Object Repository/ProductRow/span_productPrice'
+	public static String productListValue = 'Object Repository/ProductRow/span_productListValue'
+	public static String productAvailability = 'Object Repository/ProductRow/span_productAvailability'
+	public static String firstProductRow = 'Object Repository/ProductRow/div_firstProductRow'
+
+
 }

@@ -19,14 +19,16 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
+import items.SelectCheckoutPageItems
 
-public class Navigations {
+public class SelectCheckoutPageActions {
 
 	/**
-	 * Navigate to home page
-	 * @author nesma
+	 * Click on Continue button
+	 * @author Eng. Amal Hamad
 	 */
-	public static void navigateToHomePage() {
-		WebUI.navigateToUrl(GlobalVariable.baseUrl)
+	public static void clickContinueButton() {
+		TestObject buttonContinue = findTestObject(SelectCheckoutPageItems.buttonContinue)
+		WebUI.click(buttonContinue)
 	}
 }

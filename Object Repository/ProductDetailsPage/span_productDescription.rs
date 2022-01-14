@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_productUrl</name>
+   <name>span_productDescription</name>
    <tag></tag>
-   <elementGuidId>f5c04644-9666-490f-9b76-97bff2cf1503</elementGuidId>
+   <elementGuidId>40a245fb-1047-4f9e-b17e-f53b05ae6de9</elementGuidId>
    <selectorCollection>
-      <entry>
-         <key>CSS</key>
-         <value>.product-list-container a[href*=&quot;/Bags/Plastic-Bags&quot;]</value>
-      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>.description-holder p.description-text</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

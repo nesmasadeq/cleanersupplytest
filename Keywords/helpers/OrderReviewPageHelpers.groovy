@@ -1,4 +1,4 @@
-package actions
+package helpers
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -20,13 +20,5 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
 
-public class Navigations {
-
-	/**
-	 * Navigate to home page
-	 * @author nesma
-	 */
-	public static void navigateToHomePage() {
-		WebUI.navigateToUrl(GlobalVariable.baseUrl)
-	}
+public class OrderReviewPageHelpers {
 }

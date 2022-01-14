@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>span_productPrice</name>
+   <name>a_headerCustumerService</name>
    <tag></tag>
-   <elementGuidId>7c2fd2ea-1bf2-44e6-a3bd-b301606b23e5</elementGuidId>
+   <elementGuidId>ff3c5690-9c0c-4de5-a198-3b186514ab2e</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>.product-list-container .price-container span.price</value>
+         <value>.customer-service a.hidden-xs span</value>
       </entry>
       <entry>
          <key>BASIC</key>
