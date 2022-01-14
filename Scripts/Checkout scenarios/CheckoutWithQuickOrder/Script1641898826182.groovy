@@ -45,7 +45,7 @@ QuickOrdersValidations.verifySKUFieldInEveryOrder()
 
 int orders = QuickActionsHelper.fillOrders()
 
-println("products count " + orders.size())
+println("products count " + orders)
 //QuickActionsHelper.fillOrders()
 
 WebUI.closeBrowser()
