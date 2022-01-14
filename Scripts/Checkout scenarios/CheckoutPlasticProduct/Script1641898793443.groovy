@@ -1,20 +1,20 @@
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import java.text.DecimalFormat as DecimalFormat
 import org.openqa.selenium.Keys as Keys
 import org.openqa.selenium.WebElement as WebElement
 import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import actions.GeneralActions
-import actions.HeaderActions
+import actions.CartPageActions as CartPageActions
+import actions.CheckoutInterstitialPageActions as CheckoutInterstitialPageActions
+import actions.HeaderActions as HeaderActions
 import actions.ProductDetailsPageActions as ProductDetailsPageActions
-import actions.ProductFiltersActions as ProductFiltersActions
 import helpers.GeneralHelpers as GeneralHelpers
 import helpers.HeaderHelpers as HeaderHelpers
-import helpers.ProductDetailsPageHelpers as ProductDetailsPageHelpers
 import helpers.ProductRowHelper as ProductRowHelper
 import helpers.ProductsFiltersHelpers as ProductsFiltersHelpers
 import internal.GlobalVariable as GlobalVariable
 import models.Product as Product
+import validations.CartPageValidations as CartPageValidations
+import validations.CheckoutInterstitialPageValidations as CheckoutInterstitialPageValidations
 import validations.GeneralValidations as GeneralValidations
 import validations.HeaderValidations as HeaderValidations
 import validations.ProductDetailsPageValidations as ProductDetailsPageValidations
@@ -83,9 +83,7 @@ GeneralValidations.verifyCurrentPageURL('search-results/?q=plastic')
 GeneralValidations.verifyCurrentPageTitleValue('Search Results - Cleaner\'s Supply')
 
 //------ Verify Heading --------
-TestObject pageHeader = findTestObject('scenario01/results_page/h1_pageHeader')
-
-assert WebUI.getText(pageHeader).equals('SEARCH RESULTS')
+GeneralValidations.verifyPageHeading('SEARCH RESULTS')
 
 TestObject subPageHeader = findTestObject('scenario01/results_page/h2_pageSubHeader')
 
@@ -171,7 +169,9 @@ ProductsFiltersValidations.verifySelectedFilters('Packaging Products', 'Plastic 
 
 /***********************************************************************/
 //Save Product data in this Cell & Click product
-Product firstProduct = ProductRowHelper.saveProductRowData()
+TestObject a_productUrl = findTestObject('Object Repository/scenario01/product_row/a_productUrl')
+
+Product firstProduct = ProductRowHelper.saveProductRowData(a_productUrl)
 
 TestObject div_firstProductRow = findTestObject('Object Repository/scenario01/product_row/div_firstProductRow')
 
@@ -275,7 +275,7 @@ HeaderValidations.verifyCartLabel(HeaderHelpers.calculateCartTotal(firstProduct)
 /***********************************************************************/
 /******************** Add Second Product to Cart ***********************/
 /***********************************************************************/
-Product secondProduct = firstProduct
+Product secondProduct = Product.copyObject(firstProduct)
 
 //secondProduct = cartProducts.get(0)
 //------------------------------- Select Large Size Option ---------------------------
@@ -320,12 +320,65 @@ HeaderValidations.verifyCartCount('2')
 //------ Verify Product Price return to default price --------
 ProductDetailsPageValidations.verifyProductPriceIsChanged(secondProduct)
 
-//HeaderValidations.verifyCartLabel(HeaderHelpers.calculateCartTotal(firstProduct, secondProduct))
+HeaderValidations.verifyCartLabel(HeaderHelpers.calculateCartTotal(firstProduct, secondProduct))
 
 /***********************************************************************/
 /***************************** Cart Page *******************************/
 /***********************************************************************/
 HeaderActions.clickCartIcon()
-GeneralValidations.verifyCurrentPageURL("https://www.cleanersupply.com/shopping-cart/")
-GeneralValidations.verifyCurrentPageTitleValue("SHOPPING CART")
 
+//------ Verify Page URL --------
+GeneralValidations.verifyCurrentPageURL('https://www.cleanersupply.com/shopping-cart/')
+
+//------ Verify Page Title --------
+GeneralValidations.verifyCurrentPageTitleValue('Shopping Cart - Cleaner\'s Supply')
+
+//------ Verify Page Heading --------
+GeneralValidations.verifyPageHeading('SHOPPING CART')
+
+//------ Verify products data in cart --------
+CartPageValidations.verifyCartProductsData(secondProduct, firstProduct)
+
+//------ Verify cart summary --------
+CartPageValidations.verifyCartSummary(true, 'NOT AVAILABLE', 'T.B.D.')
+
+//------ Change firstProduct cart quantity --------
+CartPageActions.clickMinusQtyButton(0)
+
+CartPageValidations.verifyCartSummary(true, 'NOT AVAILABLE', 'T.B.D.')
+
+CartPageValidations.verifyProductTotalAfterChangeQty(0, secondProduct)
+
+//------ Change secondProduct cart quantity --------
+CartPageActions.clickPlusQtyButton(1)
+
+CartPageValidations.verifyCartSummary(true, 'NOT AVAILABLE', 'T.B.D.')
+
+CartPageValidations.verifyProductTotalAfterChangeQty(1, firstProduct)
+
+//------ Click ProceedToCheckout Button --------
+CartPageActions.clickProceedToCheckoutButton()
+
+/***********************************************************************/
+/******************* Checkout Interstitial Page ************************/
+/***********************************************************************/
+//------ Verify Page URL --------
+GeneralValidations.verifyCurrentPageURL('https://www.cleanersupply.com/checkout-interstitial/')
+
+//------ Verify Page Title --------
+GeneralValidations.verifyCurrentPageTitleValue('Checkout Interstitial - Cleaner\'s Supply')
+
+//------ Verify Page Heading --------
+CheckoutInterstitialPageValidations.verifyPageHeading('SECURE CHECKOUT')
+
+//------ Verify products data in cart --------
+CartPageValidations.verifyCartProductsData(secondProduct, firstProduct)
+
+//------ Verify cart summary --------
+CartPageValidations.verifyCartSummary(false, 'FREE', 'T.B.D.')
+
+//------ Verify guest radion is checked --------
+CheckoutInterstitialPageValidations.verifyGuestRadionIsChecked()
+
+//------ Click Continue button --------
+CheckoutInterstitialPageActions.clickContinueButton()

@@ -52,7 +52,7 @@ public class ProductsFiltersValidations {
 	 */
 	public static void verifySelectedFilters(String... filters) {
 		String selector ='Object Repository/Filters/ul_selectedFilters'
-		boolean isSelectedFiltersSectionExist = WebUI.verifyElementPresent(findTestObject(selector),10, FailureHandling.OPTIONAL)
+		boolean isSelectedFiltersSectionExist = WebUI.verifyElementPresent(findTestObject(selector),GlobalVariable.elementVisibilityTimeOut, FailureHandling.CONTINUE_ON_FAILURE)
 		System.out.println(isSelectedFiltersSectionExist)
 
 		if (isSelectedFiltersSectionExist) {

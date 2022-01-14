@@ -38,7 +38,7 @@ public class Product {
 	private String optionColor;
 	private int qustionsAnswerCount;
 	private String description;
-	private int quantity;
+	private int quantity = 1;
 	private double totalPrice;
 
 	public String getHref() {
@@ -142,8 +142,27 @@ public class Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
+	public static Product copyObject(Product originProduct) {
+		Product newProduct = new Product()
+		newProduct.setHref(originProduct.getHref())
+		newProduct.setTitle(originProduct.getTitle())
+		newProduct.setImage(originProduct.getImage())
+		newProduct.setSku(originProduct.getSku())
+		newProduct.setMinPrice(originProduct.getMinPrice())
+		newProduct.setPrice(0)
+		newProduct.setMaxPrice(originProduct.getMaxPrice())
+		newProduct.setMinList(originProduct.getMinList())
+		newProduct.setListValue(originProduct.getListValue())
+		newProduct.setMaxList(originProduct.getMaxList())
+		newProduct.setOptionSize(originProduct.getOptionSize())
+		newProduct.setOptionColor(originProduct.getOptionColor())
+		newProduct.setQuantity(1)
+		return newProduct
+	}
+
 	@Override
 	public String toString() {
-		return "Product [price="+ price + ", quantity=" + quantity ;
+		return "Product [sku=" +sku +" , price="+ price + " , quantity=" + quantity ;
 	}
 }

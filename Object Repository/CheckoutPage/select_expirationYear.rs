@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>h1_pageHeader</name>
+   <name>select_expirationYear</name>
    <tag></tag>
-   <elementGuidId>e92b6813-7dd6-4811-82a0-9deb383eea0c</elementGuidId>
+   <elementGuidId>6ee65702-048d-4e2c-a16e-ba31a38c905b</elementGuidId>
    <selectorCollection>
-      <entry>
-         <key>CSS</key>
-         <value>.container h1</value>
-      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>select[name=&quot;expiry-year&quot;]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

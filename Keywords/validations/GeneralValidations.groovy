@@ -38,4 +38,14 @@ public class GeneralValidations {
 	public static void verifyCurrentPageURL(String expectedURL) {
 		assert WebUI.getUrl().contains(expectedURL)
 	}
+
+	/**
+	 * Verify Current Page Heading match expected heading
+	 * @param expectedHeading
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifyPageHeading(String expectedHeading) {
+		TestObject pageHeader = findTestObject('Object Repository/Header/h1_pageHeader')
+		assert WebUI.getText(pageHeader).contains(expectedHeading)
+	}
 }
