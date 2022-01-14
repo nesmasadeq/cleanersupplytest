@@ -31,7 +31,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>5</initValue>
+      <initValue>10</initValue>
       <name>elementVisibilityTimeOut</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -128,5 +128,10 @@
       <description></description>
       <initValue>'testComment'</initValue>
       <name>comment</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>['MNSS151AS', 'NED1005', 'SMNR70512', 'MNB135120', 'NEDBA9']</initValue>
+      <name>bulk_SKU_orders</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

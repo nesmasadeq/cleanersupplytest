@@ -23,10 +23,10 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
 
-public class QuickActionValidations {
+public class QuickOrdersValidations {
 
 	/**
-	 * verify quick action active when hover 
+	 * verify quick order active when hover 
 	 * 
 	 * @author selenium
 	 */
@@ -35,7 +35,7 @@ public class QuickActionValidations {
 	}
 
 	/**
-	 * verify quick action tab 
+	 * verify quick order tab 
 	 * 
 	 * @author selenium
 	 */
@@ -75,5 +75,45 @@ public class QuickActionValidations {
 			assert WebUI.verifyElementPresent(WebUI.convertWebElementToTestObject(order.findElement(By.tagName("input"))) , GlobalVariable.elementVisibilityTimeOut)
 			assert WebUI.getAttribute(WebUI.convertWebElementToTestObject(order.findElement(By.tagName("input"))) , "placeholder").contains("Enter Stock #")
 		}
+	}
+
+	/**
+	 * verify remove button is appeared 
+	 * 
+	 * @param element
+	 * @author selenium
+	 */
+	public static void verifyRemoveButton(WebElement element) {
+		assert WebUI.verifyElementPresent(WebUI.convertWebElementToTestObject(element.findElement(By.className("product-table__button"))), GlobalVariable.elementVisibilityTimeOut)
+	}
+
+	/**
+	 * verify menu appeared 
+	 * 
+	 * @param element
+	 * @author selenium
+	 */
+	public static void verifySearchMenuPresent(WebElement element) {
+		WebUI.waitForElementPresent(WebUI.convertWebElementToTestObject(element.findElement(By.cssSelector(".dropdown-menu.open"))),  GlobalVariable.elementVisibilityTimeOut)
+		assert WebUI.verifyElementPresent(WebUI.convertWebElementToTestObject(element.findElement(By.cssSelector(".dropdown-menu.open"))), GlobalVariable.elementVisibilityTimeOut)
+	}
+
+	/**
+	 * verify product available in stock
+	 * 
+	 * @param element
+	 * @author selenium
+	 */
+	public static void verifyProductAvailableInStock(WebElement element) {
+		assert element.findElement(By.cssSelector(".in-stock")).isDisplayed()
+	}
+
+	/**
+	 * verify quantity of product is valid 
+	 * 
+	 * @param WebElement
+	 */
+	public static void verifyQuintityOfProductIsValid(WebElement element) {
+		assert !element.findElement(By.cssSelector(".validation-error")).isDisplayed();
 	}
 }
