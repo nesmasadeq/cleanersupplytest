@@ -28,9 +28,9 @@ import validations.QuickOrdersValidations
 
 public class QuickActionsHelper {
 
-	public static int fillOrders() {
+	public static List<Product> fillOrders() {
 		List bulkSKUOrders = GlobalVariable.bulk_SKU_orders
-		List<Product> products
+		List<Product> products = new ArrayList()
 		List<WebElement> orders = WebUI.findWebElements(findTestObject('Object Repository/QuickAction/QuickOrders') , GlobalVariable.elementVisibilityTimeOut);
 
 		for(int i = 0 ; i < orders.size() ; i++) {
@@ -45,11 +45,10 @@ public class QuickActionsHelper {
 
 			QuickOrdersValidations.verifyQuintityOfProductIsValid(orderRow)
 
-			//			Product product = QuickActionActions.getProductInfo(orderRow)
-
-			orders.push(QuickActionActions.getProductInfo(orderRow))
+//									Product product = QuickActionActions.getProductInfo(orderRow)
+			products.push(QuickActionActions.getProductInfo(orderRow))
 		}
 
-		return orders.size()
+		return products
 	}
 }

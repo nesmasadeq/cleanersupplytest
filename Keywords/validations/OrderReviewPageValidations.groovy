@@ -10,6 +10,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import helpers.GeneralHelpers
 import internal.GlobalVariable
 import items.OrderReviewPageItems
+import models.AppConstants
 
 public class OrderReviewPageValidations {
 
@@ -28,11 +29,11 @@ public class OrderReviewPageValidations {
 
 		System.out.println("Shipping:" + shippingData)
 
-		assert shippingData.contains(GlobalVariable.companyFieldContent)
-		assert shippingData.contains(GlobalVariable.firstName)
-		assert shippingData.contains(GlobalVariable.lastName)
-		assert shippingData.contains(GlobalVariable.address1)
-		assert shippingData.contains(GlobalVariable.address2)
+		assert shippingData.contains(AppConstants.CHECKOUT_COMPANY)
+		assert shippingData.contains(AppConstants.CHECKOUT_FNAME)
+		assert shippingData.contains(AppConstants.CHECKOUT_LNAME)
+		assert shippingData.contains(AppConstants.CHECKOUT_ADDRESS_1)
+		assert shippingData.contains(AppConstants.CHECKOUT_ADDRESS_2)
 	}
 
 	/**
@@ -50,17 +51,17 @@ public class OrderReviewPageValidations {
 
 		System.out.println("Shipping:" + paymentData)
 
-		//		String cardNumber = GlobalVariable.cardNumber.toString()
-		String cardNumber = "4444444444444444"
+		String cardNumber = AppConstants.CHECKOUT_CARD_NUMBER.toString()
+		//		String cardNumber = "4444444444444444"
 		assert paymentData.contains("Visa")
 		assert paymentData.contains("**** " + cardNumber.substring(cardNumber.length() - 4))
-		assert paymentData.contains(GlobalVariable.phone)
-		assert paymentData.contains(GlobalVariable.ext)
+		assert paymentData.contains(AppConstants.CHECKOUT_PHONE)
+		assert paymentData.contains(AppConstants.CHECKOUT_EXT)
 		assert paymentData.contains(selectedMonth + "/" + selectedYear.substring(selectedYear.length() - 2))
 	}
 
 	public static void verifyPoInput() {
-		assert GeneralHelpers.getFieldInputValue(OrderReviewPageItems.inputPo).equals(GlobalVariable.po)
+		assert GeneralHelpers.getFieldInputValue(OrderReviewPageItems.inputPo).equals(AppConstants.CHECKOUT_PO)
 	}
 
 	/**
@@ -68,6 +69,6 @@ public class OrderReviewPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyCommentsInput() {
-		assert GeneralHelpers.getFieldInputValue(OrderReviewPageItems.inputComments).equals(GlobalVariable.comment)
+		assert GeneralHelpers.getFieldInputValue(OrderReviewPageItems.inputComments).equals(AppConstants.CHECKOUT_COMMENT)
 	}
 }

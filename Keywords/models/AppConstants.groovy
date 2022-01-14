@@ -28,6 +28,16 @@ public class AppConstants {
 	public static final String SEARCH_PAGE_TITLE = "Search Results - Cleaner's Supply"
 	public static final String SEARCH_PAGE_HEADING = "SEARCH RESULTS"
 
+	// Products Filters
+	public static final String FILTER_PACKAGING_PRODUCT_URL = "Category=Packaging+Products"
+	public static final String FILTER_PACKAGING_PRODUCT = "Packaging Products"
+
+	public static final String FILTER_PLASTIC_BAGS_URL = "Category=Packaging+Products_Plastic+Bags"
+	public static final String FILTER_PLASTIC_BAGS = "Plastic Bags"
+
+	public static final String FILTER_COLOR_GREEN_URL = "Color+Group=Green"
+	public static final String FILTER_COLOR_GREEN = "Green"
+
 	// Cart Page
 	public static final String CART_PAGE_URL = "https://www.cleanersupply.com/shopping-cart/"
 	public static final String CART_PAGE_TITLE = "Shopping Cart - Cleaner's Supply"
@@ -52,5 +62,25 @@ public class AppConstants {
 	public static final String ORDER_REVIEW_PAGE_URL = "https://www.cleanersupply.com/checkout/"
 	public static final String ORDER_REVIEW_PAGE_TITLE = "Checkout - Cleaner's Supply"
 	public static final String ORDER_REVIEW_PAGE_HEADING = "CHECKOUT"
+
+	// Fake CheckOut Data
+	public static final String CHECKOUT_COMPANY  = "test company";
+	public static final String CHECKOUT_FNAME = "testFName";
+	public static final String CHECKOUT_LNAME = "testLName";
+	public static final String CHECKOUT_ADDRESS_1 = "address1";
+	public static final String CHECKOUT_ADDRESS_2 = "address2";
+	public static final String CHECKOUT_POSTAL_CODE = "12345";
+	public static final String CHECKOUT_CITY = "testCity";
+	public static final String CHECKOUT_STATE = "California";
+	public static final String CHECKOUT_PHONE =  "555-999-9999";
+	public static final String CHECKOUT_EXT = "6";
+	public static final String CHECKOUT_EMAIL = "test@gmail.com";
+
+	public static final String CHECKOUT_CARD_HOLDER = "testCard";
+	public static final String CHECKOUT_CARD_NUMBER = "4242424242424242";
+	public static final String CHECKOUT_CARD_CVV = "100";
+
+	public static final String CHECKOUT_PO = "1234";
+	public static final String CHECKOUT_COMMENT = "testComment";
 
 }

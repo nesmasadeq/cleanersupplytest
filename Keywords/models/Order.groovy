@@ -34,16 +34,16 @@ public class Order {
 	private String phone;
 	private String ext;
 	private String email;
-	
+
 	private String cardName;
 	private String cardNumber;
 	private String cardSecurityCode;
 	private String cardExpMonth;
 	private String cardExpYear;
-	
+
 	private String po;
 	private String comment;
-	
+
 	public List<Product> getOrderProducts() {
 		return orderProducts;
 	}
@@ -158,5 +158,4 @@ public class Order {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-		
 }

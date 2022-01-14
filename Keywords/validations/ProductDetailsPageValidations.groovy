@@ -27,8 +27,7 @@ public class ProductDetailsPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyProductTitle(String value) {
-		TestObject testObject = findTestObject(ProductDetailsPageItems.productTitle)
-		assert WebUI.getText(testObject).toLowerCase().contains(value.toLowerCase())
+		assert WebUI.getText(ProductDetailsPageItems.productTitle).toLowerCase().contains(value.toLowerCase())
 	}
 
 	/**
@@ -37,7 +36,7 @@ public class ProductDetailsPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyPageBreadcrumb(String... breadcrumbLinks) {
-		List<WebElement> productBreadcrumb = WebUI.findWebElements(findTestObject(ProductDetailsPageItems.productBreadcrumb),GlobalVariable.elementVisibilityTimeOut)
+		List<WebElement> productBreadcrumb = WebUI.findWebElements(ProductDetailsPageItems.productBreadcrumb,GlobalVariable.elementVisibilityTimeOut)
 
 		for(int i = 0 ; i<productBreadcrumb.size() ; i++) {
 			TestObject object = WebUI.convertWebElementToTestObject(productBreadcrumb.get(i))
@@ -53,8 +52,8 @@ public class ProductDetailsPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyProductDescription() {
-		TestObject productDescription = findTestObject(ProductDetailsPageItems.productDescription)
-		TestObject productDescriptionLess = findTestObject(ProductDetailsPageItems.productDescriptionLess)
+		TestObject productDescription = ProductDetailsPageItems.productDescription
+		TestObject productDescriptionLess = ProductDetailsPageItems.productDescriptionLess
 		assert WebUI.getText(productDescription).contains(WebUI.getText(productDescriptionLess))
 	}
 
@@ -64,7 +63,7 @@ public class ProductDetailsPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyProductImage(Product product) {
-		TestObject testObject = findTestObject(ProductDetailsPageItems.productImage)
+		TestObject testObject = ProductDetailsPageItems.productImage
 		String image = WebUI.getAttribute(testObject, 'src').toLowerCase()
 		product.setImage(image)
 		assert image.contains(product.getSku().toLowerCase())
@@ -76,7 +75,7 @@ public class ProductDetailsPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyProductImageIsChanged(Product product) {
-		TestObject testObject = findTestObject(ProductDetailsPageItems.productImage)
+		TestObject testObject = ProductDetailsPageItems.productImage
 		String prevImage = product.getImage()
 		String currentImage = WebUI.getAttribute(testObject, 'src').toLowerCase()
 		assert !currentImage.equals(prevImage)
@@ -89,7 +88,7 @@ public class ProductDetailsPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyProductSku(Product product) {
-		TestObject testObject = findTestObject(ProductDetailsPageItems.productSku)
+		TestObject testObject = ProductDetailsPageItems.productSku
 
 		String sku = WebUI.getText(testObject)
 		if(product.getSku() != null) {
@@ -107,7 +106,7 @@ public class ProductDetailsPageValidations {
 	 */
 	public static void verifyProductSkuIsChanged(Product product) {
 		String prevSku = product.getSku()
-		TestObject testObject = findTestObject(ProductDetailsPageItems.productSku)
+		TestObject testObject = ProductDetailsPageItems.productSku
 
 		assert !WebUI.getText(testObject).trim().contains(prevSku)
 
@@ -121,7 +120,7 @@ public class ProductDetailsPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyProductPrice(Product product) {
-		TestObject testObject = findTestObject(ProductDetailsPageItems.productPrice)
+		TestObject testObject = ProductDetailsPageItems.productPrice
 
 		checkCurrency(WebUI.getText(testObject))
 
@@ -139,7 +138,7 @@ public class ProductDetailsPageValidations {
 	public static void verifyProductPriceIsChanged(Product product) {
 		double prevPrice = product.getPrice()
 
-		TestObject testObject = findTestObject(ProductDetailsPageItems.productPrice)
+		TestObject testObject = ProductDetailsPageItems.productPrice
 		assert GeneralHelpers.convertStringToDouble(testObject) != prevPrice
 
 		ProductDetailsPageValidations.verifyProductPrice(product)
@@ -154,11 +153,11 @@ public class ProductDetailsPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyProductPriceMatchPricingTable() {
-		TestObject inputProductQty = findTestObject(ProductDetailsPageItems.inputProductQty)
+		TestObject inputProductQty = ProductDetailsPageItems.inputProductQty
 		int quantity = Integer.parseInt(WebUI.getAttribute(inputProductQty, 'value'))
 		System.out.println('quantity: ' + quantity)
 
-		TestObject productPrice = findTestObject(ProductDetailsPageItems.productPrice)
+		TestObject productPrice = ProductDetailsPageItems.productPrice
 		checkCurrency(WebUI.getText(productPrice))
 		double currentPrice = GeneralHelpers.convertStringToDouble(productPrice)
 
@@ -173,7 +172,7 @@ public class ProductDetailsPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyProductListValue(Product product) {
-		TestObject testObject = findTestObject(ProductDetailsPageItems.productListValue)
+		TestObject testObject = ProductDetailsPageItems.productListValue
 
 		checkCurrency(WebUI.getText(testObject))
 
@@ -191,7 +190,7 @@ public class ProductDetailsPageValidations {
 	public static void verifyProductListValueIsChanged(Product product) {
 		double prevValue = product.getListValue()
 
-		TestObject testObject = findTestObject(ProductDetailsPageItems.productListValue)
+		TestObject testObject = ProductDetailsPageItems.productListValue
 		assert GeneralHelpers.convertStringToDouble(testObject) != prevValue
 
 		ProductDetailsPageValidations.verifyProductListValue(product)
@@ -224,8 +223,8 @@ public class ProductDetailsPageValidations {
 	 * @param fullSize
 	 * @author Eng. Amal Hamad
 	 */
-	public static void verifyProductTitleContainsSize(String sizeSelector) {
-		String fullSize = GeneralHelpers.getFieldText(findTestObject(sizeSelector))
+	public static void verifyProductTitleContainsSize(TestObject sizeSelector) {
+		String fullSize = GeneralHelpers.getFieldText(sizeSelector)
 		ProductDetailsPageValidations.verifyProductTitle(fullSize.split("-")[0])
 		ProductDetailsPageValidations.verifyProductTitle(fullSize.split("-")[1])
 	}
@@ -235,11 +234,10 @@ public class ProductDetailsPageValidations {
 	 * @param testObject
 	 * @author Eng. Amal Hamad
 	 */
-	public static void verifyProductOptionIsSelected(String selector) {
-		TestObject testObject = findTestObject(selector)
-		System.out .println("getClass: " + WebUI.getAttribute(testObject, "class"))
-		assert WebUI.getAttribute(testObject, "class").contains("selected")
-		verifySelectedSizeOptionBackground(testObject)
+	public static void verifyProductOptionIsSelected(TestObject selector) {
+		System.out .println("getClass: " + WebUI.getAttribute(selector, "class"))
+		assert WebUI.getAttribute(selector, "class").contains("selected")
+		verifySelectedSizeOptionBackground(selector)
 	}
 
 	/**
@@ -259,7 +257,7 @@ public class ProductDetailsPageValidations {
 	 * @param selector
 	 * @author Eng. Amal Hamad
 	 */
-	public static void verifyProductSelectedSizeOption(String selector) {
+	public static void verifyProductSelectedSizeOption(TestObject selector) {
 		// option is selected
 		ProductDetailsPageValidations.verifyProductOptionIsSelected(selector)
 
@@ -288,13 +286,12 @@ public class ProductDetailsPageValidations {
 	 * @param selector
 	 * @author Eng. Amal Hamad
 	 */
-	public static void verifyProductSelectedColorOption(String selector) {
+	public static void verifyProductSelectedColorOption(TestObject selector) {
 		// option is selected
 		ProductDetailsPageValidations.verifyProductOptionIsSelected(selector)
 
 		// found in header
-		String optionColor = GeneralHelpers.getFieldTitle(findTestObject(selector))
-
+		String optionColor = GeneralHelpers.getFieldTitle(selector)
 		ProductDetailsPageValidations.verifyProductTitle(optionColor)
 
 		// found in color label
@@ -307,7 +304,7 @@ public class ProductDetailsPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyProductSizeDimensions(String dimentions) {
-		TestObject testObject = findTestObject(ProductDetailsPageItems.productSpecificationDimension)
+		TestObject testObject = ProductDetailsPageItems.productSpecificationDimension
 		String currentValue = WebUI.getText(testObject).replaceAll("[LHW]", ' ')
 		assert currentValue.replaceAll("\\s+","").contains(dimentions.replaceAll("\\s+",""))
 	}
@@ -318,8 +315,7 @@ public class ProductDetailsPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyProductColorOption(String value) {
-		TestObject testObject = findTestObject(ProductDetailsPageItems.spanSelectedColor)
-
+		TestObject testObject = ProductDetailsPageItems.spanSelectedColor
 		assert WebUI.getText(testObject).toLowerCase().contains(value.toLowerCase())
 	}
 
@@ -357,7 +353,7 @@ public class ProductDetailsPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyOutOfStockMessageIsVisible() {
-		TestObject testObject = findTestObject(ProductDetailsPageItems.divOutOfStock)
+		TestObject testObject = ProductDetailsPageItems.divOutOfStock
 		WebUI.verifyElementPresent(testObject , GlobalVariable.elementVisibilityTimeOut , FailureHandling.OPTIONAL)
 		assert WebUI.getText(testObject).contains("Currently Unavailable.")
 		System.out.println("outOfStock: " + WebUI.getCSSValue(testObject, "color"))
@@ -369,7 +365,7 @@ public class ProductDetailsPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyInStockMessageIsVisible() {
-		TestObject testObject = findTestObject(ProductDetailsPageItems.divInStock)
+		TestObject testObject = ProductDetailsPageItems.divInStock
 		WebUI.verifyElementPresent(testObject , GlobalVariable.elementVisibilityTimeOut , FailureHandling.OPTIONAL)
 		assert WebUI.getText(testObject).contains("In Stock!")
 		System.out.println("inStock: " + WebUI.getCSSValue(testObject, "color"))
@@ -381,7 +377,7 @@ public class ProductDetailsPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyAddToCartSectionVisibility(boolean expectedVisibilty) {
-		TestObject testObject = findTestObject(ProductDetailsPageItems.divAddToCartSection)
+		TestObject testObject = ProductDetailsPageItems.divAddToCartSection
 		assert	WebUI.verifyElementVisible(testObject , FailureHandling.OPTIONAL) == expectedVisibilty
 	}
 
@@ -391,17 +387,17 @@ public class ProductDetailsPageValidations {
 	 */
 	public static void verifyProductQuestionsAnswersItemsCount() {
 		//Get expectedCount form product data
-		TestObject productQestionsAnswer = findTestObject(ProductDetailsPageItems.productQestionsAnswer)
+		TestObject productQestionsAnswer = ProductDetailsPageItems.productQestionsAnswer
 		int expectedCount = GeneralHelpers.convertStringToInteger(productQestionsAnswer)
 
 		//Check correct count in QestionsAnswerSectionTitle
-		TestObject QestionsAnswerSectionTitle = findTestObject(ProductDetailsPageItems.QestionsAnswerSectionTitle)
+		TestObject QestionsAnswerSectionTitle = ProductDetailsPageItems.QestionsAnswerSectionTitle
 		String[] splitTitle = WebUI.getText(QestionsAnswerSectionTitle).split("/")
 		assert String.valueOf(expectedCount).equals(splitTitle[0].replaceAll("[^0-9]", ""))
 		assert String.valueOf(expectedCount).equals(splitTitle[1].replaceAll("[^0-9]", ""))
 
 		//Check correct count in QestionsAnswerSectionItemsList
-		List<TestObject> QestionsAnswerSectionItems = WebUI.findWebElements(findTestObject(ProductDetailsPageItems.QestionsAnswerSectionItems),
+		List<TestObject> QestionsAnswerSectionItems = WebUI.findWebElements(ProductDetailsPageItems.QestionsAnswerSectionItems,
 				GlobalVariable.elementVisibilityTimeOut)
 		assert expectedCount == QestionsAnswerSectionItems.size()
 	}
@@ -413,20 +409,8 @@ public class ProductDetailsPageValidations {
 	 */
 	public static void verifyPrductQuantityInputValue(int quantity) {
 		String expectedValue = String.valueOf(quantity)
-		TestObject inputProductQty = findTestObject(ProductDetailsPageItems.inputProductQty)
+		TestObject inputProductQty = ProductDetailsPageItems.inputProductQty
 		assert WebUI.getAttribute(inputProductQty, 'value').equals(expectedValue)
-	}
-	
-	/**
-	 * Verify shadow after product cell hovering
-	 * @param button
-	 * @author Eng. Amal Hamad
-	 */
-	public static void verifyButtonShadowHover(TestObject button) {
-		WebUI.mouseOver(button)
-		//------ After Hover -------
-		System.out.println("box-shadow: " +  WebUI.getCSSValue(button, "box-shadow"))
-		assert  WebUI.getCSSValue(button, "box-shadow").contains("rgba(0, 0, 0, 0.55) 0px 0px 10px 1px")
 	}
 
 	/***

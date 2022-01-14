@@ -28,7 +28,6 @@ public class SelectCheckoutPageActions {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void clickContinueButton() {
-		TestObject buttonContinue = findTestObject(SelectCheckoutPageItems.buttonContinue)
-		WebUI.click(buttonContinue)
+		WebUI.click(SelectCheckoutPageItems.buttonContinue)
 	}
 }

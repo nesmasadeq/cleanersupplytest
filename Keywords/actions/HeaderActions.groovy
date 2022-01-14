@@ -45,8 +45,7 @@ public class HeaderActions {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void clickCartIcon() {
-		TestObject testObject = findTestObject(HeaderItems.cartLabel)
-		WebUI.click(testObject)
+		WebUI.click(HeaderItems.cartLabel)
 	}
 
 	/**

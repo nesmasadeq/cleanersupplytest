@@ -22,9 +22,8 @@ import internal.GlobalVariable
 
 public class SelectCheckoutPageItems {
 
-	public static String pageHeading = 'Object Repository/SelectCheckoutPage/div_pageHeading'
-	public static String guestCheckoutRadio = 'Object Repository/SelectCheckoutPage/chx_guestCheckout'
-	public static String orderTotal = 'Object Repository/SelectCheckoutPage/div_orderTotal'
-	public static String buttonContinue = 'Object Repository/SelectCheckoutPage/button_continue'
-	
+	public static TestObject pageHeading = findTestObject('Object Repository/SelectCheckoutPage/div_pageHeading')
+	public static TestObject guestCheckoutRadio = findTestObject('Object Repository/SelectCheckoutPage/chx_guestCheckout')
+	public static TestObject orderTotal = findTestObject('Object Repository/SelectCheckoutPage/div_orderTotal')
+	public static TestObject buttonContinue = findTestObject('Object Repository/SelectCheckoutPage/button_continue')
 }

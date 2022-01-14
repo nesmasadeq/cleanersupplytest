@@ -110,6 +110,16 @@ public class GeneralHelpers {
 	}
 
 	/**
+	 * Get href attribute for this field
+	 * @param testObject
+	 * @return href
+	 * @author Eng. Amal Hamad
+	 */
+	public static String getFieldHref(TestObject testObject) {
+		return WebUI.getAttribute(testObject, "href").trim()
+	}
+	
+	/**
 	 * Get image src attribute for this field
 	 * @param testObject
 	 * @return image src

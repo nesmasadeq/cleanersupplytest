@@ -27,4 +27,5 @@ public class OrderReviewPageItems {
 	public static TestObject inputPo = findTestObject('Object Repository/OrderReview/input_orderPo')
 	public static TestObject inputComments = findTestObject('Object Repository/OrderReview/input_comments')
 	public static TestObject submitOrderButton = findTestObject('Object Repository/OrderReview/a_submitOrder')
+	
 }
