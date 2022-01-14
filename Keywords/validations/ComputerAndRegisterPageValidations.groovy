@@ -32,7 +32,7 @@ public class ComputerAndRegisterPageValidations {
 				WebUI.findWebElements(findTestObject("Object Repository/ComputerAndRegisterPage/li_breadcrumb"),
 				GlobalVariable.elementVisibilityTimeOut)
 		for(int i=0 ; i<breadcrumbList.size() ; i++) {
-			breadcrumbList.get(i).getText().contains(expectedContent[i])
+			assert breadcrumbList.get(i).getText().contains(expectedContent[i])
 		}
 	}
 	/***

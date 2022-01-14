@@ -52,6 +52,7 @@ public class AppConstants {
 	public static final String SELECT_CHECKOUT_PAGE_URL = "https://www.cleanersupply.com/checkout-interstitial/"
 	public static final String SELECT_CHECKOUT_PAGE_TITLE = "Checkout Interstitial - Cleaner's Supply"
 	public static final String SELECT_CHECKOUT_PAGE_HEADING = "SECURE CHECKOUT"
+	public static final String SELECT_STATE = "California"
 
 	// CheckOut Page
 	public static final String CHECKOUT_PAGE_URL = "https://www.cleanersupply.com/checkout/"
@@ -62,6 +63,7 @@ public class AppConstants {
 	public static final String ORDER_REVIEW_PAGE_URL = "https://www.cleanersupply.com/checkout/"
 	public static final String ORDER_REVIEW_PAGE_TITLE = "Checkout - Cleaner's Supply"
 	public static final String ORDER_REVIEW_PAGE_HEADING = "CHECKOUT"
+	
 
 	// Fake CheckOut Data
 	public static final String CHECKOUT_COMPANY  = "test company";

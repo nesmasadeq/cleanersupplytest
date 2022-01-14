@@ -62,7 +62,8 @@ public class GeneralValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyPageHeading(String expectedHeading) {
-		assert WebUI.getText(HeaderItems.pageHeading).contains(expectedHeading)
+		TestObject pageHeader = HeaderItems.pageHeading
+		assert WebUI.getText(pageHeader).toLowerCase().contains(expectedHeading.toLowerCase())
 	}
 
 	/**
