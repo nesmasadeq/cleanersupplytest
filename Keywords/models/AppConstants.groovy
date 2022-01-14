@@ -63,7 +63,7 @@ public class AppConstants {
 	public static final String ORDER_REVIEW_PAGE_URL = "https://www.cleanersupply.com/checkout/"
 	public static final String ORDER_REVIEW_PAGE_TITLE = "Checkout - Cleaner's Supply"
 	public static final String ORDER_REVIEW_PAGE_HEADING = "CHECKOUT"
-	
+
 
 	// Fake CheckOut Data
 	public static final String CHECKOUT_COMPANY  = "test company";
