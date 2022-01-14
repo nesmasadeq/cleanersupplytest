@@ -19,8 +19,10 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
+import items.HeaderItems
 
 public class GeneralValidations {
+
 	/***
 	 * verify current page title match the expected title
 	 * @param expectedTitle
@@ -37,6 +39,7 @@ public class GeneralValidations {
 	 */
 	public static void verifyCurrentPageURL(String expectedURL) {
 		assert WebUI.getUrl().contains(expectedURL)
+		HeaderValidations.verifyHeaderLogo()
 	}
 
 	/**
@@ -45,7 +48,19 @@ public class GeneralValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyPageHeading(String expectedHeading) {
-		TestObject pageHeader = findTestObject('Object Repository/Header/h1_pageHeader')
+		TestObject pageHeader = findTestObject(HeaderItems.pageHeading)
 		assert WebUI.getText(pageHeader).toLowerCase().contains(expectedHeading.toLowerCase())
+	}
+
+	/**
+	 * Verify shadow after button hovering
+	 * @param button
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifyButtonShadowHover(TestObject button) {
+		WebUI.mouseOver(button)
+		//------ After Hover -------
+		System.out.println("box-shadow: " +  WebUI.getCSSValue(button, "box-shadow"))
+		assert  WebUI.getCSSValue(button, "box-shadow").contains("rgba(0, 0, 0, 0.3) 0px 0px 10px 2px")
 	}
 }

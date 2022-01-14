@@ -12,6 +12,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import actions.ProductFiltersActions
 import helpers.GeneralHelpers
 import internal.GlobalVariable
+import items.ProductFiltersItems
 
 
 public class ProductsFiltersValidations {
@@ -51,13 +52,11 @@ public class ProductsFiltersValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifySelectedFilters(String... filters) {
-		String selector ='Object Repository/Filters/ul_selectedFilters'
-		boolean isSelectedFiltersSectionExist = WebUI.verifyElementPresent(findTestObject(selector),GlobalVariable.elementVisibilityTimeOut, FailureHandling.CONTINUE_ON_FAILURE)
+		boolean isSelectedFiltersSectionExist = WebUI.verifyElementPresent(findTestObject(ProductFiltersItems.selectedFilters),GlobalVariable.elementVisibilityTimeOut, FailureHandling.CONTINUE_ON_FAILURE)
 		System.out.println(isSelectedFiltersSectionExist)
 
 		if (isSelectedFiltersSectionExist) {
-			List<WebElement> selectedFilters = WebUI.findWebElements(findTestObject(selector),
-					GlobalVariable.elementVisibilityTimeOut)
+			List<WebElement> selectedFilters = WebUI.findWebElements(findTestObject(ProductFiltersItems.selectedFilters),GlobalVariable.elementVisibilityTimeOut)
 			for(int i = 0 ; i<selectedFilters.size() ; i++) {
 				TestObject object = WebUI.convertWebElementToTestObject(selectedFilters.get(i))
 				System.out.println('selectedFilters: ' + WebUI.getText(object))
@@ -72,7 +71,7 @@ public class ProductsFiltersValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyPaginationIsChanged(int size) {
-		List<TestObject> paginationLinks = WebUI.findWebElements(findTestObject('Object Repository/scenario01/results_page/a_paginationLinks'),
+		List<TestObject> paginationLinks = WebUI.findWebElements(findTestObject('SearchResultPage/a_paginationLinks'),
 				GlobalVariable.elementVisibilityTimeOut)
 
 		assert paginationLinks.size() == size

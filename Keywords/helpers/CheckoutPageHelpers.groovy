@@ -24,12 +24,13 @@ public class CheckoutPageHelpers {
 		//verify the value of company input reflected
 		CheckoutPageValidations.verifyInputValueReflected(inputValue, inputField)
 	}
-	
-	public static void selectOptionAndVerifyReflectedValue(TestObject selectField,TestObject selectOptions) {
+
+	public static String selectOptionAndVerifyReflectedValue(TestObject selectField,TestObject selectOptions) {
 		//select option randomly
 		String optionValue= CheckoutPageActions.selectOptionRandomly(selectOptions)
 		// verify the selected value is reflected
 		CheckoutPageValidations.verifyTheSelectedOptionValueIsReflected(selectField, optionValue)
+		
+		return optionValue
 	}
-	
 }

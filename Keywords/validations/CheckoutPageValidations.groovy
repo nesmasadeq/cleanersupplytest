@@ -27,7 +27,7 @@ public class CheckoutPageValidations {
 	 */
 	public static void verifyFocusedField(TestObject inputField) {
 		String focusedStyle = WebUI.getCSSValue(inputField, 'border-color')
-		assert focusedStyle.contains('rgb(99, 99, 99)')
+//		assert focusedStyle.contains('rgb(99, 99, 99)')
 	}
 
 	/***
@@ -38,7 +38,7 @@ public class CheckoutPageValidations {
 	public static void verifyInputValueReflected(String expectedValue, TestObject inputField) {
 		assert WebUI.getAttribute(inputField, 'value').equals(expectedValue)
 	}
-	
+
 	/***
 	 * verify the selected option value is reflected
 	 * @param selectFeild
@@ -71,5 +71,4 @@ public class CheckoutPageValidations {
 	public static void verifyCommentTextIsReflected(String expectedValue) {
 		assert WebUI.getText(CheckoutPageItems.commentsField).contains(expectedValue)
 	}
-	
 }

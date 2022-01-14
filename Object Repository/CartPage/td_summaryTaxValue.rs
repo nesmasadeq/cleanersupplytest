@@ -6,12 +6,11 @@
    <elementGuidId>4d506225-eedb-41b2-86d4-145479ea32c3</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>XPATH</key>
+         <value>//div[@class=&quot;order-summary&quot;]/div/table[@class=&quot;order-summary__totals&quot;]/tr[@class=&quot;last&quot;]/preceding-sibling::tr[1]/td[2]</value>
       </entry>
       <entry>
-         <key>XPATH</key>
-         <value>//table[@class=&quot;order-summary__totals&quot;]/tr/td[contains(text(),'Estimated Tax')]/following-sibling::td</value>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

@@ -9,6 +9,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import actions.ProductFiltersActions
 import internal.GlobalVariable
+import items.ProductFiltersItems
 import validations.ComputerAndRegisterPageValidations
 import validations.GeneralValidations
 import validations.ProductsFiltersValidations
@@ -21,7 +22,7 @@ public class ProductsFiltersHelpers {
 	 * @author nesma
 	 */
 	public static void checkingPackagingProductFilter() {
-		TestObject chx_PackagingProducts = findTestObject('Object Repository/Filters/chx_packagingProducts')
+		TestObject chx_PackagingProducts = findTestObject(ProductFiltersItems.checkBoxPackagingProducts)
 		ProductFiltersActions.checkSpecificFilter(chx_PackagingProducts)
 		ProductsFiltersValidations.verifyFilterIsChecked(chx_PackagingProducts)
 	}
@@ -31,7 +32,7 @@ public class ProductsFiltersHelpers {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void checkingPlasticBagsFilter() {
-		TestObject chx_plasticBags = findTestObject('Object Repository/Filters/chx_plasticBags')
+		TestObject chx_plasticBags = findTestObject(ProductFiltersItems.checkBoxPlasticBags)
 		ProductFiltersActions.checkSpecificFilter(chx_plasticBags)
 		ProductsFiltersValidations.verifyFilterIsChecked(chx_plasticBags)
 	}
@@ -41,7 +42,7 @@ public class ProductsFiltersHelpers {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void checkingGreenColorFilter() {
-		TestObject chx_green = findTestObject('Object Repository/Filters/chx_green')
+		TestObject chx_green = findTestObject(ProductFiltersItems.checkBoxGreen)
 		ProductFiltersActions.checkSpecificFilter(chx_green)
 		ProductsFiltersValidations.verifyFilterIsChecked(chx_green)
 	}
@@ -51,8 +52,7 @@ public class ProductsFiltersHelpers {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void openFiltersCard() {
-		List<TestObject> filtersCards = WebUI.findWebElements(findTestObject('Object Repository/Filters/div_filtersCards'),
-				GlobalVariable.elementVisibilityTimeOut)
+		List<TestObject> filtersCards = WebUI.findWebElements(findTestObject(ProductFiltersItems.filtersCards),GlobalVariable.elementVisibilityTimeOut)
 
 		System.out.println('filtersCards: ' + filtersCards.size())
 

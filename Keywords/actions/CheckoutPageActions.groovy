@@ -20,7 +20,7 @@ public class CheckoutPageActions {
 	public static void fillInputField(TestObject inputField, String inputValue) {
 		WebUI.sendKeys(inputField, inputValue)
 	}
-	
+
 	/***
 	 * selecting California state
 	 * @author nesma
@@ -43,10 +43,10 @@ public class CheckoutPageActions {
 	 */
 	public static String selectOptionRandomly(TestObject selectOptions) {
 		List <WebElement> selectionOptions =
-		WebUI.findWebElements(selectOptions,GlobalVariable.elementVisibilityTimeOut)
+				WebUI.findWebElements(selectOptions,GlobalVariable.elementVisibilityTimeOut)
 		int index = (int)(Math.random() *selectionOptions.size());
 		WebElement randomSelectOption = selectionOptions.get(index)
-        TestObject selectedOption = WebUI.convertWebElementToTestObject(randomSelectOption)
+		TestObject selectedOption = WebUI.convertWebElementToTestObject(randomSelectOption)
 		WebUI.click(selectedOption)
 		return randomSelectOption.getAttribute('value')
 	}

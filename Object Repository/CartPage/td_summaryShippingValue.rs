@@ -7,11 +7,10 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//table[@class=&quot;order-summary__totals&quot;]/tr/td[contains(text(),'Shipping')]/following-sibling::td</value>
+         <value>//div[@class=&quot;order-summary&quot;]/div/table[@class=&quot;order-summary__totals&quot;]/tr/td[contains(text(),'Shipping')]/following-sibling::td</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

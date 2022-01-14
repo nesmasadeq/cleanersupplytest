@@ -11,6 +11,7 @@ import internal.GlobalVariable
 import validations.GeneralValidations
 
 public class GeneralHelpers {
+
 	/***
 	 * initial the site
 	 * @author nesma
@@ -22,6 +23,7 @@ public class GeneralHelpers {
 		Navigations.navigateToHomePage()
 		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimout)
 		GeneralValidations.verifyCurrentPageURL(GlobalVariable.baseUrl)
+		GeneralValidations.verifyCurrentPageTitleValue(GlobalVariable.siteTitle)
 	}
 
 	/**
@@ -61,10 +63,81 @@ public class GeneralHelpers {
 	 * @param expectedUrl
 	 * @param expectedTitle
 	 * @param expectedHeading
+	 * @author nesma
 	 */
 	public static void CheckingPageURLTitleAndHeading(String expectedUrl, String expectedTitle, String expectedHeading) {
 		GeneralValidations.verifyCurrentPageURL(expectedUrl)
 		GeneralValidations.verifyCurrentPageTitleValue(expectedTitle)
 		GeneralValidations.verifyPageHeading(expectedHeading)
+	}
+
+	/**
+	 * Get text for this field
+	 * @param testObject
+	 * @return field text
+	 * @author Eng. Amal Hamad
+	 */
+	public static String getFieldText(TestObject testObject) {
+		return WebUI.getText(testObject).trim()
+	}
+
+	/**
+	 * Get title attribute for this field
+	 * @param testObject
+	 * @return field title attribute
+	 * @author Eng. Amal Hamad
+	 */
+	public static String getFieldTitle(TestObject testObject) {
+		return WebUI.getAttribute(testObject, 'title').trim()
+	}
+
+	/**
+	 * Get input value for this field
+	 * @param testObject
+	 * @return input value
+	 * @author Eng. Amal Hamad
+	 */
+	public static String getFieldInputValue(TestObject testObject) {
+		return WebUI.getAttribute(testObject, 'value').trim()
+	}
+
+	/**
+	 * Get inner text for this field
+	 * @param testObject
+	 * @return inner text
+	 * @author Eng. Amal Hamad
+	 */
+	public static String getFieldInnerText(TestObject testObject) {
+		return WebUI.getAttribute(testObject, 'innerText').trim()
+	}
+
+	/**
+	 * Get classes for this field
+	 * @param testObject
+	 * @return field classes
+	 * @author Eng. Amal Hamad
+	 */
+	public static String getFieldCalsses(TestObject testObject) {
+		return WebUI.getAttribute(testObject, 'class').trim()
+	}
+
+	/**
+	 * Get image src attribute for this field
+	 * @param testObject
+	 * @return image src
+	 * @author Eng. Amal Hamad
+	 */
+	public static String getImageSrc(TestObject testObject) {
+		return WebUI.getAttribute(testObject, "src").trim()
+	}
+
+	/**
+	 * Get checked attribute for this field
+	 * @param testObject
+	 * @return checked
+	 * @author Eng. Amal Hamad
+	 */
+	public static String isFieldChecked(TestObject testObject) {
+		return WebUI.getAttribute(testObject, 'checked').trim()
 	}
 }
