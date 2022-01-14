@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>h2_pageSubHeader</name>
+   <name>span_productPrice</name>
    <tag></tag>
-   <elementGuidId>cf3936af-6a33-4574-bfb0-f6654a97f4fc</elementGuidId>
+   <elementGuidId>7c2fd2ea-1bf2-44e6-a3bd-b301606b23e5</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-         <value>div.product-list-container div.section-subheading > h2</value>
+         <key>BASIC</key>
       </entry>
       <entry>
-         <key>BASIC</key>
+         <key>CSS</key>
+         <value>.product-list-container .price-container span.price</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

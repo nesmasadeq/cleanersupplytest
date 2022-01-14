@@ -9,35 +9,9 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import actions.ProductDetailsPageActions
 import internal.GlobalVariable
+import items.ProductDetailsPageItems
 
 public class ProductDetailsPageHelpers {
-
-	//	public static String getCurrentProductTitle() {
-	//		TestObject testObject = findTestObject(productTitle)
-	//		return  WebUI.getText(testObject);
-	//	}
-
-	/**
-	 * Get current text by this selector
-	 * @param selector
-	 * @return String of current value for this field
-	 * @author Eng. Amal Hamad
-	 */
-	public static String getCurrentText(String selector) {
-		TestObject testObject = findTestObject(selector)
-		return  WebUI.getText(testObject);
-	}
-
-	/**
-	 * Get current title attribute by this selector
-	 * @param selector
-	 * @return String of current title attribute for this field
-	 * @author Eng. Amal Hamad
-	 */
-	public static String getElementTitleAttr(String selector) {
-		TestObject testObject = findTestObject(selector)
-		return  WebUI.getAttribute(testObject , "title");
-	}
 
 	/**
 	 * Get dimensions in selected size
@@ -63,9 +37,9 @@ public class ProductDetailsPageHelpers {
 	 * @author Eng. Amal Hamad
 	 */
 	public static double getProductPriceByQuantity(int currentQuantity) {
-		List<WebElement> volumeTableQty = WebUI.findWebElements(findTestObject(ProductDetailsPageActions.div_volumeTableQty),
+		List<WebElement> volumeTableQty = WebUI.findWebElements(findTestObject(ProductDetailsPageItems.div_volumeTableQty),
 				GlobalVariable.elementVisibilityTimeOut)
-		List<WebElement> volumeTablePrice = WebUI.findWebElements(findTestObject(ProductDetailsPageActions.div_volumeTablePrice),
+		List<WebElement> volumeTablePrice = WebUI.findWebElements(findTestObject(ProductDetailsPageItems.div_volumeTablePrice),
 				GlobalVariable.elementVisibilityTimeOut)
 
 		System.out.println('volumeTableQty: ' + volumeTableQty.size() +' ## volumeTablePrice: ' + volumeTablePrice.size())
@@ -85,6 +59,4 @@ public class ProductDetailsPageHelpers {
 			}
 		}
 	}
-
-
 }

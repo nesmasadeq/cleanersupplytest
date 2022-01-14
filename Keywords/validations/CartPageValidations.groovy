@@ -11,6 +11,7 @@ import actions.CartPageActions
 import helpers.CartPageHelpers
 import helpers.GeneralHelpers
 import internal.GlobalVariable
+import items.CartPageItems
 import models.Product
 
 public class CartPageValidations {
@@ -21,7 +22,7 @@ public class CartPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyCartProductsData(Product... cartProducts) {
-		List<WebElement> productTitleList = WebUI.findWebElements(findTestObject(CartPageActions.productTitle),GlobalVariable.elementVisibilityTimeOut)
+		List<WebElement> productTitleList = WebUI.findWebElements(findTestObject(CartPageItems.productTitle),GlobalVariable.elementVisibilityTimeOut)
 		System.out.println('productTitleList: ' + productTitleList.size())
 
 		for (int i = 0 ; i < productTitleList.size() ; i++) {
@@ -33,32 +34,32 @@ public class CartPageValidations {
 			System.out.println('productTitle: ' + WebUI.getText(productTitle))
 			//			assert  WebUI.getText(productTitle).toLowerCase().contains(currentProduct.getTitle().toLowerCase())
 
-			TestObject productSku = CartPageHelpers.getCartProductDataByIndex(i, CartPageActions.productSku)
+			TestObject productSku = CartPageHelpers.getCartProductDataByIndex(i, CartPageItems.productSku)
 			System.out.println('productSku: ' + WebUI.getText(productSku))
 			assert  WebUI.getText(productSku).equals(currentProduct.getSku())
 
-			TestObject productPrice = CartPageHelpers.getCartProductDataByIndex(i, CartPageActions.productPrice)
+			TestObject productPrice = CartPageHelpers.getCartProductDataByIndex(i, CartPageItems.productPrice)
 			String priceStr = WebUI.getAttribute(productPrice , 'innerText')
 			System.out.println('productPrice: ' + priceStr)
 			assert priceStr.trim().equals(GeneralHelpers.formatePrice(currentProduct.getPrice()))
 
-			TestObject productTotal = CartPageHelpers.getCartProductDataByIndex(i, CartPageActions.productTotal)
+			TestObject productTotal = CartPageHelpers.getCartProductDataByIndex(i, CartPageItems.productTotal)
 			String totalStr = WebUI.getAttribute(productTotal , 'innerText')
 			System.out.println('productTotal: ' + totalStr)
 			double total = currentProduct.getPrice() * currentProduct.getQuantity()
 			assert totalStr.trim().equals(GeneralHelpers.formatePrice(total))
 
-			TestObject inputProductQty = CartPageHelpers.getCartProductDataByIndex(i, CartPageActions.inputProductQty)
+			TestObject inputProductQty = CartPageHelpers.getCartProductDataByIndex(i, CartPageItems.inputProductQty)
 			String quantity = WebUI.getAttribute(inputProductQty , 'value')
 			System.out.println('inputProductQty: ' + quantity)
 			assert quantity.equals(currentProduct.getQuantity() +"")
 
-			TestObject divProductStock = CartPageHelpers.getCartProductDataByIndex(i, CartPageActions.divProductStock)
+			TestObject divProductStock = CartPageHelpers.getCartProductDataByIndex(i, CartPageItems.divProductStock)
 			String stock = WebUI.getText(divProductStock)
 			System.out.println('divProductStock: ' + stock)
 			assert stock.contains('In Stock!')
 
-			TestObject productImage = CartPageHelpers.getCartProductDataByIndex(i, CartPageActions.productImage)
+			TestObject productImage = CartPageHelpers.getCartProductDataByIndex(i, CartPageItems.productImage)
 			String image = WebUI.getAttribute(productImage, "src")
 			System.out.println('productImage: ' + image)
 			assert  image.contains(currentProduct.getSku().toLowerCase())
@@ -90,9 +91,8 @@ public class CartPageValidations {
 			CartPageValidations.verifySummarySubTotalMatchMiniCartLabel()
 		}
 		CartPageValidations.verifySummaryShipping(expectedShipping)
-//		CartPageValidations.verifySummaryTax(expectedTax)
+		CartPageValidations.verifySummaryTax(expectedTax)
 		CartPageValidations.verifySummaryTotal()
-//table[@class="order-summary__totals"]/tr/td[contains(text(),'Estimated Tax')]/following-sibling::td
 	}
 
 	/**
@@ -100,8 +100,8 @@ public class CartPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifySummaryItemCount() {
-		List<WebElement> cartProducts = WebUI.findWebElements(findTestObject(CartPageActions.productTitle),GlobalVariable.elementVisibilityTimeOut)
-		TestObject testObject = findTestObject(CartPageActions.summarySubtotalLabel)
+		List<WebElement> cartProducts = WebUI.findWebElements(findTestObject(CartPageItems.productTitle),GlobalVariable.elementVisibilityTimeOut)
+		TestObject testObject = findTestObject(CartPageItems.summarySubtotalLabel)
 		int summaryItemsCount = GeneralHelpers.convertStringToInteger(testObject)
 		assert summaryItemsCount == cartProducts.size()
 	}
@@ -112,7 +112,7 @@ public class CartPageValidations {
 	 */
 	public static void verifySummarySubTotalMatchCartProductsTotal() {
 		String expectedTotal = CartPageHelpers.calculateCartProductsTotal()
-		TestObject testObject = findTestObject(CartPageActions.summarySubtotalValue)
+		TestObject testObject = findTestObject(CartPageItems.summarySubtotalValue)
 		assert WebUI.getText(testObject).equals(expectedTotal)
 	}
 
@@ -121,7 +121,7 @@ public class CartPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifySummarySubTotalMatchMiniCartLabel() {
-		TestObject testObject = findTestObject(CartPageActions.summarySubtotalValue)
+		TestObject testObject = findTestObject(CartPageItems.summarySubtotalValue)
 		String summaryTotal = WebUI.getText(testObject)
 		HeaderValidations.verifyCartLabel(summaryTotal)
 	}
@@ -132,7 +132,7 @@ public class CartPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifySummaryShipping(String expectedShipping) {
-		TestObject testObject = findTestObject(CartPageActions.summaryShippingValue)
+		TestObject testObject = findTestObject(CartPageItems.summaryShippingValue)
 		assert WebUI.getText(testObject).equals(expectedShipping)
 	}
 
@@ -142,7 +142,7 @@ public class CartPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifySummaryTax(String expectedTax) {
-		TestObject testObject = findTestObject(CartPageActions.summaryTaxValue)
+		TestObject testObject = findTestObject(CartPageItems.summaryTaxValue)
 		assert WebUI.getText(testObject).equals(expectedTax)
 	}
 
@@ -152,7 +152,7 @@ public class CartPageValidations {
 	 */
 	public static void verifySummaryTotal() {
 		String expectedTotal = CartPageHelpers.calculateSummaryTotal()
-		TestObject testObject = findTestObject(CartPageActions.summaryTotalValue)
+		TestObject testObject = findTestObject(CartPageItems.summaryTotalValue)
 		assert WebUI.getText(testObject).equals(expectedTotal)
 	}
 
@@ -162,8 +162,8 @@ public class CartPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyProductTotalAfterChangeQty(int index , Product product) {
-		TestObject productTotal = CartPageHelpers.getCartProductDataByIndex(index , CartPageActions.productTotal)
-		TestObject inputProductQty = CartPageHelpers.getCartProductDataByIndex(index , CartPageActions.inputProductQty)
+		TestObject productTotal = CartPageHelpers.getCartProductDataByIndex(index , CartPageItems.productTotal)
+		TestObject inputProductQty = CartPageHelpers.getCartProductDataByIndex(index , CartPageItems.inputProductQty)
 
 		int currentQuantity = Integer.parseInt(WebUI.getAttribute(inputProductQty, "value"))
 		product.setQuantity(currentQuantity)

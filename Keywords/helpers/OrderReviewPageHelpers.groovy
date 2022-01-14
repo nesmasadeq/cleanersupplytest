@@ -1,4 +1,4 @@
-package actions
+package helpers
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -20,19 +20,5 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
 
-public class CheckoutInterstitialPageActions {
-
-	public static String pageHeading = 'Object Repository/CheckoutInterstitialPage/div_pageHeading'
-	public static String guestCheckoutRadio = 'Object Repository/CheckoutInterstitialPage/chx_guestCheckout'
-	public static String orderTotal = 'Object Repository/CheckoutInterstitialPage/div_orderTotal'
-	public static String buttonContinue = 'Object Repository/CheckoutInterstitialPage/button_continue'
-
-	/**
-	 * Click on Continue button
-	 * @author Eng. Amal Hamad
-	 */
-	public static void clickContinueButton() {
-		TestObject buttonContinue = findTestObject(CheckoutInterstitialPageActions.buttonContinue)
-		WebUI.click(buttonContinue)
-	}
+public class OrderReviewPageHelpers {
 }

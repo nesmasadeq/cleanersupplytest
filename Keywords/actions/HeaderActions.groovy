@@ -1,17 +1,16 @@
 package actions
 
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+import internal.GlobalVariable
+import items.HeaderItems
+
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
 import com.kms.katalon.core.testobject.TestObject
 
 
 public class HeaderActions {
-
-	//----------- Cart Section
-	public static String cartCount = 'Object Repository/Header/span_cartCount'
-	public static String cartLabel = 'Object Repository/Header/span_cartLabel'
-
 
 	/***
 	 * Hovering on tags & forms link
@@ -46,7 +45,16 @@ public class HeaderActions {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void clickCartIcon() {
-		TestObject testObject = findTestObject(HeaderActions.cartLabel)
+		TestObject testObject = findTestObject(HeaderItems.cartLabel)
 		WebUI.click(testObject)
+	}
+
+	/**
+	 * Back to home page
+	 * @author Eng. Amal Hamad
+	 */
+	public static void backToHome() {
+		WebUI.back()
+		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimout)
 	}
 }

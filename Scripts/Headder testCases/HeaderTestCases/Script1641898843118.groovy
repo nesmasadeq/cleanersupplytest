@@ -14,6 +14,27 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+import helpers.GeneralHelpers as GeneralHelpers
+import helpers.HeaderHelpers as HeaderHelpers
 import internal.GlobalVariable as GlobalVariable
+import validations.GeneralValidations as GeneralValidations
+import validations.HeaderValidations as HeaderValidations
 import org.openqa.selenium.Keys as Keys
 
+//---------------- Open Site ----------------
+GeneralHelpers.initScenario()
+
+//----------------Check cart is empty ----------------
+HeaderHelpers.checkCartIsEmpty()
+
+//----------------Verify Header Logo ----------------
+HeaderValidations.verifyHeaderLogo()
+
+////---------------- Verify Header Customer Serivce ----------------
+//HeaderValidations.verifyHeaderCustomerService()
+
+//---------------- Verify header navigation links hover and click ----------------
+HeaderValidations.varifyHeaderNavigationsLinks()
+
+//---------------- Close Site ----------------
+WebUI.closeBrowser()

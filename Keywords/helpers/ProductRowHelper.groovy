@@ -8,6 +8,7 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import internal.GlobalVariable
+import items.ProductRowItems
 import models.Product
 
 public class ProductRowHelper {
@@ -19,26 +20,26 @@ public class ProductRowHelper {
 	 * @author nesma
 	 */
 	public static Product saveProductRowData(TestObject productUrl) {
+
 		Product product = new Product()
 
 		//----- Save href
-		//		TestObject a_productUrl = findTestObject('Object Repository/scenario01/product_row/a_productUrl')
+		//		TestObject a_productUrl = findTestObject('ProductRow/a_productUrl')
 
 		product.setHref(WebUI.getAttribute(productUrl, 'href'))
 
 		//----- Save title
-		TestObject h2_productTitle = findTestObject('Object Repository/scenario01/product_row/h2_productTitle')
+		TestObject h2_productTitle = findTestObject(ProductRowItems.productTitle)
 
 		product.setTitle(WebUI.getText(h2_productTitle))
 
 		//----- Save image
-		TestObject img_productImage = findTestObject('Object Repository/scenario01/product_row/img_productImage')
+		TestObject img_productImage = findTestObject(ProductRowItems.productImage)
 
 		product.setImage(WebUI.getAttribute(img_productImage, 'src'))
 
 		//----- Save price
-		List<WebElement> span_productPrice = WebUI.findWebElements(findTestObject('Object Repository/scenario01/product_row/span_productPrice'),
-				GlobalVariable.elementVisibilityTimeOut)
+		List<WebElement> span_productPrice = WebUI.findWebElements(findTestObject(ProductRowItems.productPrice),GlobalVariable.elementVisibilityTimeOut)
 
 		TestObject minPrice = WebUI.convertWebElementToTestObject(span_productPrice.get(0))
 
@@ -49,8 +50,7 @@ public class ProductRowHelper {
 		product.setMaxPrice(GeneralHelpers.convertStringToDouble(maxPrice))
 
 		//----- Save price list
-		List<WebElement> span_productListValue = WebUI.findWebElements(findTestObject('Object Repository/scenario01/product_row/span_productListValue'),
-				GlobalVariable.elementVisibilityTimeOut)
+		List<WebElement> span_productListValue = WebUI.findWebElements(findTestObject(ProductRowItems.productListValue),GlobalVariable.elementVisibilityTimeOut)
 
 		TestObject minList = WebUI.convertWebElementToTestObject(span_productListValue.get(0))
 

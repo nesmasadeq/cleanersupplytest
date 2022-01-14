@@ -39,7 +39,7 @@ public class OrderReviewPageValidations {
 	 * Verify order po match expected po
 	 * @author Eng. Amal Hamad
 	 */
-	public static void verifyOrderPaymentData() {
+	public static void verifyOrderPaymentData(String selectedMonth , String selectedYear) {
 		String paymentData = ""
 		List<TestObject> paymentDataList = WebUI.findWebElements(OrderReviewPageItems.paymentData ,GlobalVariable.elementVisibilityTimeOut)
 
@@ -50,11 +50,13 @@ public class OrderReviewPageValidations {
 
 		System.out.println("Shipping:" + paymentData)
 
-		String cardNumber = GlobalVariable.cardNumber.toString()
+		//		String cardNumber = GlobalVariable.cardNumber.toString()
+		String cardNumber = "4444444444444444"
 		assert paymentData.contains("Visa")
 		assert paymentData.contains("**** " + cardNumber.substring(cardNumber.length() - 4))
 		assert paymentData.contains(GlobalVariable.phone)
 		assert paymentData.contains(GlobalVariable.ext)
+		assert paymentData.contains(selectedMonth + "/" + selectedYear.substring(selectedYear.length() - 2))
 	}
 
 	public static void verifyPoInput() {

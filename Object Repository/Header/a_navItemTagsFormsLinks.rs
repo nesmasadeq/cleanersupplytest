@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>img_productImage</name>
+   <name>a_navItemTagsFormsLinks</name>
    <tag></tag>
-   <elementGuidId>742d77af-0760-4a54-b4b1-e9e93525cfb2</elementGuidId>
+   <elementGuidId>c0c08eab-a3dc-4f84-bc68-f32b99923c22</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>.product-list-container .img-container img</value>
+         <value>ul.navbar-nav.navbar-left a[href=&quot;/Tags-Forms/&quot;] + div.dropdown-menu a</value>
       </entry>
       <entry>
          <key>BASIC</key>

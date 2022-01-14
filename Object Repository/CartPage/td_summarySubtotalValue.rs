@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//table[@class=&quot;order-summary__totals&quot;]/tr/td[contains(text(),'Subtotal')]/following-sibling::td</value>
+         <value>//div[@class=&quot;order-summary&quot;]/div/table[@class=&quot;order-summary__totals&quot;]/tr/td[contains(text(),'Subtotal')]/following-sibling::td</value>
       </entry>
       <entry>
          <key>BASIC</key>
