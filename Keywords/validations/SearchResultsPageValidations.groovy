@@ -32,4 +32,16 @@ public class SearchResultsPageValidations {
 		System.out.println('subPageHeader: ' + WebUI.getText(SearchResultsPageItems.pageSubHeader))
 		assert WebUI.getText(SearchResultsPageItems.pageSubHeader).toLowerCase().contains(AppConstants.SEARCH_TERM)
 	}
+
+	/**
+	 * Verify shadow after product cell hovering
+	 * @param button
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifyButtonShadowHover(TestObject button) {
+		WebUI.mouseOver(button)
+		//------ After Hover -------
+		System.out.println("box-shadow: " +  WebUI.getCSSValue(button, "box-shadow"))
+		assert  WebUI.getCSSValue(button, "box-shadow").contains("rgba(0, 0, 0, 0.55) 0px 0px 10px 1px")
+	}
 }
