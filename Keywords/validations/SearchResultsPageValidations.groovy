@@ -1,4 +1,4 @@
-package actions
+package validations
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -19,15 +19,29 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
-import items.SelectCheckoutPageItems
+import items.SearchResultsPageItems
+import models.AppConstants
 
-public class SelectCheckoutPageActions {
+public class SearchResultsPageValidations {
 
 	/**
-	 * Click on Continue button
+	 * Verify sub header text match expected text
 	 * @author Eng. Amal Hamad
 	 */
-	public static void clickContinueButton() {
-		WebUI.click(SelectCheckoutPageItems.buttonContinue)
+	public static void verifySubHeader() {
+		System.out.println('subPageHeader: ' + WebUI.getText(SearchResultsPageItems.pageSubHeader))
+		assert WebUI.getText(SearchResultsPageItems.pageSubHeader).toLowerCase().contains(AppConstants.SEARCH_TERM)
+	}
+
+	/**
+	 * Verify shadow after product cell hovering
+	 * @param button
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifyButtonShadowHover(TestObject button) {
+		WebUI.mouseOver(button)
+		//------ After Hover -------
+		System.out.println("box-shadow: " +  WebUI.getCSSValue(button, "box-shadow"))
+		assert  WebUI.getCSSValue(button, "box-shadow").contains("rgba(0, 0, 0, 0.55) 0px 0px 10px 1px")
 	}
 }

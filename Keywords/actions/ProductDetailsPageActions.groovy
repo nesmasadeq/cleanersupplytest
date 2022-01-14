@@ -23,7 +23,7 @@ public class ProductDetailsPageActions {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void saveProductSkuToObject(Product product) {
-		String sku = GeneralHelpers.getFieldTitle(findTestObject(ProductDetailsPageItems.productSku))
+		String sku = GeneralHelpers.getFieldTitle(ProductDetailsPageItems.productSku)
 		product.setSku(sku)
 	}
 
@@ -32,10 +32,9 @@ public class ProductDetailsPageActions {
 	 * @param selector
 	 * @author Eng. Amal Hamad
 	 */
-	public static void selectSizeOption(String selector) {
-		TestObject testObject = findTestObject(selector)
+	public static void selectSizeOption(TestObject selector) {
 		//		ProductDetailsPageValidations.verifyHoverOverSizeOption(testObject)
-		WebUI.click(testObject)
+		WebUI.click(selector)
 	}
 
 	/**
@@ -43,10 +42,9 @@ public class ProductDetailsPageActions {
 	 * @param selector
 	 * @author Eng. Amal Hamad
 	 */
-	public static void selectColorOption(String selector) {
-		TestObject testObject = findTestObject(selector)
+	public static void selectColorOption(TestObject selector) {
 		//		ProductDetailsPageValidations.verifyHoverOverColorOption(testObject)
-		WebUI.click(testObject)
+		WebUI.click(selector)
 	}
 	/***
 	 * filling quantity field
@@ -65,7 +63,7 @@ public class ProductDetailsPageActions {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void setProductQuantityText(int quantity) {
-		TestObject inputProductQty = findTestObject(ProductDetailsPageItems.inputProductQty)
+		TestObject inputProductQty = ProductDetailsPageItems.inputProductQty
 		WebUI.clearText(inputProductQty)
 		WebUI.sendKeys(inputProductQty, Keys.chord(Keys.BACK_SPACE))
 		WebUI.setText(inputProductQty, String.valueOf(quantity))
@@ -77,8 +75,7 @@ public class ProductDetailsPageActions {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void clickAddToCart() {
-		TestObject btnAddToCart = findTestObject(ProductDetailsPageItems.btnAddToCart)
-		GeneralValidations.verifyButtonShadowHover(btnAddToCart)
+		TestObject btnAddToCart = ProductDetailsPageItems.btnAddToCart
 		WebUI.click(btnAddToCart)
 	}
 }

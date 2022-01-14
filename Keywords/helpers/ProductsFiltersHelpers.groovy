@@ -22,7 +22,7 @@ public class ProductsFiltersHelpers {
 	 * @author nesma
 	 */
 	public static void checkingPackagingProductFilter() {
-		TestObject chx_PackagingProducts = findTestObject(ProductFiltersItems.checkBoxPackagingProducts)
+		TestObject chx_PackagingProducts = ProductFiltersItems.checkBoxPackagingProducts
 		ProductFiltersActions.checkSpecificFilter(chx_PackagingProducts)
 		ProductsFiltersValidations.verifyFilterIsChecked(chx_PackagingProducts)
 	}
@@ -32,7 +32,7 @@ public class ProductsFiltersHelpers {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void checkingPlasticBagsFilter() {
-		TestObject chx_plasticBags = findTestObject(ProductFiltersItems.checkBoxPlasticBags)
+		TestObject chx_plasticBags = ProductFiltersItems.checkBoxPlasticBags
 		ProductFiltersActions.checkSpecificFilter(chx_plasticBags)
 		ProductsFiltersValidations.verifyFilterIsChecked(chx_plasticBags)
 	}
@@ -42,7 +42,7 @@ public class ProductsFiltersHelpers {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void checkingGreenColorFilter() {
-		TestObject chx_green = findTestObject(ProductFiltersItems.checkBoxGreen)
+		TestObject chx_green = ProductFiltersItems.checkBoxGreen
 		ProductFiltersActions.checkSpecificFilter(chx_green)
 		ProductsFiltersValidations.verifyFilterIsChecked(chx_green)
 	}
@@ -52,8 +52,7 @@ public class ProductsFiltersHelpers {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void openFiltersCard() {
-		List<TestObject> filtersCards = WebUI.findWebElements(findTestObject(ProductFiltersItems.filtersCards),GlobalVariable.elementVisibilityTimeOut)
-
+		List<TestObject> filtersCards = WebUI.findWebElements(ProductFiltersItems.filtersCards,GlobalVariable.elementVisibilityTimeOut)
 		System.out.println('filtersCards: ' + filtersCards.size())
 
 		for (WebElement element : filtersCards) {
@@ -63,11 +62,13 @@ public class ProductsFiltersHelpers {
 			System.out.println('filtersCards: ' + objectClasses)
 
 			if( objectClasses.contains('collapsed')) {
-				//				WebUI.scrollToElement(object, 5)
-				//				WebUI.waitForElementClickable(object,10)
 				WebUI.click(object)
+				WebUI.waitForElementAttributeValue(object, 'aria-expanded', 'true', GlobalVariable.elementVisibilityTimeOut)
+				System.out.println('aria-expanded: ' + WebUI.getAttribute(object, 'aria-expanded'))
 			}
 		}
+
+		WebUI.scrollToPosition(50, 60)
 	}
 
 	/***

@@ -51,9 +51,7 @@ public class CartPageActions {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void clickProceedToCheckoutButton() {
-		TestObject testObject = findTestObject(CartPageItems.buttonProceedToCheckout)
-		//		GeneralValidations.verifyButtonShadowHover(testObject)
-		WebUI.click(testObject)
+		WebUI.click(CartPageItems.buttonProceedToCheckout)
 	}
 
 

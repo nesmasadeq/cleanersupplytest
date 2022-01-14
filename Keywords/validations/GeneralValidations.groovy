@@ -23,6 +23,20 @@ import items.HeaderItems
 
 public class GeneralValidations {
 
+	/**
+	 * Verify current page url, title and heading
+	 * @param URL
+	 * @param title
+	 * @param heading
+	 */
+	public static void verifyCurrentPage(String URL , String title , String heading) {
+		//------ Verify Page URL --------
+		GeneralValidations.verifyCurrentPageURL(URL)
+		//------ Verify Page Title --------
+		GeneralValidations.verifyCurrentPageTitleValue(title)
+		//------ Verify Heading --------
+		GeneralValidations.verifyPageHeading(heading)
+	}
 	/***
 	 * verify current page title match the expected title
 	 * @param expectedTitle
@@ -48,7 +62,7 @@ public class GeneralValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyPageHeading(String expectedHeading) {
-		TestObject pageHeader = findTestObject(HeaderItems.pageHeading)
+		TestObject pageHeader = HeaderItems.pageHeading
 		assert WebUI.getText(pageHeader).toLowerCase().contains(expectedHeading.toLowerCase())
 	}
 

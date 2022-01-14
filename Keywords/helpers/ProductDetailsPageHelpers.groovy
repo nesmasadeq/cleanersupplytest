@@ -10,8 +10,19 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import actions.ProductDetailsPageActions
 import internal.GlobalVariable
 import items.ProductDetailsPageItems
+import validations.GeneralValidations
 
 public class ProductDetailsPageHelpers {
+
+	/**
+	 * Click on AddToCart button
+	 * @author Eng. Amal Hamad
+	 */
+	public static void clickAddToCart() {
+		TestObject btnAddToCart = ProductDetailsPageItems.btnAddToCart
+		GeneralValidations.verifyButtonShadowHover(btnAddToCart)
+		WebUI.click(btnAddToCart)
+	}
 
 	/**
 	 * Get dimensions in selected size
@@ -19,10 +30,9 @@ public class ProductDetailsPageHelpers {
 	 * @return String dimensions
 	 * @author Eng. Amal Hamad
 	 */
-	public static String getSizeDimensions(String selector) {
-		TestObject testObject = findTestObject(selector)
-		System.out.println("getSizeDimensions: " + WebUI.getText(testObject))
-		String[] split = WebUI.getText(testObject).split(" - ")
+	public static String getSizeDimensions(TestObject selector) {
+		System.out.println("getSizeDimensions: " + WebUI.getText(selector))
+		String[] split = WebUI.getText(selector).split(" - ")
 		if (split.length > 0) {
 			return split[1]
 		}else {
@@ -37,9 +47,9 @@ public class ProductDetailsPageHelpers {
 	 * @author Eng. Amal Hamad
 	 */
 	public static double getProductPriceByQuantity(int currentQuantity) {
-		List<WebElement> volumeTableQty = WebUI.findWebElements(findTestObject(ProductDetailsPageItems.div_volumeTableQty),
+		List<WebElement> volumeTableQty = WebUI.findWebElements(ProductDetailsPageItems.div_volumeTableQty,
 				GlobalVariable.elementVisibilityTimeOut)
-		List<WebElement> volumeTablePrice = WebUI.findWebElements(findTestObject(ProductDetailsPageItems.div_volumeTablePrice),
+		List<WebElement> volumeTablePrice = WebUI.findWebElements(ProductDetailsPageItems.div_volumeTablePrice,
 				GlobalVariable.elementVisibilityTimeOut)
 
 		System.out.println('volumeTableQty: ' + volumeTableQty.size() +' ## volumeTablePrice: ' + volumeTablePrice.size())

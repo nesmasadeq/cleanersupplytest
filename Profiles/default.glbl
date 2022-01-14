@@ -106,12 +106,12 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'333344444211'</initValue>
+      <initValue>'4242424242424242'</initValue>
       <name>cardNumber</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'332'</initValue>
+      <initValue>'100'</initValue>
       <name>securityCode</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

@@ -23,26 +23,26 @@ import internal.GlobalVariable
 public class CartPageItems {
 
 	//----------- Product Data
-	public static String productTitle = 'Object Repository/CartPage/a_productTitle'
-	public static String productSku = 'Object Repository/CartPage/span_productSku'
-	public static String productImage = 'Object Repository/CartPage/img_productImage'
-	public static String productPrice = 'Object Repository/CartPage/td_productPrice'
-	//	public static String productListValue = 'Object Repository/ProductDetailsPage/span_productListPrice'
-	public static String productTotal = 'Object Repository/CartPage/td_productTotal'
+	public static TestObject productTitle =  findTestObject('Object Repository/CartPage/a_productTitle')
+	public static TestObject productSku =  findTestObject('Object Repository/CartPage/span_productSku')
+	public static TestObject productImage =  findTestObject('Object Repository/CartPage/img_productImage')
+	public static TestObject productPrice =  findTestObject('Object Repository/CartPage/td_productPrice')
+	//	public static TestObject productListValue =  findTestObject('Object Repository/ProductDetailsPage/span_productListPrice')
+	public static TestObject productTotal =  findTestObject('Object Repository/CartPage/td_productTotal')
 	//-----------  Cart Buttons
-	public static String divProductStock = 'Object Repository/CartPage/div_productStock'
-	public static String inputProductQty = 'Object Repository/CartPage/input_productQuantity'
-	public static String btnPlusQuantity = 'Object Repository/CartPage/button_plusQuantity'
-	public static String btnMinusQuantity = 'Object Repository/CartPage/button_minusQuantity'
+	public static TestObject divProductStock =  findTestObject('Object Repository/CartPage/div_productStock')
+	public static TestObject inputProductQty =  findTestObject('Object Repository/CartPage/input_productQuantity')
+	public static TestObject btnPlusQuantity =  findTestObject('Object Repository/CartPage/button_plusQuantity')
+	public static TestObject btnMinusQuantity =  findTestObject('Object Repository/CartPage/button_minusQuantity')
 
 	//----------- Cart Summary
-	public static String summaryValues = 'Object Repository/CartPage/td_summaryValues'
-	public static String summarySubtotalLabel = 'Object Repository/CartPage/td_summarySubtotalLabel'
-	public static String summarySubtotalValue = 'Object Repository/CartPage/td_summarySubtotalValue'
-	public static String summaryShippingValue = 'Object Repository/CartPage/td_summaryShippingValue'
-	public static String summaryTaxValue = 'Object Repository/CartPage/td_summaryTaxValue'
-	public static String summaryTotalValue = 'Object Repository/CartPage/td_summaryTotalValue'
+	public static TestObject summaryValues =  findTestObject('Object Repository/CartPage/td_summaryValues')
+	public static TestObject summarySubtotalLabel = findTestObject( 'Object Repository/CartPage/td_summarySubtotalLabel')
+	public static TestObject summarySubtotalValue =  findTestObject('Object Repository/CartPage/td_summarySubtotalValue')
+	public static TestObject summaryShippingValue = findTestObject( 'Object Repository/CartPage/td_summaryShippingValue')
+	public static TestObject summaryTaxValue = findTestObject( 'Object Repository/CartPage/td_summaryTaxValue')
+	public static TestObject summaryTotalValue =  findTestObject('Object Repository/CartPage/td_summaryTotalValue')
 	//----------- Checkout
-	public static String buttonProceedToCheckout = 'Object Repository/CartPage/button_proceedToCheckout'
+	public static TestObject buttonProceedToCheckout = findTestObject( 'Object Repository/CartPage/button_proceedToCheckout')
 
 }

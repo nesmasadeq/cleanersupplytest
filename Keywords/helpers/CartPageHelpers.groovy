@@ -11,10 +11,20 @@ import internal.GlobalVariable
 import items.CartPageItems
 import models.AppConstants
 import models.Product
+import validations.GeneralValidations
 import validations.CartPageValidations
 import validations.SelectCheckoutPageValidations
 
 public class CartPageHelpers {
+
+	/**
+	 * Click on "ProceedToCheckout" button
+	 * @author Eng. Amal Hamad
+	 */
+	public static void clickProceedToCheckoutButton() {
+		GeneralValidations.verifyButtonShadowHover(CartPageItems.buttonProceedToCheckout)
+		WebUI.click(CartPageItems.buttonProceedToCheckout)
+	}
 
 	/**
 	 * Get cart product specific data by product index in cart list
@@ -22,8 +32,8 @@ public class CartPageHelpers {
 	 * @return TestObject
 	 * @author Eng. Amal Hamad
 	 */
-	public static TestObject getCartProductDataByIndex(int index ,String dataSelector) {
-		List<WebElement> data = WebUI.findWebElements(findTestObject(dataSelector),GlobalVariable.elementVisibilityTimeOut)
+	public static TestObject getCartProductDataByIndex(int index ,TestObject dataSelector) {
+		List<WebElement> data = WebUI.findWebElements(dataSelector,GlobalVariable.elementVisibilityTimeOut)
 		TestObject object = WebUI.convertWebElementToTestObject(data.get(index))
 		return object
 	}
@@ -34,7 +44,7 @@ public class CartPageHelpers {
 	 * @author Eng. Amal Hamad
 	 */
 	public static String calculateCartProductsTotal() {
-		List<WebElement> productTotalList = WebUI.findWebElements(findTestObject(CartPageItems.productTotal),GlobalVariable.elementVisibilityTimeOut)
+		List<WebElement> productTotalList = WebUI.findWebElements(CartPageItems.productTotal,GlobalVariable.elementVisibilityTimeOut)
 		double total = 0;
 		for(WebElement element: productTotalList) {
 			TestObject productTotal = WebUI.convertWebElementToTestObject(element)
@@ -50,7 +60,7 @@ public class CartPageHelpers {
 	 * @author Eng. Amal Hamad
 	 */
 	public static String calculateSummaryTotal() {
-		List<WebElement> summaryValuesList = WebUI.findWebElements(findTestObject(CartPageItems.summaryValues),GlobalVariable.elementVisibilityTimeOut)
+		List<WebElement> summaryValuesList = WebUI.findWebElements(CartPageItems.summaryValues,GlobalVariable.elementVisibilityTimeOut)
 
 		double total = 0;
 		for(int i = 0 ;  i < summaryValuesList.size()-1 ; i++) {
@@ -71,10 +81,10 @@ public class CartPageHelpers {
 	 * @return TestObject
 	 * @author Eng. Amal Hamad
 	 */
-	public static TestObject getCartProductDataBySku(Product product , String dataSelector) {
+	public static TestObject getCartProductDataBySku(Product product , TestObject dataSelector) {
 		String productSku = product.getSku()
 
-		List<WebElement> productSkuList = WebUI.findWebElements(findTestObject(CartPageItems.productSku),GlobalVariable.elementVisibilityTimeOut)
+		List<WebElement> productSkuList = WebUI.findWebElements(CartPageItems.productSku,GlobalVariable.elementVisibilityTimeOut)
 
 		for (int i = 0 ; i < productSkuList.size() ; i++) {
 			TestObject productSkuTestObject = WebUI.convertWebElementToTestObject(productSkuList.get(i))

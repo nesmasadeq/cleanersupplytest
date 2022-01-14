@@ -22,7 +22,7 @@ public class CartPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyCartProductsData(Product... cartProducts) {
-		List<WebElement> productTitleList = WebUI.findWebElements(findTestObject(CartPageItems.productTitle),GlobalVariable.elementVisibilityTimeOut)
+		List<WebElement> productTitleList = WebUI.findWebElements(CartPageItems.productTitle,GlobalVariable.elementVisibilityTimeOut)
 		System.out.println('productTitleList: ' + productTitleList.size())
 
 		for (int i = 0 ; i < productTitleList.size() ; i++) {
@@ -100,9 +100,8 @@ public class CartPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifySummaryItemCount() {
-		List<WebElement> cartProducts = WebUI.findWebElements(findTestObject(CartPageItems.productTitle),GlobalVariable.elementVisibilityTimeOut)
-		TestObject testObject = findTestObject(CartPageItems.summarySubtotalLabel)
-		int summaryItemsCount = GeneralHelpers.convertStringToInteger(testObject)
+		List<WebElement> cartProducts = WebUI.findWebElements(CartPageItems.productTitle,GlobalVariable.elementVisibilityTimeOut)
+		int summaryItemsCount = GeneralHelpers.convertStringToInteger(CartPageItems.summarySubtotalLabel)
 		assert summaryItemsCount == cartProducts.size()
 	}
 
@@ -112,8 +111,7 @@ public class CartPageValidations {
 	 */
 	public static void verifySummarySubTotalMatchCartProductsTotal() {
 		String expectedTotal = CartPageHelpers.calculateCartProductsTotal()
-		TestObject testObject = findTestObject(CartPageItems.summarySubtotalValue)
-		assert WebUI.getText(testObject).equals(expectedTotal)
+		assert WebUI.getText(CartPageItems.summarySubtotalValue).equals(expectedTotal)
 	}
 
 	/**
@@ -121,8 +119,7 @@ public class CartPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifySummarySubTotalMatchMiniCartLabel() {
-		TestObject testObject = findTestObject(CartPageItems.summarySubtotalValue)
-		String summaryTotal = WebUI.getText(testObject)
+		String summaryTotal = WebUI.getText(CartPageItems.summarySubtotalValue)
 		HeaderValidations.verifyCartLabel(summaryTotal)
 	}
 
@@ -132,8 +129,7 @@ public class CartPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifySummaryShipping(String expectedShipping) {
-		TestObject testObject = findTestObject(CartPageItems.summaryShippingValue)
-		assert WebUI.getText(testObject).equals(expectedShipping)
+		assert WebUI.getText(CartPageItems.summaryShippingValue).equals(expectedShipping)
 	}
 
 	/**
@@ -142,8 +138,7 @@ public class CartPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifySummaryTax(String expectedTax) {
-		TestObject testObject = findTestObject(CartPageItems.summaryTaxValue)
-		assert WebUI.getText(testObject).equals(expectedTax)
+		assert WebUI.getText(CartPageItems.summaryTaxValue).equals(expectedTax)
 	}
 
 	/**
@@ -152,8 +147,7 @@ public class CartPageValidations {
 	 */
 	public static void verifySummaryTotal() {
 		String expectedTotal = CartPageHelpers.calculateSummaryTotal()
-		TestObject testObject = findTestObject(CartPageItems.summaryTotalValue)
-		assert WebUI.getText(testObject).equals(expectedTotal)
+		assert WebUI.getText(CartPageItems.summaryTotalValue).equals(expectedTotal)
 	}
 
 	/**

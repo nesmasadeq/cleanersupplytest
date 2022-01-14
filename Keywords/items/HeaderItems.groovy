@@ -23,21 +23,21 @@ import internal.GlobalVariable
 public class HeaderItems {
 
 	//----------- General
-	public static String logoImage = 'Object Repository/Header/a_headerLogo'
-	public static String customerService = 'Object Repository/Header/a_headerCustumerServicePhone'
+	public static TestObject logoImage = findTestObject('Object Repository/Header/a_headerLogo')
+	public static TestObject customerService = findTestObject('Object Repository/Header/a_headerCustumerServicePhone')
 
 	//----------- Page Heading
-	public static String pageHeading = 'Object Repository/Header/h1_pageHeader'
+	public static TestObject pageHeading =findTestObject( 'Object Repository/Header/h1_pageHeader')
 
 	//----------- Search Section
-	public static String inputSearch = 'Object Repository/Header/input_headerSearch'
-	public static String autoSuggestionSearchList = 'Object Repository/Header/div_autoSuggestionSearchList'
-	public static String searchForLabel = 'Object Repository/Header/p_searchForLabel'
-	public static String autoSuggestionSearchItems = 'Object Repository/Header/strong_autoSuggestionsInnerItems'
+	public static TestObject inputSearch = findTestObject('Object Repository/Header/input_headerSearch')
+	public static TestObject autoSuggestionSearchList = findTestObject('Object Repository/Header/div_autoSuggestionSearchList')
+	public static TestObject searchForLabel =findTestObject( 'Object Repository/Header/p_searchForLabel')
+	public static TestObject autoSuggestionSearchItems = findTestObject('Object Repository/Header/strong_autoSuggestionsInnerItems')
 
 	//----------- Cart Section
-	public static String cartCount = 'Object Repository/Header/span_cartCount'
-	public static String cartLabel = 'Object Repository/Header/span_cartLabel'
+	public static TestObject cartCount = findTestObject('Object Repository/Header/span_cartCount')
+	public static TestObject cartLabel = findTestObject('Object Repository/Header/span_cartLabel')
 
 	//----------- Navigation Links
 	public static String headerNavigation = 'ul.navbar-nav.navbar-left'

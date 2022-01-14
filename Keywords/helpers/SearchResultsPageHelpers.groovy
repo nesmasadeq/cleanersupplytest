@@ -7,11 +7,23 @@ import org.openqa.selenium.WebElement
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
+import actions.SearchResultsPageActions
 import internal.GlobalVariable
-import items.ProductRowItems
+import items.SearchResultsPageItems
 import models.Product
+import validations.GeneralValidations
+import validations.SearchResultsPageValidations
 
-public class ProductRowHelper {
+public class SearchResultsPageHelpers {
+
+	/**
+	 * Click on first product in search results
+	 * @author Eng. Amal Hamad
+	 */
+	public static void clickSearchProduct() {
+		SearchResultsPageValidations.verifyButtonShadowHover(SearchResultsPageItems.firstProductRow)
+		SearchResultsPageActions.clickSearchProduct()
+	}
 
 	/***
 	 * save product data form search result in to product object
@@ -26,20 +38,17 @@ public class ProductRowHelper {
 		//----- Save href
 		//		TestObject a_productUrl = findTestObject('ProductRow/a_productUrl')
 
-		product.setHref(WebUI.getAttribute(productUrl, 'href'))
+		product.setHref(GeneralHelpers.getFieldHref(productUrl))
 
 		//----- Save title
-		TestObject h2_productTitle = findTestObject(ProductRowItems.productTitle)
 
-		product.setTitle(WebUI.getText(h2_productTitle))
+		product.setTitle(WebUI.getText(SearchResultsPageItems.productTitle))
 
 		//----- Save image
-		TestObject img_productImage = findTestObject(ProductRowItems.productImage)
-
-		product.setImage(WebUI.getAttribute(img_productImage, 'src'))
+		product.setImage(GeneralHelpers.getImageSrc(SearchResultsPageItems.productImage))
 
 		//----- Save price
-		List<WebElement> span_productPrice = WebUI.findWebElements(findTestObject(ProductRowItems.productPrice),GlobalVariable.elementVisibilityTimeOut)
+		List<WebElement> span_productPrice = WebUI.findWebElements(SearchResultsPageItems.productPrice,GlobalVariable.elementVisibilityTimeOut)
 
 		TestObject minPrice = WebUI.convertWebElementToTestObject(span_productPrice.get(0))
 
@@ -50,7 +59,7 @@ public class ProductRowHelper {
 		product.setMaxPrice(GeneralHelpers.convertStringToDouble(maxPrice))
 
 		//----- Save price list
-		List<WebElement> span_productListValue = WebUI.findWebElements(findTestObject(ProductRowItems.productListValue),GlobalVariable.elementVisibilityTimeOut)
+		List<WebElement> span_productListValue = WebUI.findWebElements(SearchResultsPageItems.productListValue,GlobalVariable.elementVisibilityTimeOut)
 
 		TestObject minList = WebUI.convertWebElementToTestObject(span_productListValue.get(0))
 
