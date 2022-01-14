@@ -58,6 +58,18 @@ public class GeneralHelpers {
 		String priceStr = new DecimalFormat("#.00").format(price)
 		return (GlobalVariable.siteCurrency + priceStr)
 	}
+	/***
+	 * Check if page url, title and heading match the expected values
+	 * @param expectedUrl
+	 * @param expectedTitle
+	 * @param expectedHeading
+	 * @author nesma
+	 */
+	public static void CheckingPageURLTitleAndHeading(String expectedUrl, String expectedTitle, String expectedHeading) {
+		GeneralValidations.verifyCurrentPageURL(expectedUrl)
+		GeneralValidations.verifyCurrentPageTitleValue(expectedTitle)
+		GeneralValidations.verifyPageHeading(expectedHeading)
+	}
 
 	/**
 	 * Get text for this field
@@ -68,7 +80,7 @@ public class GeneralHelpers {
 	public static String getFieldText(TestObject testObject) {
 		return WebUI.getText(testObject).trim()
 	}
-	
+
 	/**
 	 * Get title attribute for this field
 	 * @param testObject

@@ -34,9 +34,9 @@ public class HeaderValidations {
 	 * @param expectedBackgroundColor
 	 * @author nesma
 	 */
-	public static void verifyTagsAndFormBackgroundColorChanged(String expectedBackgroundColor) {
+	public static void verifyTagsAndFormBackgroundColorChanged() {
 		String tagsAndFormBackgroundColor= WebUI.getCSSValue(tagsAndFormLink, 'background')
-		assert tagsAndFormBackgroundColor.contains(expectedBackgroundColor)
+		assert tagsAndFormBackgroundColor.contains('rgb(255, 255, 255)')
 	}
 
 	/***
@@ -44,9 +44,9 @@ public class HeaderValidations {
 	 * @param expectedColor
 	 * @author nesma
 	 */
-	public static void verifyTagsAndFormColorChanged(String expectedColor) {
+	public static void verifyTagsAndFormColorChanged() {
 		String tagsAndFormBackgroundColor= WebUI.getCSSValue(tagsAndFormLink, 'color')
-		assert tagsAndFormBackgroundColor.equals(expectedColor)
+		assert tagsAndFormBackgroundColor.equals('rgba(82, 36, 127, 1)')
 	}
 
 	/***
@@ -54,10 +54,10 @@ public class HeaderValidations {
 	 * @param expectedColor
 	 * @author nesma
 	 */
-	public static void VerifyComputerAndRegisterColorChanged(String expectedColor) {
+	public static void VerifyComputerAndRegisterColorChanged() {
 		TestObject computerAndRegisterLink = findTestObject('Object Repository/Header/a_computerAndRegister')
 		String ComputerAndRegisterColor = WebUI.getCSSValue(computerAndRegisterLink, 'color')
-		assert ComputerAndRegisterColor.contains(expectedColor)
+		assert ComputerAndRegisterColor.contains('rgba(0, 0, 0, 1)')
 	}
 
 	/**

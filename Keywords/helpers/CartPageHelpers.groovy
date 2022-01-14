@@ -7,10 +7,12 @@ import org.openqa.selenium.WebElement
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
-import actions.CartPageActions
 import internal.GlobalVariable
 import items.CartPageItems
+import models.AppConstants
 import models.Product
+import validations.CartPageValidations
+import validations.SelectCheckoutPageValidations
 
 public class CartPageHelpers {
 
@@ -82,5 +84,20 @@ public class CartPageHelpers {
 				return testObject
 			}
 		}
+	}
+	public static checkSummeryData(List<Product> products, boolean isCartExist , String expectedShipping,String expectedTax) {
+		//verify product data in cart
+		for(Product product : products) {
+		CartPageValidations.verifyCartProductsData(product)
+		}
+		
+		//verify product total
+		SelectCheckoutPageValidations.verifyOrderTotal()
+		
+		//verify shipping and tax in summery
+		CartPageValidations.verifyCartSummary(isCartExist, expectedShipping, expectedTax)
+		
+		//verify guest radio is checked by default
+		SelectCheckoutPageValidations.verifyGuestRadionIsChecked()
 	}
 }

@@ -11,16 +11,6 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Cleaner\'s Supply - Dry Cleaning Supplies'</initValue>
-      <name>siteTitle</name>
-   </GlobalVariableEntity>
-   <GlobalVariableEntity>
-      <description></description>
-      <initValue>'/49857c/globalassets/csius/homepage/logo.svg'</initValue>
-      <name>siteLogo</name>
-   </GlobalVariableEntity>
-   <GlobalVariableEntity>
-      <description></description>
       <initValue>10</initValue>
       <name>pageLoadTimout</name>
    </GlobalVariableEntity>
@@ -31,8 +21,13 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>10</initValue>
+      <initValue>5</initValue>
       <name>elementVisibilityTimeOut</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'plastic'</initValue>
+      <name>searchTerm</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
@@ -131,7 +126,37 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>['MNSS151AS', 'NED1005', 'SMNR70512', 'MNB135120', 'NEDBA9']</initValue>
-      <name>bulk_SKU_orders</name>
+      <initValue>'Epson Printer Indelibond Ink Ribbons #TM290, ERC27 - 6/Box - Cleaner\'s Supply'</initValue>
+      <name>casioPageTitle</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Computer &amp; Register - Cleaner\'s Supply'</initValue>
+      <name>computerAndRegiterTitle</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Tags-Forms/Computer-Register'</initValue>
+      <name>computerAndRegisterUrl</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Computer &amp; Register Tags &amp; Forms'</initValue>
+      <name>computerAndRegisterPageHeading</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Tags &amp; Forms'</initValue>
+      <name>computerAndRegisterBreadcrumb1</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Computer &amp; Register'</initValue>
+      <name>computerAndRegisterBreadcrumb2</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Ink Ribbons'</initValue>
+      <name>casioBeadcrumb</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>
