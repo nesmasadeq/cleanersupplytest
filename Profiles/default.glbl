@@ -124,4 +124,39 @@
       <initValue>'testComment'</initValue>
       <name>comment</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Epson Printer Indelibond Ink Ribbons #TM290, ERC27 - 6/Box - Cleaner\'s Supply'</initValue>
+      <name>casioPageTitle</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Computer &amp; Register - Cleaner\'s Supply'</initValue>
+      <name>computerAndRegiterTitle</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Tags-Forms/Computer-Register'</initValue>
+      <name>computerAndRegisterUrl</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Computer &amp; Register Tags &amp; Forms'</initValue>
+      <name>computerAndRegisterPageHeading</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Tags &amp; Forms'</initValue>
+      <name>computerAndRegisterBreadcrumb1</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Computer &amp; Register'</initValue>
+      <name>computerAndRegisterBreadcrumb2</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Ink Ribbons'</initValue>
+      <name>casioBeadcrumb</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

@@ -46,6 +46,6 @@ public class GeneralValidations {
 	 */
 	public static void verifyPageHeading(String expectedHeading) {
 		TestObject pageHeader = findTestObject('Object Repository/Header/h1_pageHeader')
-		assert WebUI.getText(pageHeader).contains(expectedHeading)
+		assert WebUI.getText(pageHeader).toLowerCase().contains(expectedHeading.toLowerCase())
 	}
 }

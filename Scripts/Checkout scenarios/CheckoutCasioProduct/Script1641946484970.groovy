@@ -1,8 +1,8 @@
-import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import actions.CheckoutPageActions
+import actions.HeaderActions
+import actions.ProductDetailsPageActions
 import helpers.CheckoutPageHelpers
 import helpers.ComputerAndRegisterPageHelpers
 import helpers.GeneralHelpers
@@ -12,13 +12,39 @@ import internal.GlobalVariable
 import items.CheckoutPageItems
 import models.Product
 import validations.CheckoutPageValidations
+import validations.ComputerAndRegisterPageValidations
 import validations.GeneralValidations
+import validations.HeaderValidations
+import validations.ProductDetailsPageValidations
 
+//initial checking casio product to cart
 GeneralHelpers.initScenario()
 
-HeaderHelpers.hoveringTagsAndFormLink()
+//verify hovering on tags and forms link
+HeaderActions.hoverOnTagsAndFormsLink()
 
-ComputerAndRegisterPageHelpers.clickingOnComputerAndRegisterLink()
+//verfiy displaying tags and forms menu
+HeaderValidations.verifyDisplayingTagsAndFormMenu()
+
+//verfiy tags and forms link background changed
+HeaderValidations.verifyTagsAndFormBackgroundColorChanged()
+
+//verfiy tags and forms link color changed
+HeaderValidations.verifyTagsAndFormColorChanged()
+
+//verfiy clicking on computer and register link
+HeaderActions.clickOnComputersAndRegisterLink()
+
+//verfiy computer and register link color changed
+HeaderValidations.VerifyComputerAndRegisterColorChanged()
+
+//verify computer and register page url, title and heading content
+GeneralHelpers.CheckingPageURLTitleAndHeading(GlobalVariable.computerAndRegisterUrl,
+	 GlobalVariable.computerAndRegiterTitle, GlobalVariable.computerAndRegisterPageHeading)
+
+//verify breadcrumb content
+ComputerAndRegisterPageValidations.verifyBreadcrumbContent(GlobalVariable.computerAndRegisterBreadcrumb1,
+	GlobalVariable.computerAndRegisterBreadcrumb2)
 
 ProductsFiltersHelpers.selectingManufacturer()
 
@@ -28,27 +54,54 @@ Product casioProduct = ComputerAndRegisterPageHelpers.clickingOnProdutItem()
 
 GeneralValidations.verifyCurrentPageURL(casioProduct.getHref())
 
-GeneralValidations.verifyCurrentPageTitleValue("Epson Printer Indelibond Ink Ribbons #TM290, ERC27 - 6/Box - Cleaner's Supply")
-WebUI.click(findTestObject('Object Repository/ProductDetailsPage/button_addToCart'))
+GeneralValidations.verifyCurrentPageTitleValue(GlobalVariable.casioPageTitle)
 
-//ComputerAndRegisterPageValidations.verifyBreadcrumbContent('Ink Ribbons','')
-//
-//ProductDetailsPageValidations.verifyProductTitle(casioProduct.getTitle())
+//verify breadcrumb changed in casio product page
+ProductDetailsPageValidations.verifyPageBreadcrumb(GlobalVariable.computerAndRegisterBreadcrumb1,
+	GlobalVariable.computerAndRegisterBreadcrumb2,GlobalVariable.casioBeadcrumb)
+
+//verify the cart is empty
+HeaderHelpers.checkCartIsEmpty()
+
+//verify product name is match the expected
+ProductDetailsPageValidations.verifyProductTitle(casioProduct.getTitle())
+
+//verify product price is match the expected
+ProductDetailsPageValidations.verifyProductPrice(casioProduct)
+
+//verify product price is found in the volume table
+ProductDetailsPageValidations.verifyProductPriceMatchPricingTable()
+
+//verify list value match the expected
+ProductDetailsPageValidations.verifyProductListValue(casioProduct)
+
+//verify sku value match the expected
+ProductDetailsPageActions.saveProductSkuToObject(casioProduct)
+ProductDetailsPageValidations.verifyProductSku(casioProduct.getSku())
+
+//Verify Q&A count match the expected
+ProductDetailsPageValidations.verifyProductQuestionsAnswersItemsCount()
+
+//verify image match the expected
 //ProductDetailsPageValidations.verifyProductImage(casioProduct.getImage())
-//ProductDetailsPageValidations.verifyProductSku(casioProduct.getSku())
-//
-//ProductDetailsPageValidations.verifyProductPrice(casioProduct)
-//
-//ProductDetailsPageValidations.verifyProductListValue(casioProduct)
-//
-//HeaderValidations.verifyCartCount('0')
-//
-//ProductDetailsPageValidations.verifyEnterdQuantityValue('10')
-//
-//ProductDetailsPageValidations.verifyThePriceChangeReflected(casioProduct)
-//
-//ProductDetailsPageValidations.verifyThePriceInCellEqualPrice(
-//	findTestObject('Object Repository/ProductDetailsPage/span_tablePriceMoreThan10'))
+
+//verify in stock is visible
+ProductDetailsPageValidations.verifyInStockMessageIsVisible()
+
+
+//verify entering product  quantity
+casioProduct.setQuantity(5)
+
+ProductDetailsPageActions.setProductQuantityText(casioProduct.getQuantity())
+//verify the product price changed
+ProductDetailsPageValidations.verifyPrductQuantityInputValue(casioProduct.getQuantity())
+
+ProductDetailsPageValidations.verifyProductPriceIsChanged(casioProduct)
+
+//verify the price in volume table
+ProductDetailsPageValidations.verifyThePriceInCellEqualPrice(
+	findTestObject('Object Repository/ProductDetailsPage/span_tablePriceMoreThan10'))
+ProductDetailsPageActions.clickAddToCart()
 
 //checkout scenario
 WebUI.delay(5)
