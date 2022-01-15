@@ -67,7 +67,7 @@ GeneralValidations.verifyCurrentPageURL(casioProduct.getHref())
 GeneralValidations.verifyCurrentPageTitleValue(GlobalVariable.casioPageTitle)
 
 //verify breadcrumb changed in casio product page
-ProductDetailsPageValidations.verifyPageBreadcrumb(GlobalVariable.computerAndRegisterBreadcrumb1,
+GeneralValidations.verifyPageBreadcrumb(GlobalVariable.computerAndRegisterBreadcrumb1,
 	GlobalVariable.computerAndRegisterBreadcrumb2,GlobalVariable.casioBeadcrumb)
 
 //verify the cart is empty
@@ -213,7 +213,7 @@ CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.cityField,
 CheckoutPageActions.selectState()
 
 //verify reflected value in selection
-CheckoutPageValidations.verifyTheSelectedOptionValueIsReflected(CheckoutPageItems.stateSelect, AppConstants.SELECT_STATE)
+CheckoutPageValidations.verifyTheSelectedOptionValueIsReflected(CheckoutPageItems.stateSelect, AppConstants.CHECKOUT_STATE)
 
 //verify shipping changed in summery
 CheckoutPageValidations.verifyShippingIsChanged()

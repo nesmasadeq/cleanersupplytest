@@ -66,7 +66,7 @@ public class HeaderValidations {
 	 */
 	public static void verifyHeaderLogo() {
 
-//		TestObject logoImage = findTestObject(HeaderItems.logoImage)
+		//		TestObject logoImage = findTestObject(HeaderItems.logoImage)
 		//		assert GeneralHelpers.getImageSrc(logoImage).contains(GlobalVariable.siteLogo)
 	}
 
@@ -95,7 +95,7 @@ public class HeaderValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifySearchForLabel() {
-		assert WebUI.getText(HeaderItems.searchForLabel).toLowerCase().contains(AppConstants.SEARCH_TERM)
+		assert WebUI.getText(HeaderItems.searchForLabel).toLowerCase().contains(AppConstants.SEARCH_TERM.toLowerCase())
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class HeaderValidations {
 		for (WebElement element : autoSuggestionsInnerItems) {
 			TestObject object = WebUI.convertWebElementToTestObject(element)
 			System.out.println('autoSuggestionsInnerItems: ' + WebUI.getText(object))
-			assert WebUI.getText(object).toLowerCase().contains(AppConstants.SEARCH_TERM)
+			assert WebUI.getText(object).toLowerCase().contains(AppConstants.SEARCH_TERM.toLowerCase())
 		}
 	}
 

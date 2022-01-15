@@ -30,7 +30,7 @@ public class SearchResultsPageValidations {
 	 */
 	public static void verifySubHeader() {
 		System.out.println('subPageHeader: ' + WebUI.getText(SearchResultsPageItems.pageSubHeader))
-		assert WebUI.getText(SearchResultsPageItems.pageSubHeader).toLowerCase().contains(AppConstants.SEARCH_TERM)
+		assert WebUI.getText(SearchResultsPageItems.pageSubHeader).toLowerCase().contains(AppConstants.SEARCH_TERM.toLowerCase())
 	}
 
 	/**
