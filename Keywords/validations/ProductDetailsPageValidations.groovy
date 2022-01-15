@@ -294,7 +294,7 @@ public class ProductDetailsPageValidations {
 		TestObject productSpecificationUnits = ProductDetailsPageItems.productSpecificationUnits
 		assert WebUI.getText(productTitle).toLowerCase().contains(WebUI.getText(productSpecificationUnits).toLowerCase())
 	}
-	
+
 	/**
 	 * Verify product size dimensions match expected dimensions
 	 * @param dimentions
