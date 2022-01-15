@@ -24,7 +24,7 @@ import validations.GeneralValidations
 import validations.HeaderValidations
 import validations.OrderReviewPageValidations
 import validations.ProductDetailsPageValidations
-import validations.SelectCheckoutPageValidations as SelectCheckoutPageActions
+import validations.SelectCheckoutPageValidations as SelectCheckoutPageValidations
 
 
 //initial checking casio product to cart
@@ -115,7 +115,7 @@ ProductDetailsPageValidations.verifyProductPriceMatchPricingTable()
 
 //cicking on add to cart button
 ProductDetailsPageActions.clickAddToCart()
-WebUI.waitForElementClickable(findTestObject(ProductDetailsPageItems.btnAddToCart), GlobalVariable.elementVisibilityTimeOut)
+WebUI.waitForElementClickable(ProductDetailsPageItems.btnAddToCart, GlobalVariable.elementVisibilityTimeOut)
 
 //verify cart count changed
 HeaderValidations.verifyCartCount('1')
@@ -215,6 +215,9 @@ CheckoutPageActions.selectState()
 //verify reflected value in selection
 CheckoutPageValidations.verifyTheSelectedOptionValueIsReflected(CheckoutPageItems.stateSelect, AppConstants.SELECT_STATE)
 
+//verify shipping changed in summery
+CheckoutPageValidations.verifyShippingIsChanged()
+
 //filling phone field and verify focus and values
 CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.phoneField,GlobalVariable.phone)
 
@@ -237,7 +240,7 @@ CheckoutPageValidations.verifyShippingOptionIsSelected()
 CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.cardNameField,GlobalVariable.cardName)
 
 //filling card number field and verify focus and values
-CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.cardNumberField,GlobalVariable.cardNumber)
+CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.cardNumberField,AppConstants.CHECKOUT_CARD_NUMBER)
 
 //filling security code field and verify focus and values
 CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.securityNumberField,GlobalVariable.securityCode)
@@ -246,7 +249,7 @@ CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.securityNu
 String selectedMonth = CheckoutPageHelpers.selectOptionAndVerifyReflectedValue(CheckoutPageItems.expirationDateSelect,CheckoutPageItems.mounthOptions)
 
 //selecting year randomly and verify reflected value
-CheckoutPageHelpers.selectOptionAndVerifyReflectedValue(CheckoutPageItems.expirationYearSelect,CheckoutPageItems.yearOptions)
+String selectedYear= CheckoutPageHelpers.selectOptionAndVerifyReflectedValue(CheckoutPageItems.expirationYearSelect,CheckoutPageItems.yearOptions)
 
 //verify belling address is checked by default
 CheckoutPageValidations.verifyBillingAddressIsChecked()
@@ -275,7 +278,7 @@ CartPageValidations.verifyCartProductsData(casioProduct)
 SelectCheckoutPageValidations.verifyOrderTotal()
 
 //Verify cart summary
-CartPageValidations.verifyCartSummary(false, AppConstants.SHIPPING_FREE, AppConstants.TAX_ZERO)
+CartPageValidations.verifyCartSummary(false, AppConstants.SHIPPING_TO_CALIFORNIA, AppConstants.TAX_ZERO)
 
 //Verify Order Shipping Data 
 OrderReviewPageValidations.verifyOrderShippingData()
