@@ -1,35 +1,41 @@
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import org.openqa.selenium.Keys as Keys
-import com.kms.katalon.core.testobject.TestObject as TestObject
+
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+import org.openqa.selenium.Keys
+
+import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import actions.CartPageActions as CartPageActions
-import actions.CheckoutPageActions as CheckoutPageActions
-import actions.HeaderActions as HeaderActions
-import actions.ProductDetailsPageActions as ProductDetailsPageActions
-import helpers.CartPageHelpers as CartPageHelpers
-import helpers.CheckoutPageHelpers as CheckoutPageHelpers
-import helpers.GeneralHelpers as GeneralHelpers
-import helpers.HeaderHelpers as HeaderHelpers
-import helpers.MiniCartHelpers as MiniCartHelpers
-import helpers.ProductDetailsPageHelpers as ProductDetailsPageHelpers
-import helpers.ProductsFiltersHelpers as ProductsFiltersHelpers
-import helpers.SearchResultsPageHelpers as SearchResultsPageHelpers
-import helpers.SelectCheckoutPageHelpers as SelectCheckoutPageHelpers
-import internal.GlobalVariable as GlobalVariable
-import items.CheckoutPageItems as CheckoutPageItems
-import items.HeaderItems as HeaderItems
-import items.ProductDetailsPageItems as ProductDetailsPageItems
-import items.ProductFiltersItems as ProductFiltersItems
-import models.AppConstants as AppConstants
-import models.Product as Product
-import validations.CartPageValidations as CartPageValidations
-import validations.CheckoutPageValidations as CheckoutPageValidations
-import validations.GeneralValidations as GeneralValidations
-import validations.HeaderValidations as HeaderValidations
-import validations.OrderReviewPageValidations as OrderReviewPageValidations
-import validations.ProductDetailsPageValidations as ProductDetailsPageValidations
-import validations.ProductsFiltersValidations as ProductsFiltersValidations
-import validations.SearchResultsPageValidations as SearchResultsPageValidations
+
+import actions.CartPageActions
+import actions.CheckoutPageActions
+import actions.HeaderActions
+import actions.ProductDetailsPageActions
+import helpers.CartPageHelpers
+import helpers.CheckoutPageHelpers
+import helpers.GeneralHelpers
+import helpers.HeaderHelpers
+import helpers.MiniCartHelpers
+import helpers.ProductDetailsPageHelpers
+import helpers.ProductsFiltersHelpers
+import helpers.SearchResultsPageHelpers
+import helpers.SelectCheckoutPageHelpers
+import internal.GlobalVariable
+import items.CheckoutPageItems
+import items.HeaderItems
+import items.ProductDetailsPageItems
+import items.ProductFiltersItems
+import models.AppConstants
+import models.Product
+import validations.CartPageValidations
+import validations.CheckoutPageValidations
+import validations.GeneralValidations
+import validations.HeaderValidations
+import validations.OrderReviewPageValidations
+import validations.ProductDetailsPageValidations
+import validations.ProductsFiltersValidations
+import validations.SearchResultsPageValidations
 import validations.SelectCheckoutPageValidations as SelectCheckoutPageValidations
 
 //---------------- Open Site ----------------
@@ -154,6 +160,9 @@ ProductDetailsPageValidations.verifyProductListValue(firstProduct)
 //ProductDetailsPageActions.saveProductSkuToObject(firstProduct)
 ProductDetailsPageValidations.verifyProductSku(firstProduct)
 
+//------ Verify Product Unit --------
+ProductDetailsPageValidations.verifyProductUnits()
+
 //------ Verify Q&A count --------
 ProductDetailsPageValidations.verifyProductQuestionsAnswersItemsCount()
 
@@ -203,6 +212,7 @@ ProductDetailsPageValidations.verifyProductPriceIsChanged(firstProduct)
 
 //------------------------------- Click AddToCart button  ---------------------------
 ProductDetailsPageHelpers.saveProductTitle(firstProduct)
+
 ProductDetailsPageHelpers.clickAddToCart()
 
 //ArrayList cartProducts = new ArrayList()
@@ -262,6 +272,7 @@ ProductDetailsPageValidations.verifyProductPriceIsChanged(secondProduct)
 
 //------------------------------- Click AddToCart button  ---------------------------
 ProductDetailsPageHelpers.saveProductTitle(secondProduct)
+
 ProductDetailsPageHelpers.clickAddToCart()
 
 //cartProducts.clear()
@@ -287,6 +298,7 @@ MiniCartHelpers.verifyMiniCart(secondProduct, firstProduct)
 /***************************** Cart Page *******************************/
 /***********************************************************************/
 HeaderActions.clickCartIcon()
+
 GeneralValidations.verifyCurrentPage(AppConstants.CART_PAGE_URL, AppConstants.CART_PAGE_TITLE, AppConstants.CART_PAGE_HEADING)
 
 //------ Verify products data in cart --------
@@ -395,6 +407,9 @@ CheckoutPageActions.selectState()
 
 //verify reflected value in selection
 CheckoutPageValidations.verifyTheSelectedOptionValueIsReflected(CheckoutPageItems.stateSelect, AppConstants.CHECKOUT_STATE)
+
+//verify shipping changed in summery
+CheckoutPageValidations.verifyShippingIsChanged()
 
 //verify estimation date in cart products
 CartPageValidations.verifyEstimationDeliveryDate()

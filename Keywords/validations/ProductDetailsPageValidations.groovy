@@ -286,6 +286,16 @@ public class ProductDetailsPageValidations {
 	}
 
 	/**
+	 * Verify product unit product title match expected unit in specification
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifyProductUnits() {
+		TestObject productTitle = ProductDetailsPageItems.productTitle
+		TestObject productSpecificationUnits = ProductDetailsPageItems.productSpecificationUnits
+		assert WebUI.getText(productTitle).toLowerCase().contains(WebUI.getText(productSpecificationUnits).toLowerCase())
+	}
+	
+	/**
 	 * Verify product size dimensions match expected dimensions
 	 * @param dimentions
 	 * @author Eng. Amal Hamad
