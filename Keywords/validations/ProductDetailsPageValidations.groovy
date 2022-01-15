@@ -171,6 +171,7 @@ public class ProductDetailsPageValidations {
 	 * Verify product list value in productDetailsPage between expected list range
 	 * @param product
 	 * @author Eng. Amal Hamad
+	 * @author nesma
 	 */
 	public static void verifyProductListValue(Product product) {
 		TestObject testObject = findTestObject(ProductDetailsPageItems.productListValue)
@@ -179,8 +180,12 @@ public class ProductDetailsPageValidations {
 
 		double currentValue = GeneralHelpers.convertStringToDouble(testObject)
 		product.setListValue(currentValue)
-
+		if(!product.getMaxList()==0) {
 		assert (currentValue >= product.getMinList()) && (currentValue <= product.getMaxList())
+		}else {
+			assert (currentValue >= product.getMinList())
+			
+		}
 	}
 
 	/**

@@ -84,17 +84,19 @@ ProductDetailsPageValidations.verifyProductListValue(casioProduct)
 
 //verify sku value match the expected
 ProductDetailsPageActions.saveProductSkuToObject(casioProduct)
-ProductDetailsPageValidations.verifyProductSku(casioProduct.getSku())
+ProductDetailsPageValidations.verifyProductSku(casioProduct)
 
 //Verify Q&A count match the expected
 ProductDetailsPageValidations.verifyProductQuestionsAnswersItemsCount()
 
 //verify image match the expected
-//ProductDetailsPageValidations.verifyProductImage(casioProduct.getImage())
+ProductDetailsPageValidations.verifyProductImage(casioProduct)
 
 //verify in stock is visible
 ProductDetailsPageValidations.verifyInStockMessageIsVisible()
 
+//verify product discription match the below discription
+ProductDetailsPageValidations.verifyProductDescription()
 
 //verify entering product  quantity
 casioProduct.setQuantity(5)
@@ -105,9 +107,8 @@ ProductDetailsPageValidations.verifyPrductQuantityInputValue(casioProduct.getQua
 
 ProductDetailsPageValidations.verifyProductPriceIsChanged(casioProduct)
 
-//verify the price in volume table
-ProductDetailsPageValidations.verifyThePriceInCellEqualPrice(
-	findTestObject('Object Repository/ProductDetailsPage/span_tablePriceMoreThan10'))
+//verify product price is found in the volume table
+ProductDetailsPageValidations.verifyProductPriceMatchPricingTable()
 
 //cicking on add to cart button
 ProductDetailsPageActions.clickAddToCart()
@@ -137,10 +138,10 @@ GeneralHelpers.CheckingPageURLTitleAndHeading(AppConstants.CART_PAGE_URL,
 CartPageValidations.verifyCartProductsData(casioProduct)
 
 //verify the price in summery
-CartPageValidations.verifyProductTotalAfterChangeQty(1, casioProduct)
+CartPageValidations.verifyProductTotalAfterChangeQty(0, casioProduct)
 
 //verify summery shipping and tax
-CartPageValidations.verifyCartSummary(true, AppConstants.SHIPPING_FREE, AppConstants.TAX_ZERO)
+CartPageValidations.verifyCartSummary(true, AppConstants.SHIPPING_NOT_AVAILABLE, AppConstants.TAX_TBD)
 
 //verify clicking on proceed button
 CartPageActions.clickProceedToCheckoutButton()
@@ -149,7 +150,7 @@ CartPageActions.clickProceedToCheckoutButton()
 
 //verify interstitial page url, title and heading content
 GeneralHelpers.CheckingPageURLTitleAndHeading(AppConstants.SELECT_CHECKOUT_PAGE_URL,
-	 AppConstants.SELECT_CHECKOUT_PAGE_TITLE, AppConstants.ORDER_REVIEW_PAGE_HEADING)
+	 AppConstants.SELECT_CHECKOUT_PAGE_TITLE, "")
 
 //verify header customer service
 HeaderValidations.verifyHeaderCustomerService()
@@ -161,7 +162,7 @@ CartPageValidations.verifyCartProductsData(casioProduct)
 SelectCheckoutPageValidations.verifyOrderTotal()
 
 //verify shipping and tax in summery
-CartPageValidations.verifyCartSummary(false, AppConstants.SHIPPING_FREE, AppConstants.TAX_ZERO)
+CartPageValidations.verifyCartSummary(false, AppConstants.SHIPPING_FREE, AppConstants.TAX_TBD)
 
 //verify guest radio is checked by default
 SelectCheckoutPageValidations.verifyGuestRadionIsChecked()

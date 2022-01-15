@@ -27,7 +27,7 @@ public class CheckoutPageValidations {
 	 */
 	public static void verifyFocusedField(TestObject inputField) {
 		String focusedStyle = WebUI.getCSSValue(inputField, 'border-color')
-//		assert focusedStyle.contains('rgb(99, 99, 99)')
+		//		assert focusedStyle.contains('rgb(99, 99, 99)')
 	}
 
 	/***
