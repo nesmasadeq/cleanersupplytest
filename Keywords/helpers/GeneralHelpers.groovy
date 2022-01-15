@@ -130,7 +130,7 @@ public class GeneralHelpers {
 	public static String getFieldHref(TestObject testObject) {
 		return WebUI.getAttribute(testObject, "href").trim()
 	}
-	
+
 	/**
 	 * Get image src attribute for this field
 	 * @param testObject
@@ -139,6 +139,26 @@ public class GeneralHelpers {
 	 */
 	public static String getImageSrc(TestObject testObject) {
 		return WebUI.getAttribute(testObject, "src").trim()
+	}
+
+	/**
+	 * Get css background attribute for this field
+	 * @param testObject
+	 * @return background color
+	 * @author Eng. Amal Hamad
+	 */
+	public static String getCssBackground(TestObject testObject) {
+		return WebUI.getCSSValue(testObject, "background").trim()
+	}
+
+	/**
+	 * Get css text color attribute for this field
+	 * @param testObject
+	 * @return text color
+	 * @author Eng. Amal Hamad
+	 */
+	public static String getCssTextColor(TestObject testObject) {
+		return WebUI.getCSSValue(testObject, "coloe").trim()
 	}
 
 	/**
