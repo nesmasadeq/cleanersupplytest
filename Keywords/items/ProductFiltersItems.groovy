@@ -22,37 +22,38 @@ import internal.GlobalVariable
 
 public class ProductFiltersItems {
 
-	public static String btnManufacture = 'Object Repository/Filters/btn_manufacture'
-	public static String brandFilter = 'Object Repository/Filters/div_brandFilter'
-	public static String colorGroupFilter = 'Object Repository/Filters/div_colorGroupFilter'
-	public static String designFilter = 'Object Repository/Filters/div_designFilter'
-	public static String lengthFilter = 'Object Repository/Filters/div_lengthFilter'
-	public static String materialFilter = 'Object Repository/Filters/div_materialFilter'
-	public static String sizeFilter = 'Object Repository/Filters/div_sizeFilter'
-	public static String styleFilter = 'Object Repository/Filters/div_styleFilter'
-	public static String selectManufactor = 'Object Repository/Filters/select_manufactor'
-	public static String selectModelFilter = 'Object Repository/Filters/select_modelFilter'
-	public static String materailOptionCount = 'Object Repository/Filters/span_materailOptionCount'
+	public static TestObject btnManufacture = findTestObject('Object Repository/Filters/btn_manufacture')
+	public static TestObject brandFilter =findTestObject( 'Object Repository/Filters/div_brandFilter')
+	public static TestObject colorGroupFilter = findTestObject('Object Repository/Filters/div_colorGroupFilter')
+	public static TestObject designFilter = findTestObject('Object Repository/Filters/div_designFilter')
+	public static TestObject lengthFilter = findTestObject('Object Repository/Filters/div_lengthFilter')
+	public static TestObject materialFilter = findTestObject('Object Repository/Filters/div_materialFilter')
+	public static TestObject sizeFilter =findTestObject( 'Object Repository/Filters/div_sizeFilter')
+	public static TestObject styleFilter = findTestObject('Object Repository/Filters/div_styleFilter')
+	public static TestObject selectManufactor = findTestObject('Object Repository/Filters/select_manufactor')
+	public static TestObject selectModelFilter =findTestObject( 'Object Repository/Filters/select_modelFilter')
+	public static TestObject materailOptionCount = findTestObject('Object Repository/Filters/span_materailOptionCount')
 
 	// Selected Filters
-	public static String selectedFilters = 'Object Repository/Filters/ul_selectedFilters'
+	public static TestObject selectedFilters = findTestObject('Object Repository/Filters/ul_selectedFilters')
 
 	// All Cards
-	public static String filtersCards = 'Object Repository/Filters/div_filtersCards'
-	public static String productTypeFilter = 'Object Repository/Filters/div_productTypeFilter'
+	public static TestObject filtersCards = findTestObject('Object Repository/Filters/div_filtersCards')
+	public static TestObject productTypeFilter = findTestObject('Object Repository/Filters/div_productTypeFilter')
 
 	// Specific Filters
-	public static String filtersProductType = 'Object Repository/Filters/div_filtersProductType'
+	public static TestObject filtersProductType = findTestObject('Object Repository/Filters/div_filtersProductType')
 
 	// Categories
-	public static String checkBoxPackagingProducts = 'Object Repository/Filters/chx_packagingProducts'
-	public static String countPackagingProducts = 'Object Repository/Filters/span_packagingProductsCount'
+	public static TestObject checkBoxPackagingProducts =findTestObject( 'Object Repository/Filters/chx_packagingProducts')
+	public static TestObject countPackagingProducts = findTestObject('Object Repository/Filters/span_packagingProductsCount')
 
-	public static String checkBoxPlasticBags = 'Object Repository/Filters/chx_plasticBags'
-	public static String countPlasticBags = 'Object Repository/Filters/span_plasticBagsCount'
+	public static TestObject checkBoxPlasticBags = findTestObject('Object Repository/Filters/chx_plasticBags')
+	public static TestObject countPlasticBags = findTestObject('Object Repository/Filters/span_plasticBagsCount')
+
 
 	// Colors
-	public static String checkBoxGreen = 'Object Repository/Filters/chx_green'
-	public static String countGreen = 'Object Repository/Filters/span_greenCount'
+	public static TestObject checkBoxGreen = findTestObject('Object Repository/Filters/chx_green')
+	public static TestObject countGreen = findTestObject('Object Repository/Filters/span_greenCount')
 
 }

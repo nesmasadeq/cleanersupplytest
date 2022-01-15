@@ -31,7 +31,7 @@ public class SelectCheckoutPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyPageHeading(String expectedHeading) {
-		TestObject pageHeader = findTestObject(SelectCheckoutPageItems.pageHeading)
+		TestObject pageHeader = SelectCheckoutPageItems.pageHeading
 		assert WebUI.getText(pageHeader).contains(expectedHeading)
 	}
 
@@ -40,7 +40,7 @@ public class SelectCheckoutPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyGuestRadionIsChecked() {
-		TestObject guestCheckoutRadio = findTestObject(SelectCheckoutPageItems.guestCheckoutRadio)
+		TestObject guestCheckoutRadio = SelectCheckoutPageItems.guestCheckoutRadio
 		assert WebUI.getAttribute(guestCheckoutRadio, 'checked').equals('true')
 	}
 
@@ -49,8 +49,8 @@ public class SelectCheckoutPageValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyOrderTotal() {
-		TestObject summaryTotalValue = findTestObject(CartPageItems.summaryTotalValue)
-		TestObject orderTotal = findTestObject(SelectCheckoutPageItems.orderTotal)
+		TestObject summaryTotalValue = CartPageItems.summaryTotalValue
+		TestObject orderTotal = SelectCheckoutPageItems.orderTotal
 		assert WebUI.getText(orderTotal).equals(WebUI.getText(summaryTotalValue))
 	}
 }

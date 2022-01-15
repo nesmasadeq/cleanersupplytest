@@ -14,6 +14,7 @@ import actions.HeaderActions
 import helpers.GeneralHelpers
 import internal.GlobalVariable
 import items.HeaderItems
+import models.AppConstants
 
 
 public class HeaderValidations {
@@ -65,8 +66,59 @@ public class HeaderValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyHeaderLogo() {
+<<<<<<< HEAD
 		TestObject logoImage = findTestObject(HeaderItems.logoImage)
 //		assert GeneralHelpers.getImageSrc(logoImage).contains(GlobalVariable.siteLogo)
+=======
+		assert GeneralHelpers.getImageSrc(HeaderItems.logoImage).contains(GlobalVariable.siteLogo)
+	}
+
+	/**
+	 * Verify input search place holder
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifySearchInputPlaceHolder() {
+		assert WebUI.getAttribute(HeaderItems.inputSearch, 'placeholder').equals('Search by Stock # or Keyword')
+	}
+
+	/**
+	 * Verify auto suggestion search list is visible
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifyAutoSuggestionSearchListIsVisible() {
+		TestObject div_autoSuggestionSearchList = HeaderItems.autoSuggestionSearchList
+
+		System.out.println(WebUI.getAttribute(div_autoSuggestionSearchList, 'style'))
+
+		assert WebUI.getAttribute(div_autoSuggestionSearchList, 'style').equals('')
+
+		System.out.println('getClass: ' + WebUI.getAttribute(div_autoSuggestionSearchList, 'class'))
+
+		assert WebUI.getAttribute(div_autoSuggestionSearchList, 'class').contains('open')
+	}
+
+	/**
+	 * Verify SerchFor label contains search text
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifySearchForLabel() {
+		assert WebUI.getText(HeaderItems.searchForLabel).toLowerCase().contains(AppConstants.SEARCH_TERM)
+	}
+
+	/**
+	 * Verify auto suggestions inner items contain search text
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifyAutoSuggestionsInnerItems() {
+		List<TestObject> autoSuggestionsInnerItems = WebUI.findWebElements(HeaderItems.autoSuggestionSearchItems,GlobalVariable.elementVisibilityTimeOut)
+		System.out.println('autoSuggestionsInnerItems: ' + autoSuggestionsInnerItems.size())
+
+		for (WebElement element : autoSuggestionsInnerItems) {
+			TestObject object = WebUI.convertWebElementToTestObject(element)
+			System.out.println('autoSuggestionsInnerItems: ' + WebUI.getText(object))
+			assert WebUI.getText(object).toLowerCase().contains(AppConstants.SEARCH_TERM)
+		}
+>>>>>>> 7e2b5356ee08dbf332996d55e371861be88eb47d
 	}
 
 	/**
@@ -74,8 +126,7 @@ public class HeaderValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyHeaderCustomerService() {
-		TestObject customerService = findTestObject(HeaderItems.customerService)
-		System.out.println(GeneralHelpers.getFieldText(customerService))
+		System.out.println(GeneralHelpers.getFieldText(HeaderItems.customerService))
 		//		assert GeneralHelpers.getFieldText(customerService).equals(GlobalVariable.siteLogo)
 	}
 
@@ -86,8 +137,7 @@ public class HeaderValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyCartCount(String expectedCount) {
-		TestObject cartCount = findTestObject(HeaderItems.cartCount)
-		assert WebUI.getText(cartCount).equals(expectedCount)
+		assert WebUI.getText(HeaderItems.cartCount).equals(expectedCount)
 	}
 
 
@@ -97,9 +147,8 @@ public class HeaderValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyCartLabel(String expactedLabel) {
-		TestObject cartLabel = findTestObject(HeaderItems.cartLabel)
-		System.out.println("cartLabel: " + WebUI.getText(cartLabel))
-		assert WebUI.getText(cartLabel).equals(expactedLabel)
+		System.out.println("cartLabel: " + WebUI.getText(HeaderItems.cartLabel))
+		assert WebUI.getText(HeaderItems.cartLabel).equals(expactedLabel)
 	}
 
 	/**
@@ -143,9 +192,9 @@ public class HeaderValidations {
 		TestObject link = WebUI.convertWebElementToTestObject(navLink)
 		String href = WebUI.getAttribute(link, "href")
 		String heading = WebUI.getText(link).toUpperCase()
+		System.out.println("headerNav: " + WebUI.getText(link) + " ,heading: " + WebUI.getWindowTitle() + " ,href: " + href)
 		WebUI.click(link)
 		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimout)
-		System.out.println("headerNav: " + WebUI.getText(link) + " ,heading: " + WebUI.getWindowTitle() + " ,href: " + href)
 		GeneralValidations.verifyCurrentPageURL(href)
 		//		GeneralValidations.verifyPageHeading(heading)
 		//		HeaderActions.backToHome()

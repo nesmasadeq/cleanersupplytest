@@ -34,7 +34,7 @@ public class ComputerAndRegisterPageHelpers {
 	 */
 	public static Product clickingOnProdutItem() {
 		TestObject productItem = findTestObject('Object Repository/ComputerAndRegisterPage/a_productItem')
-		Product casioProduct = ProductRowHelper.saveProductRowData(productItem)
+		Product casioProduct = SearchResultsPageHelpers.saveProductRowData(productItem)
 		//		assert WebUI.getCSSValue(productItem, 'box-shadow').contains('rgba(0, 0, 0, 0.25) 0px 0px 7px 0px')
 		WebUI.click(productItem)
 		return casioProduct

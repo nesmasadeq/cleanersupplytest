@@ -23,40 +23,40 @@ import internal.GlobalVariable
 public class ProductDetailsPageItems {
 
 	//----------- Product Data
-	public static String productTitle = 'Object Repository/ProductDetailsPage/h1_productTitle'
-	public static String productSku = 'Object Repository/ProductDetailsPage/span_productSku'
-	public static String productImage = 'Object Repository/ProductDetailsPage/img_productImage'
-	public static String productPrice = 'Object Repository/ProductDetailsPage/span_productPrice'
-	public static String productListValue = 'Object Repository/ProductDetailsPage/span_productListPrice'
-	public static String productBreadcrumb = 'Object Repository/ProductDetailsPage/span_productBreadcrumb'
-	public static String productSpecificationDimension = 'Object Repository/ProductDetailsPage/span_productSpecificationsDimension'
-	public static String productDescription = 'Object Repository/ProductDetailsPage/span_productDescription'
-	public static String productDescriptionLess = 'Object Repository/ProductDetailsPage/span_productDescriptionLess'
-	
-	public static String productQestionsAnswer = 'Object Repository/ProductDetailsPage/a_productQustionsAnswers'
-	public static String QestionsAnswerSectionTitle = 'Object Repository/ProductDetailsPage/h2_quastionAnswerTitle'
-	public static String QestionsAnswerSectionItems = 'Object Repository/ProductDetailsPage/section_quastionAnswerItems'
+	public static TestObject productTitle = findTestObject('Object Repository/ProductDetailsPage/h1_productTitle')
+	public static TestObject productSku =findTestObject( 'Object Repository/ProductDetailsPage/span_productSku')
+	public static TestObject productImage = findTestObject('Object Repository/ProductDetailsPage/img_productImage')
+	public static TestObject productPrice = findTestObject('Object Repository/ProductDetailsPage/span_productPrice')
+	public static TestObject productListValue =findTestObject( 'Object Repository/ProductDetailsPage/span_productListPrice')
+	public static TestObject productBreadcrumb = findTestObject('Object Repository/ProductDetailsPage/span_productBreadcrumb')
+	public static TestObject productSpecificationDimension = findTestObject('Object Repository/ProductDetailsPage/span_productSpecificationsDimension')
+	public static TestObject productDescription =findTestObject( 'Object Repository/ProductDetailsPage/span_productDescription')
+	public static TestObject productDescriptionLess = findTestObject('Object Repository/ProductDetailsPage/span_productDescriptionLess')
+
+	public static TestObject productQestionsAnswer = findTestObject('Object Repository/ProductDetailsPage/a_productQustionsAnswers')
+	public static TestObject QestionsAnswerSectionTitle =findTestObject( 'Object Repository/ProductDetailsPage/h2_quastionAnswerTitle')
+	public static TestObject QestionsAnswerSectionItems = findTestObject('Object Repository/ProductDetailsPage/section_quastionAnswerItems')
 
 	//----------- Product Size Options
-	public static String optionSizeXSmall = 'Object Repository/ProductDetailsPage/a_optionXSmall'
-	public static String optionSizeLarge = 'Object Repository/ProductDetailsPage/a_optionLarge'
-	public static String optionSizeXLarge = 'Object Repository/ProductDetailsPage/a_optionXLarge'
+	public static TestObject optionSizeXSmall =findTestObject( 'Object Repository/ProductDetailsPage/a_optionXSmall')
+	public static TestObject optionSizeLarge = findTestObject('Object Repository/ProductDetailsPage/a_optionLarge')
+	public static TestObject optionSizeXLarge =findTestObject( 'Object Repository/ProductDetailsPage/a_optionXLarge')
 
 	//----------- Product Color Options
-	public static String spanSelectedColor = 'Object Repository/ProductDetailsPage/span_selectedColor'
-	public static String optionColorBlack = 'Object Repository/ProductDetailsPage/a_optionColorBlack'
-	public static String optionColorBlue = 'Object Repository/ProductDetailsPage/a_optionColorBlue'
-	public static String optionColorGreen = 'Object Repository/ProductDetailsPage/a_optionColorGreen'
+	public static TestObject spanSelectedColor = findTestObject('Object Repository/ProductDetailsPage/span_selectedColor')
+	public static TestObject optionColorBlack = findTestObject('Object Repository/ProductDetailsPage/a_optionColorBlack')
+	public static TestObject optionColorBlue = findTestObject('Object Repository/ProductDetailsPage/a_optionColorBlue')
+	public static TestObject optionColorGreen =findTestObject( 'Object Repository/ProductDetailsPage/a_optionColorGreen')
 
 	//----------- Add To Cart Section
-	public static String divAddToCartSection = 'Object Repository/ProductDetailsPage/div_addToCartSection'
-	public static String divInStock = 'Object Repository/ProductDetailsPage/div_inStock'
-	public static String divOutOfStock = 'Object Repository/ProductDetailsPage/div_outOfStock'
-	public static String inputProductQty = 'Object Repository/ProductDetailsPage/input_productQty'
-	public static String btnAddToCart = 'Object Repository/ProductDetailsPage/button_addToCart'
+	public static TestObject divAddToCartSection =findTestObject( 'Object Repository/ProductDetailsPage/div_addToCartSection')
+	public static TestObject divInStock = findTestObject('Object Repository/ProductDetailsPage/div_inStock')
+	public static TestObject divOutOfStock = findTestObject('Object Repository/ProductDetailsPage/div_outOfStock')
+	public static TestObject inputProductQty = findTestObject('Object Repository/ProductDetailsPage/input_productQty')
+	public static TestObject btnAddToCart = findTestObject('Object Repository/ProductDetailsPage/button_addToCart')
 
 	//----------- Volume Pricing Table
-	public static String div_volumeTableQty = 'Object Repository/ProductDetailsPage/div_volumeTableQty'
-	public static String div_volumeTablePrice = 'Object Repository/ProductDetailsPage/div_volumeTablePrice'
+	public static TestObject div_volumeTableQty = findTestObject('Object Repository/ProductDetailsPage/div_volumeTableQty')
+	public static TestObject div_volumeTablePrice = findTestObject('Object Repository/ProductDetailsPage/div_volumeTablePrice')
 
 }

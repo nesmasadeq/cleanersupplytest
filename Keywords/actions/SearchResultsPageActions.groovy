@@ -1,4 +1,4 @@
-package items
+package actions
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -19,17 +19,15 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
+import items.SearchResultsPageItems
 
-public class ProductRowItems {
-
-	//----------- Product Data
-	public static String productHref = 'Object Repository/ProductRow/a_productUrl'
-	public static String productTitle = 'Object Repository/ProductRow/h2_productTitle'
-	public static String productImage = 'Object Repository/ProductRow/img_productImage'
-	public static String productPrice = 'Object Repository/ProductRow/span_productPrice'
-	public static String productListValue = 'Object Repository/ProductRow/span_productListValue'
-	public static String productAvailability = 'Object Repository/ProductRow/span_productAvailability'
-	public static String firstProductRow = 'Object Repository/ProductRow/div_firstProductRow'
-
-
+public class SearchResultsPageActions {
+	
+	/**
+	 * Click on first product in search results
+	 * @author Eng. Amal Hamad
+	 */
+	public static void clickSearchProduct() {
+		WebUI.click(SearchResultsPageItems.firstProductRow)
+	}
 }

@@ -1,32 +1,39 @@
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import org.openqa.selenium.Keys as Keys
-import org.openqa.selenium.WebElement as WebElement
-import com.kms.katalon.core.testobject.TestObject as TestObject
+
+import org.openqa.selenium.Keys
+
+import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import actions.CartPageActions as CartPageActions
-import actions.CheckoutPageActions as CheckoutPageActions
-import actions.HeaderActions as HeaderActions
-import actions.ProductDetailsPageActions as ProductDetailsPageActions
-import actions.SelectCheckoutPageActions as SelectCheckoutPageActions
-import helpers.CheckoutPageHelpers as CheckoutPageHelpers
-import helpers.GeneralHelpers as GeneralHelpers
-import helpers.HeaderHelpers as HeaderHelpers
-import helpers.ProductRowHelper as ProductRowHelper
-import helpers.ProductsFiltersHelpers as ProductsFiltersHelpers
-import internal.GlobalVariable as GlobalVariable
-import items.CheckoutPageItems as CheckoutPageItems
-import items.HeaderItems as HeaderItems
-import items.ProductDetailsPageItems as ProductDetailsPageItems
-import models.AppConstants as AppConstants
-import models.Order as Order
-import models.Product as Product
-import validations.CartPageValidations as CartPageValidations
-import validations.CheckoutPageValidations as CheckoutPageValidations
-import validations.GeneralValidations as GeneralValidations
-import validations.HeaderValidations as HeaderValidations
-import validations.OrderReviewPageValidations as OrderReviewPageValidations
-import validations.ProductDetailsPageValidations as ProductDetailsPageValidations
-import validations.ProductsFiltersValidations as ProductsFiltersValidations
+
+import actions.CartPageActions
+import actions.CheckoutPageActions
+import actions.HeaderActions
+import actions.ProductDetailsPageActions
+import actions.SelectCheckoutPageActions
+import helpers.CartPageHelpers
+import helpers.CheckoutPageHelpers
+import helpers.GeneralHelpers
+import helpers.HeaderHelpers
+import helpers.ProductDetailsPageHelpers
+import helpers.ProductsFiltersHelpers
+import helpers.SearchResultsPageHelpers
+import helpers.SelectCheckoutPageHelpers
+import internal.GlobalVariable
+import items.CheckoutPageItems
+import items.HeaderItems
+import items.ProductDetailsPageItems
+import items.ProductFiltersItems
+import items.SearchResultsPageItems
+import models.AppConstants
+import models.Product
+import validations.CartPageValidations
+import validations.CheckoutPageValidations
+import validations.GeneralValidations
+import validations.HeaderValidations
+import validations.OrderReviewPageValidations
+import validations.ProductDetailsPageValidations
+import validations.ProductsFiltersValidations
+import validations.SearchResultsPageValidations
 import validations.SelectCheckoutPageValidations as SelectCheckoutPageValidations
 
 //---------------- Open Site ----------------
@@ -37,97 +44,42 @@ HeaderHelpers.checkCartIsEmpty()
 
 //---------------- Search for plastic ---------------- 
 //------ inputSearch -------- 
-TestObject inputSearch = findTestObject(HeaderItems.inputSearch)
+HeaderValidations.verifySearchInputPlaceHolder()
 
-assert WebUI.getAttribute(inputSearch, 'placeholder').equals('Search by Stock # or Keyword')
+WebUI.setText(HeaderItems.inputSearch, AppConstants.SEARCH_TERM)
 
-WebUI.setText(inputSearch, AppConstants.SEARCH_TERM)
+HeaderValidations.verifyAutoSuggestionSearchListIsVisible()
 
-//------ autoSuggestionSearchList -------- 
-TestObject div_autoSuggestionSearchList = findTestObject(HeaderItems.autoSuggestionSearchList)
+HeaderValidations.verifySearchForLabel()
 
-System.out.println(WebUI.getAttribute(div_autoSuggestionSearchList, 'style'))
+HeaderValidations.verifyAutoSuggestionsInnerItems()
 
-assert WebUI.getAttribute(div_autoSuggestionSearchList, 'style').equals('')
-
-System.out.println('getClass: ' + WebUI.getAttribute(div_autoSuggestionSearchList, 'class'))
-
-assert WebUI.getAttribute(div_autoSuggestionSearchList, 'class').contains('open')
-
-//------ searchForLabel -------- 
-TestObject p_searchForLabel = findTestObject(HeaderItems.searchForLabel)
-
-assert WebUI.getText(p_searchForLabel).toLowerCase().contains(AppConstants.SEARCH_TERM)
-
-//------ autoSuggestionSearchList inner items --------
-List<TestObject> autoSuggestionsInnerItems = WebUI.findWebElements(findTestObject(HeaderItems.autoSuggestionSearchItems), 
-    GlobalVariable.elementVisibilityTimeOut)
-
-println('autoSuggestionsInnerItems: ' + autoSuggestionsInnerItems.size())
-
-for (WebElement element : autoSuggestionsInnerItems) {
-    TestObject object = WebUI.convertWebElementToTestObject(element)
-
-    System.out.println('autoSuggestionsInnerItems: ' + WebUI.getText(object))
-
-    assert WebUI.getText(object).toLowerCase().contains(AppConstants.SEARCH_TERM)
-}
-
-//------ Press Enter -------- 
-WebUI.sendKeys(inputSearch, Keys.chord(Keys.ENTER))
+WebUI.sendKeys(HeaderItems.inputSearch, Keys.chord(Keys.ENTER))
 
 /***********************************************************************/
 /************************ Search Results Page **************************/
 /***********************************************************************/
-//------ Verify Page URL --------
-GeneralValidations.verifyCurrentPageURL(AppConstants.SEARCH_PAGE_URL)
-
-//------ Verify Page Title --------
-GeneralValidations.verifyCurrentPageTitleValue(AppConstants.SEARCH_PAGE_TITLE)
-
-//------ Verify Heading --------
-GeneralValidations.verifyPageHeading(AppConstants.SEARCH_PAGE_HEADING)
-
-TestObject subPageHeader = findTestObject('SearchResultPage/h2_pageSubHeader')
-
-System.out.println('subPageHeader: ' + WebUI.getText(subPageHeader))
-
-assert WebUI.getText(subPageHeader).toLowerCase().contains(AppConstants.SEARCH_TERM)
+//------ Verify Page URL + Title + Heading --------
+GeneralValidations.verifyCurrentPage(AppConstants.SEARCH_PAGE_URL, AppConstants.SEARCH_PAGE_TITLE, AppConstants.SEARCH_PAGE_HEADING)
 
 //------ Verify filtersProductType --------
-//ProductsFiltersHelpers.openFiltersCard()
-//List<TestObject> filtersProductType = WebUI.findWebElements(findTestObject('Filters/div_filtersProductType'), 
-//    GlobalVariable.elementVisibilityTimeOut)
-//
-//println('filtersProductType: ' + filtersProductType.size())
-//
-//int sum = 0
-//
-//for (WebElement element : filtersProductType) {
-//    TestObject object = WebUI.convertWebElementToTestObject(element)
-//
-//    System.out.println('filtersProductType: ' + WebUI.getText(object))
-//
-//    int count = Integer.parseInt(WebUI.getText(object).replaceAll('\\D+', ''))
-//
-//    sum += count
-//}
-//
-//System.out.println('sum: ' + sum) //277
+SearchResultsPageValidations.verifySubHeader()
+
+//------ Verify Filters Products Count --------
+ProductsFiltersHelpers.openFiltersCard()
+
+//ProductsFiltersValidations.verifyAnyFiltersProductsCountMatchResultsCount()
 /***********************************************************************/
 //------ Check packaging products filter --------
-//ProductsFiltersHelpers.openFiltersCard()
 ProductsFiltersHelpers.checkingPackagingProductFilter()
 
-GeneralValidations.verifyCurrentPageURL('Category=Packaging+Products')
+GeneralValidations.verifyCurrentPageURL(AppConstants.FILTER_PACKAGING_PRODUCT_URL)
 
 //------ Verify filter count match product count --------
-TestObject span_packagingProductsCount = findTestObject('Object Repository/Filters/span_packagingProductsCount')
-
-ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(span_packagingProductsCount, subPageHeader)
+ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(ProductFiltersItems.countPackagingProducts)
 
 //------ Verify packagingProducts found in selected filters--------
-ProductsFiltersValidations.verifySelectedFilters('Packaging Products')
+ProductsFiltersValidations.verifySelectedFilters(AppConstants.FILTER_PACKAGING_PRODUCT)
 
 //------ Verify pagination is changed --------
 ProductsFiltersValidations.verifyPaginationIsChanged(3)
@@ -136,51 +88,40 @@ ProductsFiltersValidations.verifyPaginationIsChanged(3)
 //------ Check PalsticBags products filter --------
 ProductsFiltersHelpers.checkingPlasticBagsFilter()
 
-GeneralValidations.verifyCurrentPageURL('Category=Packaging+Products_Plastic+Bags')
+GeneralValidations.verifyCurrentPageURL(AppConstants.FILTER_PLASTIC_BAGS_URL)
 
 //------ Verify filter count match product count --------
-TestObject span_plasticBagsCount = findTestObject('Filters/span_plasticBagsCount')
-
-//ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(span_plasticBagsCount, subPageHeader)
+//ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(ProductFiltersItems.countPlasticBags)
 //------ Verify packagingProducts found in selected filters--------
-ProductsFiltersValidations.verifySelectedFilters('Packaging Products', 'Plastic Bags')
+ProductsFiltersValidations.verifySelectedFilters(AppConstants.FILTER_PACKAGING_PRODUCT, AppConstants.FILTER_PLASTIC_BAGS)
 
 //------ Verify pagination is changed --------
 ProductsFiltersValidations.verifyPaginationIsChanged(3)
 
 /***********************************************************************/
 //------ Check Green Color filter --------
-ProductsFiltersHelpers.openFiltersCard()
-
-WebUI.scrollToPosition(50, 60)
-
 ProductsFiltersHelpers.checkingGreenColorFilter()
 
-GeneralValidations.verifyCurrentPageURL('Color+Group=Green')
+GeneralValidations.verifyCurrentPageURL(AppConstants.FILTER_COLOR_GREEN_URL)
 
 //------ Verify filter count match product count --------
-TestObject span_greenCount = findTestObject('Filters/span_greenCount')
+ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(ProductFiltersItems.countGreen)
 
-ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(span_greenCount, subPageHeader)
+ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(ProductFiltersItems.countPackagingProducts)
 
-ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(span_packagingProductsCount, subPageHeader)
-
-ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(span_plasticBagsCount, subPageHeader)
+ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(ProductFiltersItems.countPlasticBags)
 
 //------ Verify packagingProducts found in selected filters--------
-ProductsFiltersValidations.verifySelectedFilters('Packaging Products', 'Plastic Bags', 'Green')
+ProductsFiltersValidations.verifySelectedFilters(AppConstants.FILTER_PACKAGING_PRODUCT, AppConstants.FILTER_PLASTIC_BAGS, 
+    AppConstants.FILTER_COLOR_GREEN)
 
 /***********************************************************************/
 //Save Product data in this Cell & Click product
 TestObject a_productUrl = findTestObject('ProductRow/a_productUrl')
 
-Product firstProduct = ProductRowHelper.saveProductRowData(a_productUrl)
+Product firstProduct = SearchResultsPageHelpers.saveProductRowData(a_productUrl)
 
-TestObject div_firstProductRow = findTestObject('ProductRow/div_firstProductRow')
-
-ProductDetailsPageValidations.verifyButtonShadowHover(div_firstProductRow)
-
-WebUI.click(div_firstProductRow)
+SearchResultsPageHelpers.clickSearchProduct()
 
 /***********************************************************************/
 /*********************** Product Details Page **************************/
@@ -262,12 +203,12 @@ ProductDetailsPageValidations.verifyPrductQuantityInputValue(firstProduct.getQua
 ProductDetailsPageValidations.verifyProductPriceIsChanged(firstProduct)
 
 //------------------------------- Click AddToCart button  ---------------------------
-ProductDetailsPageActions.clickAddToCart()
+ProductDetailsPageHelpers.clickAddToCart()
 
 //ArrayList cartProducts = new ArrayList()
 //cartProducts.add(firstProduct)
 //------ Verify Product Quantity is changed --------
-WebUI.waitForElementClickable(findTestObject(ProductDetailsPageItems.btnAddToCart), GlobalVariable.elementVisibilityTimeOut)
+WebUI.waitForElementClickable(ProductDetailsPageItems.btnAddToCart, GlobalVariable.elementVisibilityTimeOut)
 
 ProductDetailsPageValidations.verifyPrductQuantityInputValue(1)
 
@@ -311,13 +252,13 @@ ProductDetailsPageValidations.verifyPrductQuantityInputValue(secondProduct.getQu
 ProductDetailsPageValidations.verifyProductPriceIsChanged(secondProduct)
 
 //------------------------------- Click AddToCart button  ---------------------------
-ProductDetailsPageActions.clickAddToCart()
+ProductDetailsPageHelpers.clickAddToCart()
 
 //cartProducts.clear()
 //cartProducts.add(firstProduct)
 //cartProducts.add(secondProduct)
 //------ Verify Product Quantity is changed --------
-WebUI.waitForElementClickable(findTestObject(ProductDetailsPageItems.btnAddToCart), GlobalVariable.elementVisibilityTimeOut)
+WebUI.waitForElementClickable(ProductDetailsPageItems.btnAddToCart, GlobalVariable.elementVisibilityTimeOut)
 
 ProductDetailsPageValidations.verifyPrductQuantityInputValue(1)
 
@@ -364,7 +305,7 @@ CartPageValidations.verifyCartSummary(true, AppConstants.SHIPPING_NOT_AVAILABLE,
 CartPageValidations.verifyProductTotalAfterChangeQty(1, firstProduct)
 
 //------ Click ProceedToCheckout Button --------
-CartPageActions.clickProceedToCheckoutButton()
+CartPageHelpers.clickProceedToCheckoutButton()
 
 /***********************************************************************/
 /******************* Checkout Interstitial Page ************************/
@@ -394,7 +335,7 @@ CartPageValidations.verifyCartSummary(false, AppConstants.SHIPPING_FREE, AppCons
 SelectCheckoutPageValidations.verifyGuestRadionIsChecked()
 
 //------ Click Continue button --------
-SelectCheckoutPageActions.clickContinueButton()
+SelectCheckoutPageHelpers.clickContinueButton()
 
 /***********************************************************************/
 /************************** Checkout Page ******************************/
@@ -421,40 +362,40 @@ SelectCheckoutPageValidations.verifyOrderTotal()
 CartPageValidations.verifyCartSummary(false, AppConstants.SHIPPING_FREE, AppConstants.TAX_ZERO)
 
 //filling company field and verify focus and values
-CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.companyField, GlobalVariable.companyFieldContent)
+CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.companyField, AppConstants.CHECKOUT_COMPANY)
 
 //filling first name field and verify focus and values
-CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.firstNameField, GlobalVariable.firstName)
+CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.firstNameField, AppConstants.CHECKOUT_FNAME)
 
 //filling last name field and verify focus and values
-CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.lastNameField, GlobalVariable.lastName)
+CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.lastNameField, AppConstants.CHECKOUT_LNAME)
 
 //filling address1 field and verify focus and values
-CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.firstAddressField, GlobalVariable.address1)
+CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.firstAddressField, AppConstants.CHECKOUT_ADDRESS_1)
 
 //filling address2 field and verify focus and values
-CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.secondAddressField, GlobalVariable.address2)
+CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.secondAddressField, AppConstants.CHECKOUT_ADDRESS_2)
 
 //filling zip code field and verify focus and values
-CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.zipCodeField, GlobalVariable.zipCode)
+CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.zipCodeField, AppConstants.CHECKOUT_POSTAL_CODE)
 
 //filling city field and verify focus and values
-CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.cityField, GlobalVariable.city)
+CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.cityField, AppConstants.CHECKOUT_CITY)
 
 //select state
 CheckoutPageActions.selectState()
 
 //verify reflected value in selection
-CheckoutPageValidations.verifyTheSelectedOptionValueIsReflected(CheckoutPageItems.stateSelect, 'California')
+CheckoutPageValidations.verifyTheSelectedOptionValueIsReflected(CheckoutPageItems.stateSelect, AppConstants.CHECKOUT_STATE)
 
 //filling phone field and verify focus and values
-CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.phoneField, GlobalVariable.phone)
+CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.phoneField, AppConstants.CHECKOUT_PHONE)
 
 //filling ext field and verify focus and values
-CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.extField, GlobalVariable.ext)
+CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.extField, AppConstants.CHECKOUT_EXT)
 
 //filling email field and verify focus and values
-CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.emailField, GlobalVariable.email)
+CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.emailField, AppConstants.CHECKOUT_EMAIL)
 
 //verify the fast free section is appeared
 CheckoutPageValidations.verifyTheFastFreeSectionIsAppeared()
@@ -466,13 +407,13 @@ CheckoutPageActions.clickOnCollapse()
 CheckoutPageValidations.verifyShippingOptionIsSelected()
 
 //filling name on card field and verify focus and values
-CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.cardNameField, GlobalVariable.cardName)
+CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.cardNameField, AppConstants.CHECKOUT_CARD_HOLDER)
 
 //filling card number field and verify focus and values
-CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.cardNumberField, '4444444444444444')
+CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.cardNumberField, AppConstants.CHECKOUT_CARD_NUMBER)
 
 //filling security code field and verify focus and values
-CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.securityNumberField, GlobalVariable.securityCode)
+CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.securityNumberField, AppConstants.CHECKOUT_CARD_CVV)
 
 //selecting expiration date randomly and verify reflected value
 String selectedMonth = CheckoutPageHelpers.selectOptionAndVerifyReflectedValue(CheckoutPageItems.expirationDateSelect, CheckoutPageItems.mounthOptions)
@@ -484,10 +425,10 @@ String selectedYear = CheckoutPageHelpers.selectOptionAndVerifyReflectedValue(Ch
 CheckoutPageValidations.verifyBillingAddressIsChecked()
 
 //filling pon number field and verify focus and values
-CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.poField, GlobalVariable.po)
+CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.poField, AppConstants.CHECKOUT_PO)
 
 //fill comment field and verify reflected value
-CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.commentsField, GlobalVariable.comment)
+CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.commentsField, AppConstants.CHECKOUT_COMMENT)
 
 //click on review order button
 CheckoutPageActions.clickOnReviewOrderButton()
@@ -531,3 +472,6 @@ OrderReviewPageValidations.verifyOrderPaymentData(selectedMonth, selectedYear)
 OrderReviewPageValidations.verifyPoInput()
 
 OrderReviewPageValidations.verifyCommentsInput()
+
+//---------------- Close Site ----------------
+WebUI.closeBrowser()
