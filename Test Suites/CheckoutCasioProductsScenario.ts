@@ -15,6 +15,6 @@
       <guid>92768e94-a327-400a-a7e6-7ee56ceb55e3</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Checkout scenarios/CheckoutCasioProduct</testCaseId>
+      <testCaseId>Test Cases/Checkout scenarios/CheckoutProductWithCategory</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>
