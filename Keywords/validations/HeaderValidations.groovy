@@ -66,11 +66,9 @@ public class HeaderValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyHeaderLogo() {
-<<<<<<< HEAD
+
 		TestObject logoImage = findTestObject(HeaderItems.logoImage)
-//		assert GeneralHelpers.getImageSrc(logoImage).contains(GlobalVariable.siteLogo)
-=======
-		assert GeneralHelpers.getImageSrc(HeaderItems.logoImage).contains(GlobalVariable.siteLogo)
+		//		assert GeneralHelpers.getImageSrc(logoImage).contains(GlobalVariable.siteLogo)
 	}
 
 	/**
@@ -118,7 +116,6 @@ public class HeaderValidations {
 			System.out.println('autoSuggestionsInnerItems: ' + WebUI.getText(object))
 			assert WebUI.getText(object).toLowerCase().contains(AppConstants.SEARCH_TERM)
 		}
->>>>>>> 7e2b5356ee08dbf332996d55e371861be88eb47d
 	}
 
 	/**

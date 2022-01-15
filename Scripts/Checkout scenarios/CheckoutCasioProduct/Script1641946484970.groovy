@@ -1,8 +1,12 @@
-import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+import actions.CartPageActions
 import actions.CheckoutPageActions
 import actions.HeaderActions
 import actions.ProductDetailsPageActions
+import actions.SelectCheckoutPageActions
 import helpers.CheckoutPageHelpers
 import helpers.ComputerAndRegisterPageHelpers
 import helpers.GeneralHelpers
@@ -11,17 +15,16 @@ import helpers.ProductsFiltersHelpers
 import internal.GlobalVariable
 import items.CheckoutPageItems
 import items.ProductDetailsPageItems
+import models.AppConstants
 import models.Product
+import validations.CartPageValidations
 import validations.CheckoutPageValidations
 import validations.ComputerAndRegisterPageValidations
 import validations.GeneralValidations
 import validations.HeaderValidations
+import validations.OrderReviewPageValidations
 import validations.ProductDetailsPageValidations
-import models.AppConstants as AppConstants
-import validations.CartPageValidations as CartPageValidations
-import actions.CartPageActions as CartPageActions
-import validations.SelectCheckoutPageValidations as SelectCheckoutPageValidations
-import actions.SelectCheckoutPageActions as SelectCheckoutPageActions
+import validations.SelectCheckoutPageValidations as SelectCheckoutPageActions
 
 
 //initial checking casio product to cart
@@ -240,7 +243,7 @@ CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.cardNumber
 CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.securityNumberField,GlobalVariable.securityCode)
 
 //selecting expiration date randomly and verify reflected value
-CheckoutPageHelpers.selectOptionAndVerifyReflectedValue(CheckoutPageItems.expirationDateSelect,CheckoutPageItems.mounthOptions)
+String selectedMonth = CheckoutPageHelpers.selectOptionAndVerifyReflectedValue(CheckoutPageItems.expirationDateSelect,CheckoutPageItems.mounthOptions)
 
 //selecting year randomly and verify reflected value
 CheckoutPageHelpers.selectOptionAndVerifyReflectedValue(CheckoutPageItems.expirationYearSelect,CheckoutPageItems.yearOptions)
@@ -257,3 +260,39 @@ CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.commentsFi
 //click on review order button
 CheckoutPageActions.clickOnReviewOrderButton()
 
+
+//-------- Order Review Page ------------//
+//verify order review page url, title and heading content
+GeneralHelpers.CheckingPageURLTitleAndHeading(AppConstants.ORDER_REVIEW_PAGE_URL,
+	 AppConstants.ORDER_REVIEW_PAGE_TITLE, AppConstants.ORDER_REVIEW_PAGE_HEADING)
+//verify header customer services
+HeaderValidations.verifyHeaderCustomerService()
+
+// verify product data in cart
+CartPageValidations.verifyCartProductsData(casioProduct)
+
+//verify order total
+SelectCheckoutPageValidations.verifyOrderTotal()
+
+//Verify cart summary
+CartPageValidations.verifyCartSummary(false, AppConstants.SHIPPING_FREE, AppConstants.TAX_ZERO)
+
+//Verify Order Shipping Data 
+OrderReviewPageValidations.verifyOrderShippingData()
+
+//click on fast free collapse
+CheckoutPageActions.clickOnCollapse()
+
+//verify shipping option is selected
+CheckoutPageValidations.verifyShippingOptionIsSelected()
+
+//Verify Order Payment Data
+OrderReviewPageValidations.verifyOrderPaymentData(selectedMonth, selectedYear)
+
+//Verify Order inputs field
+OrderReviewPageValidations.verifyPoInput()
+
+OrderReviewPageValidations.verifyCommentsInput()
+
+//---------------- Close Site ----------------
+WebUI.closeBrowser()
