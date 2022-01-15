@@ -85,5 +85,9 @@ public class AppConstants {
 
 	public static final String CHECKOUT_PO = "1234";
 	public static final String CHECKOUT_COMMENT = "testComment";
+	
+	// Footer data
+	public static final String EXClUSIVE_EMAIL ="Exclusive email specials";
+	
 
 }
