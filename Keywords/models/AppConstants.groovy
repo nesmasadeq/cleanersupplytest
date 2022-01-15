@@ -101,6 +101,37 @@ public class AppConstants {
 
 	// Footer data
 	public static final String EXClUSIVE_EMAIL ="Exclusive email specials";
+	public static final String EXClUSIVE_EMAIL_DESCRIPTION ="Get Specials, Exclusive Promotions & Updates";
+	public static final String SIGNUP_SUCCESSMESSAE = "Thanks for signing up";
+	public static final String FOLLOW_US = "Follow Us";
+	public static final String CONNECT_WITH_US = "CONNECT WITH US"
+	public static final String CONTACT_EMAIL = "customerservice@cleanersupply.com"
+	public static final String CONTACT_TIME = "Monday - Friday 8am - 8pm EST"
+	public static final String ENGLISH_SPEAKER = "1-800-388-5410"
+	public static final String KOREAN_SPEAKER = "1-800-388-0190"
+	public static final String ITERNATIONAL_SPEAKER = "1-607-584-5853"
+	public static final String CHAT_OFFLINE = "Chat Offline"
+	public static final String CATALOG_REQUEST = "Request a Catalog"
+	public static final String FREE_CLASSIFIDES = "Free Classifieds"
+	public static final String USA = "USA"
+	public static final String CANADA = "Canada"
+	public static final String CANADA_SELECT_VALUE = "https://www.cleanersupply.ca/"
+	public static final String COPY_RIGHTS = "© 2022 Cleaner’s Supply ® All Rights Reserved"
+	public static final String TERM_OF_USE ="Terms of Use"
+	public static final String POLICY ="Privacy Policy"
+	public static final String REQUEST_CATALOG_URL ="https://www.cleanersupply.com/request-a-catalog/"
+	public static final String REQUEST_CATALOG_TITLE ="Request A Catalog – Free Monthly Printed Catalog - Cleaner's Supply"
+	public static final String REQUEST_CATALOG_HEADING ="LET’S GET STARTED"
+	public static final String CLASSIFIDE_URL ="https://www.cleanersupply.com/classifieds-list/"
+	public static final String CLASSIFIDE_TITLE ="Classifieds List - Cleaner's Supply"
+	public static final String CLASSIFIDE_HEADING ="CLASSIFIEDS"
+	public static final String INFO_HELPER ="ALL PRICES IN CANADIAN"
+	public static final String TERMS_URL ="https://www.cleanersupply.ca/terms-of-use/"
+	public static final String TERMS_TITLE ="Terms of Use - Cleaner's Supply"
+	public static final String TERMS_HEADING ="Terms of Use"
+	public static final String POLICY_URL ="https://www.cleanersupply.com/privacy-policy/"
+	public static final String POLICY_TITLE ="Privacy Policy - Cleaner's Supply"
+	public static final String POLICY_HEADING ="Privacy Policy"
 
 
 }

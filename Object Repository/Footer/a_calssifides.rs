@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_facebook</name>
+   <name>a_calssifides</name>
    <tag></tag>
-   <elementGuidId>7f7e4456-b403-4369-90f0-d325b035868f</elementGuidId>
+   <elementGuidId>d4454332-1222-42fa-9e2e-7e66300fe78d</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
@@ -11,7 +11,7 @@
       </entry>
       <entry>
          <key>CSS</key>
-         <value>.icon-facebook</value>
+         <value>.icon-classifieds +a</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_youtube</name>
+   <name>a_socialMediaLinks</name>
    <tag></tag>
-   <elementGuidId>3a008dd7-0fd5-4466-af08-030cb0b9ab77</elementGuidId>
+   <elementGuidId>1f39178d-2f5d-4698-884b-ea899218ff7d</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
@@ -11,7 +11,7 @@
       </entry>
       <entry>
          <key>CSS</key>
-         <value>.icon-youtube</value>
+         <value>.social-icons a</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>
