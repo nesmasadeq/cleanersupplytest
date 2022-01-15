@@ -22,10 +22,10 @@ import internal.GlobalVariable
 
 public class OrderReviewPageItems {
 
-	public static TestObject shippingData = findTestObject('Object Repository/OrderReview/span_orderShippingAddress')
-	public static TestObject paymentData = findTestObject('Object Repository/OrderReview/span_orderInfoHolder')
-	public static TestObject inputPo = findTestObject('Object Repository/OrderReview/input_orderPo')
-	public static TestObject inputComments = findTestObject('Object Repository/OrderReview/input_comments')
-	public static TestObject submitOrderButton = findTestObject('Object Repository/OrderReview/a_submitOrder')
-	
+	public static TestObject shippingData = findTestObject('OrderReviewPage/span_orderShippingAddress')
+	public static TestObject shippingCountry = findTestObject('Object Repository/OrderReviewPage/span_orderCountry')
+	public static TestObject paymentData = findTestObject('OrderReviewPage/span_orderInfoHolder')
+	public static TestObject inputPo = findTestObject('OrderReviewPage/input_orderPo')
+	public static TestObject inputComments = findTestObject('OrderReviewPage/input_comments')
+	public static TestObject submitOrderButton = findTestObject('OrderReviewPage/a_submitOrder')
 }

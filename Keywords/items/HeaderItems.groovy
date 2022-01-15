@@ -28,7 +28,8 @@ public class HeaderItems {
 
 	//----------- Page Heading
 	public static TestObject pageHeading =findTestObject( 'Object Repository/Header/h1_pageHeader')
-
+	public static TestObject pageBreadcrumb = findTestObject('Object Repository/Header/span_pageBreadcrumb')
+	
 	//----------- Search Section
 	public static TestObject inputSearch = findTestObject('Object Repository/Header/input_headerSearch')
 	public static TestObject autoSuggestionSearchList = findTestObject('Object Repository/Header/div_autoSuggestionSearchList')

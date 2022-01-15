@@ -10,10 +10,20 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import actions.ProductDetailsPageActions
 import internal.GlobalVariable
 import items.ProductDetailsPageItems
+import models.Product
 import validations.GeneralValidations
 
 public class ProductDetailsPageHelpers {
 
+	/**
+	 * Verify product title in productDetailsPage match expected title
+	 * @param productTitel
+	 * @author Eng. Amal Hamad
+	 */
+	public static void saveProductTitle(Product product) {
+		product.setTitle(WebUI.getText(ProductDetailsPageItems.productTitle))
+	}
+	
 	/**
 	 * Click on AddToCart button
 	 * @author Eng. Amal Hamad

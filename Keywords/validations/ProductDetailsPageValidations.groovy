@@ -14,12 +14,12 @@ import helpers.ProductDetailsPageHelper
 import helpers.ProductDetailsPageHelpers
 import internal.GlobalVariable
 import items.ProductDetailsPageItems
+import models.AppConstants
 import models.Product
 
 public class ProductDetailsPageValidations {
 
 	static TestObject priceLable = findTestObject('Object Repository/ProductDetailsPage/span_productPrice')
-
 
 	/**
 	 * Verify product title in productDetailsPage match expected title
@@ -28,23 +28,6 @@ public class ProductDetailsPageValidations {
 	 */
 	public static void verifyProductTitle(String value) {
 		assert WebUI.getText(ProductDetailsPageItems.productTitle).toLowerCase().contains(value.toLowerCase())
-	}
-
-	/**
-	 * Verify page breadCrumb links
-	 * @param breadcrumbLinks
-	 * @author Eng. Amal Hamad
-	 */
-	public static void verifyPageBreadcrumb(String... breadcrumbLinks) {
-		List<WebElement> productBreadcrumb = WebUI.findWebElements(ProductDetailsPageItems.productBreadcrumb,GlobalVariable.elementVisibilityTimeOut)
-
-		for(int i = 0 ; i<productBreadcrumb.size() ; i++) {
-			TestObject object = WebUI.convertWebElementToTestObject(productBreadcrumb.get(i))
-			System.out.println('productBreadcrumb: ' + WebUI.getText(object))
-			if(!WebUI.getText(object).equals("")) {
-				assert breadcrumbLinks[i].equals( WebUI.getText(object))
-			}
-		}
 	}
 
 	/**
@@ -349,15 +332,15 @@ public class ProductDetailsPageValidations {
 
 
 	/**
-	 * Verify OutOfStock message is visible
+	 * Verify OutOfStock message is visible and match expected value
 	 * @author Eng. Amal Hamad
 	 */
-	public static void verifyOutOfStockMessageIsVisible() {
+	public static void verifyOutOfStockMessageIsVisible(String expectedValue) {
 		TestObject testObject = ProductDetailsPageItems.divOutOfStock
 		WebUI.verifyElementPresent(testObject , GlobalVariable.elementVisibilityTimeOut , FailureHandling.OPTIONAL)
-		assert WebUI.getText(testObject).contains("Currently Unavailable.")
-		System.out.println("outOfStock: " + WebUI.getCSSValue(testObject, "color"))
-		assert WebUI.getCSSValue(testObject, "color").equals("rgba(237, 28, 36, 1)")
+		assert WebUI.getText(testObject).contains(expectedValue)
+		//		System.out.println("outOfStock: " + WebUI.getCSSValue(testObject, "color"))
+		assert GeneralHelpers.getCssTextColor(testObject).equals("rgba(237, 28, 36, 1)")
 	}
 
 	/**
@@ -367,9 +350,9 @@ public class ProductDetailsPageValidations {
 	public static void verifyInStockMessageIsVisible() {
 		TestObject testObject = ProductDetailsPageItems.divInStock
 		WebUI.verifyElementPresent(testObject , GlobalVariable.elementVisibilityTimeOut , FailureHandling.OPTIONAL)
-		assert WebUI.getText(testObject).contains("In Stock!")
+		assert WebUI.getText(testObject).contains(AppConstants.IN_STOCK)
 		System.out.println("inStock: " + WebUI.getCSSValue(testObject, "color"))
-		assert WebUI.getCSSValue(testObject, "color").equals("rgba(0, 137, 63, 1)")
+		assert GeneralHelpers.getCssTextColor(testObject).equals("rgba(0, 137, 63, 1)")
 	}
 
 	/**

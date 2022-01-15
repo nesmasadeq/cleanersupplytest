@@ -48,7 +48,7 @@ public class CartPageHelpers {
 		double total = 0;
 		for(WebElement element: productTotalList) {
 			TestObject productTotal = WebUI.convertWebElementToTestObject(element)
-			String textWithNumber = WebUI.getAttribute(productTotal , 'innerText').replaceAll("[^\\d.]", "")
+			String textWithNumber = GeneralHelpers.getFieldInnerText(productTotal).replaceAll("[^\\d.]", "")
 			total +=  Double.parseDouble(textWithNumber)
 		}
 		return GeneralHelpers.formatePrice(total)
@@ -98,15 +98,15 @@ public class CartPageHelpers {
 	public static checkSummeryData(List<Product> products, boolean isCartExist , String expectedShipping,String expectedTax) {
 		//verify product data in cart
 		for(Product product : products) {
-		CartPageValidations.verifyCartProductsData(product)
+			CartPageValidations.verifyCartProductsData(product)
 		}
-		
+
 		//verify product total
 		SelectCheckoutPageValidations.verifyOrderTotal()
-		
+
 		//verify shipping and tax in summery
 		CartPageValidations.verifyCartSummary(isCartExist, expectedShipping, expectedTax)
-		
+
 		//verify guest radio is checked by default
 		SelectCheckoutPageValidations.verifyGuestRadionIsChecked()
 	}

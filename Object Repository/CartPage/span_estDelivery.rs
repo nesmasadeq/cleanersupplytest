@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>span_productBreadcrumb</name>
+   <name>span_estDelivery</name>
    <tag></tag>
-   <elementGuidId>623a89ea-43d4-4850-9539-b354340e8448</elementGuidId>
+   <elementGuidId>5160ce66-2e6d-49dd-b79b-786e29011c93</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>ul.breadcrumb span[itemprop=&quot;name&quot;]</value>
+         <value>table.product-table td.product-item__details div.stock-notification span</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

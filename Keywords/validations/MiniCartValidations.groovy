@@ -43,9 +43,9 @@ public class MiniCartValidations {
 			System.out.println(currentProduct.toString())
 
 			TestObject productTitle = WebUI.convertWebElementToTestObject(productTitleList.get(i))
-			CartPageValidations.verifyHoverOverProductTitle(productTitle)
+			GeneralValidations.verifyLinkUnderlineHover(productTitle)
 			System.out.println('productTitle: ' + WebUI.getText(productTitle))
-			//			assert  WebUI.getText(productTitle).toLowerCase().contains(currentProduct.getTitle().toLowerCase())
+			assert  WebUI.getText(productTitle).contains(currentProduct.getTitle())
 
 			TestObject productSku = CartPageHelpers.getCartProductDataByIndex(i, MiniCartItems.productSku)
 			System.out.println('productSku: ' + WebUI.getText(productSku))

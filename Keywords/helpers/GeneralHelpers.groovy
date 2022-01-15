@@ -158,7 +158,7 @@ public class GeneralHelpers {
 	 * @author Eng. Amal Hamad
 	 */
 	public static String getCssTextColor(TestObject testObject) {
-		return WebUI.getCSSValue(testObject, "coloe").trim()
+		return WebUI.getCSSValue(testObject, "color").trim()
 	}
 
 	/**

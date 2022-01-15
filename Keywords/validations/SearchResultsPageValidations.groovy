@@ -34,6 +34,15 @@ public class SearchResultsPageValidations {
 	}
 
 	/**
+	 * Verify bottom pagination is hidden
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifyPaginatioIsHidden() {
+		WebUI.verifyElementNotPresent(SearchResultsPageItems.paginationLinks, GlobalVariable.elementVisibilityTimeOut , FailureHandling.OPTIONAL)
+	}
+
+
+	/**
 	 * Verify shadow after product cell hovering
 	 * @param button
 	 * @author Eng. Amal Hamad
