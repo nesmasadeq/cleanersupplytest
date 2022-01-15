@@ -23,7 +23,7 @@ public class GeneralHelpers {
 		Navigations.navigateToHomePage()
 		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimout)
 		GeneralValidations.verifyCurrentPageURL(GlobalVariable.baseUrl)
-//		GeneralValidations.verifyCurrentPageTitleValue(GlobalVariable.siteTitle)
+		//		GeneralValidations.verifyCurrentPageTitleValue(GlobalVariable.siteTitle)
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class GeneralHelpers {
 	public static String getFieldHref(TestObject testObject) {
 		return WebUI.getAttribute(testObject, "href").trim()
 	}
-	
+
 	/**
 	 * Get image src attribute for this field
 	 * @param testObject

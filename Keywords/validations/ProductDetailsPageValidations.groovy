@@ -180,10 +180,9 @@ public class ProductDetailsPageValidations {
 		double currentValue = GeneralHelpers.convertStringToDouble(testObject)
 		product.setListValue(currentValue)
 		if(!product.getMaxList()==0) {
-		assert (currentValue >= product.getMinList()) && (currentValue <= product.getMaxList())
+			assert (currentValue >= product.getMinList()) && (currentValue <= product.getMaxList())
 		}else {
 			assert (currentValue >= product.getMinList())
-			
 		}
 	}
 
