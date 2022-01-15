@@ -29,18 +29,6 @@ public class HeaderActions {
 	}
 
 	/**
-	 * Hover over Cart icon in Header
-	 * @author Eng. Amal Hamad
-	 */
-	public static void hoverCartIcon(TestObject testObject) {
-		System.out.println("Before Hover: " + WebUI.getCSSValue(testObject, 'background'))
-		assert WebUI.getCSSValue(testObject, "color").contains("rgb(255, 255, 255)")
-		WebUI.mouseOver(testObject)
-		System.out.println("After Hover: " + WebUI.getCSSValue(testObject, 'background'))
-		assert WebUI.getCSSValue(testObject, "color").contains("rgb(119, 120, 123)")
-	}
-
-	/**
 	 * Click on Cart icon in header
 	 * @author Eng. Amal Hamad
 	 */

@@ -142,6 +142,26 @@ public class GeneralHelpers {
 	}
 
 	/**
+	 * Get css background attribute for this field
+	 * @param testObject
+	 * @return background color
+	 * @author Eng. Amal Hamad
+	 */
+	public static String getCssBackground(TestObject testObject) {
+		return WebUI.getCSSValue(testObject, "background").trim()
+	}
+
+	/**
+	 * Get css text color attribute for this field
+	 * @param testObject
+	 * @return text color
+	 * @author Eng. Amal Hamad
+	 */
+	public static String getCssTextColor(TestObject testObject) {
+		return WebUI.getCSSValue(testObject, "color").trim()
+	}
+
+	/**
 	 * Get checked attribute for this field
 	 * @param testObject
 	 * @return checked

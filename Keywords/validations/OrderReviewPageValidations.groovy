@@ -34,6 +34,16 @@ public class OrderReviewPageValidations {
 		assert shippingData.contains(AppConstants.CHECKOUT_LNAME)
 		assert shippingData.contains(AppConstants.CHECKOUT_ADDRESS_1)
 		assert shippingData.contains(AppConstants.CHECKOUT_ADDRESS_2)
+		assert shippingData.contains(AppConstants.CHECKOUT_POSTAL_CODE)
+	}
+
+	/**
+	 * Verify order shipping country match expected country
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifyOrderShippingCountry() {
+		System.out.println(WebUI.getText(OrderReviewPageItems.shippingCountry))
+		assert WebUI.getText(OrderReviewPageItems.shippingCountry).contains(AppConstants.CHECKOUT_COUNTRY)
 	}
 
 	/**
@@ -52,7 +62,6 @@ public class OrderReviewPageValidations {
 		System.out.println("Shipping:" + paymentData)
 
 		String cardNumber = AppConstants.CHECKOUT_CARD_NUMBER.toString()
-		//		String cardNumber = "4444444444444444"
 		assert paymentData.contains("Visa")
 		assert paymentData.contains("**** " + cardNumber.substring(cardNumber.length() - 4))
 		assert paymentData.contains(AppConstants.CHECKOUT_PHONE)

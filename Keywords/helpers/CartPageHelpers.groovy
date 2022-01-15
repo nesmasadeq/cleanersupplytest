@@ -48,7 +48,7 @@ public class CartPageHelpers {
 		double total = 0;
 		for(WebElement element: productTotalList) {
 			TestObject productTotal = WebUI.convertWebElementToTestObject(element)
-			String textWithNumber = WebUI.getAttribute(productTotal , 'innerText').replaceAll("[^\\d.]", "")
+			String textWithNumber = GeneralHelpers.getFieldInnerText(productTotal).replaceAll("[^\\d.]", "")
 			total +=  Double.parseDouble(textWithNumber)
 		}
 		return GeneralHelpers.formatePrice(total)

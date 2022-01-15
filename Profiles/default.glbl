@@ -5,32 +5,32 @@
    <tag></tag>
    <defaultProfile>true</defaultProfile>
    <GlobalVariableEntity>
-      <description></description>
+      <description>site baseUrl</description>
       <initValue>'https://www.cleanersupply.com/'</initValue>
       <name>baseUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
-      <description></description>
+      <description>site window title</description>
       <initValue>'Cleaner\'s Supply - Dry Cleaning Supplies'</initValue>
       <name>siteTitle</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
-      <description></description>
+      <description>site logo src url</description>
       <initValue>'/49857c/globalassets/csius/homepage/logo.svg'</initValue>
       <name>siteLogo</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
-      <description></description>
+      <description>timeout for page to loading</description>
       <initValue>10</initValue>
       <name>pageLoadTimout</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
-      <description></description>
+      <description>timeout for elements actions</description>
       <initValue>5</initValue>
       <name>actionsTimeout</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
-      <description></description>
+      <description>timeout for elements visibility conditions</description>
       <initValue>5</initValue>
       <name>elementVisibilityTimeOut</name>
    </GlobalVariableEntity>
