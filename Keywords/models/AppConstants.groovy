@@ -27,7 +27,7 @@ public class AppConstants {
 	public static final String QUICK_ORDER_PAGE_TITLE = "'Quick Order - Cleaner's Supply"
 
 	// Search Results Page
-	public static final String SEARCH_TERM = "plastic"
+	public static final String SEARCH_TERM = "Plastic"
 	public static final String SEARCH_PAGE_URL = "search-results/?q=" + SEARCH_TERM
 	public static final String SEARCH_PAGE_TITLE = "Search Results - Cleaner's Supply"
 	public static final String SEARCH_PAGE_HEADING = "SEARCH RESULTS"
@@ -57,8 +57,8 @@ public class AppConstants {
 	public static final String IN_STOCK = "In Stock!"
 	public static final String OUT_OF_STOCK = "Currently Unavailable."
 	public static final String OUT_OF_STOCK_TEMPORARILY = "Temporarily Out of Stock!"
-	
-	
+
+
 	// Select CheckOut Page
 	public static final String SELECT_CHECKOUT_PAGE_URL = "https://www.cleanersupply.com/checkout-interstitial/"
 	public static final String SELECT_CHECKOUT_PAGE_TITLE = "Checkout Interstitial - Cleaner's Supply"
@@ -98,9 +98,9 @@ public class AppConstants {
 
 	public static final String CHECKOUT_PO = "1234";
 	public static final String CHECKOUT_COMMENT = "testComment";
-	
+
 	// Footer data
 	public static final String EXClUSIVE_EMAIL ="Exclusive email specials";
-	
+
 
 }
