@@ -12,7 +12,7 @@ import validations.FooterValidations
 
 
 public class FooterHelpers {
-	
+
 	/***
 	 * verify clicking on social links with validations
 	 * @author nesma
@@ -22,17 +22,17 @@ public class FooterHelpers {
 				GlobalVariable.elementVisibilityTimeOut)
 		for(WebElement socialLink : socialLinks) {
 			TestObject socialLinkTestobject = WebUI.convertWebElementToTestObject(socialLink)
-			 String expectedUrl= WebUI.getAttribute(socialLinkTestobject, 'href')
-			 String linkedinUrl ='https://www.linkedin.com/'
+			String expectedUrl= WebUI.getAttribute(socialLinkTestobject, 'href')
+			String linkedinUrl ='https://www.linkedin.com/'
 			WebUI.verifyElementClickable(socialLinkTestobject)
 			FooterActions.clickOnFooterItem(socialLinkTestobject)
 			if(expectedUrl.contains('linkedin')) {
 				FooterValidations.verifyWindowUrl(linkedinUrl)
 				FooterValidations.verifyWindowTitle(WebUI.getWindowTitle())
-				WebUI.closeWindowUrl(linkedinUrl)
+				WebUI.closeWindowUrl(WebUI.getUrl())
 			}else {
 				this.newWindowVlidations(expectedUrl)
-			}	
+			}
 			WebUI.switchToDefaultContent()
 		}
 	}
@@ -52,7 +52,7 @@ public class FooterHelpers {
 	public static void verifyContactSpeakers(String...expectedContent) {
 		List <WebElement> contactSpeakers = WebUI.findWebElements(FooterItems.contactNumbers,
 				GlobalVariable.elementVisibilityTimeOut)
-		for(int i=0; contactSpeakers.size(); i++) {
+		for(int i=0; i< contactSpeakers.size(); i++) {
 			TestObject contactNumberTestobject = WebUI.convertWebElementToTestObject(contactSpeakers[i])
 			FooterValidations.verifyItemContent(contactNumberTestobject,expectedContent[i])
 		}

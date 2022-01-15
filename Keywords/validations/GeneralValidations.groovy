@@ -81,7 +81,7 @@ public class GeneralValidations {
 		System.out.println("box-shadow: " +  WebUI.getCSSValue(button, "box-shadow"))
 		assert  WebUI.getCSSValue(button, "box-shadow").contains("rgba(0, 0, 0, 0.3) 0px 0px 10px 2px")
 	}
-	
+
 	/**
 	 * Verify underline after hover over link
 	 * @param link

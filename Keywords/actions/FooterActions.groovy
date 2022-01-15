@@ -16,7 +16,7 @@ public class FooterActions {
 	public static void clickOnFooterItem(TestObject footerItem) {
 		WebUI.click(footerItem)
 	}
-	
+
 	/**
 	 * fill newsletter email input
 	 * @author nesma
@@ -31,5 +31,4 @@ public class FooterActions {
 	public static void selectRegion() {
 		WebUI.selectOptionByValue(FooterItems.regionSelect, "https://www.cleanersupply.ca/", false)
 	}
-	
 }
