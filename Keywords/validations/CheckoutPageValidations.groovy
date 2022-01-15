@@ -6,7 +6,9 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import internal.GlobalVariable
+import items.CartPageItems
 import items.CheckoutPageItems
+import models.AppConstants
 
 public class CheckoutPageValidations {
 	/***
@@ -68,7 +70,11 @@ public class CheckoutPageValidations {
 	public static void verifyBillingAddressIsChecked() {
 		WebUI.verifyElementChecked(CheckoutPageItems.billingAddressCheckbox,GlobalVariable.actionsTimeout)
 	}
-	public static void verifyCommentTextIsReflected(String expectedValue) {
-		assert WebUI.getText(CheckoutPageItems.commentsField).contains(expectedValue)
+	/***
+	 * verify the shipping in summary changed 
+	 * @author nesma
+	 */
+	public static void verifyShippingIsChanged() {
+		WebUI.getText(CartPageItems.summaryShippingValue).contains(AppConstants.SHIPPING_TO_CALIFORNIA)
 	}
 }

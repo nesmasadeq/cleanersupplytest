@@ -45,6 +45,7 @@ public class AppConstants {
 	// Cart Summary
 	public static final String SHIPPING_NOT_AVAILABLE = "NOT AVAILABLE"
 	public static final String SHIPPING_FREE = "FREE"
+	public static final String SHIPPING_TO_CALIFORNIA = GlobalVariable.siteCurrency + "4.89"
 	public static final String TAX_TBD = "T.B.D."
 	public static final String TAX_ZERO = GlobalVariable.siteCurrency + ".00"
 
@@ -74,7 +75,7 @@ public class AppConstants {
 	public static final String CHECKOUT_POSTAL_CODE = "12345";
 	public static final String CHECKOUT_CITY = "testCity";
 	public static final String CHECKOUT_STATE = "California";
-	public static final String CHECKOUT_PHONE =  "555-999-9999";
+	public static final String CHECKOUT_PHONE =  "555-555-5555";
 	public static final String CHECKOUT_EXT = "6";
 	public static final String CHECKOUT_EMAIL = "test@gmail.com";
 

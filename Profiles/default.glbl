@@ -96,7 +96,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'555-999-9999'</initValue>
+      <initValue>'555-555-5555'</initValue>
       <name>phone</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -126,7 +126,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'234'</initValue>
+      <initValue>'1234'</initValue>
       <name>po</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
