@@ -22,7 +22,7 @@ import internal.GlobalVariable
 import items.OrderReviewPageItems
 
 public class OrderReviewPageActions {
-	
+
 	/**
 	 * Click submit order button
 	 * @author Eng. Amal Hamad

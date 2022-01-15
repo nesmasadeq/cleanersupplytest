@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_linkedin</name>
+   <name>span_chatOffline</name>
    <tag></tag>
-   <elementGuidId>8979df44-2d90-41e5-8993-0201204567c8</elementGuidId>
+   <elementGuidId>616fd8d4-d7b8-48ce-baab-425f448130ed</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
@@ -11,7 +11,7 @@
       </entry>
       <entry>
          <key>CSS</key>
-         <value>.icon-linkedin</value>
+         <value>#lpchat_footer .contact-info</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>
