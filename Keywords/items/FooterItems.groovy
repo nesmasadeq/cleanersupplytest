@@ -43,4 +43,5 @@ public class FooterItems {
 	static TestObject simpleFooterItems = findTestObject('Object Repository/Footer/li_simpleFooter')
 	static TestObject termsLink = findTestObject('Object Repository/Footer/a_terms')
 	static TestObject policyLink = findTestObject('Object Repository/Footer/a_policy')
+	static TestObject regionFlag = findTestObject('Object Repository/Footer/span_regionFlag')
 }

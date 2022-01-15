@@ -43,10 +43,10 @@ FooterValidations.verifyItemContent(FooterItems.contactEmail,AppConstants.CONTAC
 FooterActions.clickOnFooterItem(FooterItems.contactEmail)
 
 //verify url and title then close window
-FooterHelpers.newWindowVlidations(AppConstants.CONTACT_EMAIL)
+//FooterHelpers.newWindowVlidations(AppConstants.CONTACT_EMAIL)
 
 //return to default content
-WebUI.switchToDefaultContent()
+//WebUI.switchToDefaultContent()
 
 //verify contact time content
 FooterValidations.verifyItemContent(FooterItems.contactTime,AppConstants.CONTACT_TIME)
@@ -57,8 +57,20 @@ FooterHelpers.verifyContactSpeakers(AppConstants.ENGLISH_SPEAKER,AppConstants.KO
 //verify chat offline content
 FooterValidations.verifyItemContent(FooterItems.chatOffline,AppConstants.CHAT_OFFLINE)
 
+//verify the links in the center of footer
+//FooterValidations.varifyFooterNavigationsLinks()
+
+//return to home page
+//Navigations.navigateToHomePage()
+
 //verify request catalog
 FooterValidations.verifyItemContent(FooterItems.catalogRequest,AppConstants.CATALOG_REQUEST)
+
+//verify underline style
+//GeneralValidations.verifyLinkUnderlineHover(FooterItems.catalogRequest)
+
+//click in request catalog link
+FooterActions.clickOnFooterItem(FooterItems.catalogRequest)
 
 //verify url title, and heading
 GeneralHelpers.CheckingPageURLTitleAndHeading(AppConstants.REQUEST_CATALOG_URL,AppConstants.REQUEST_CATALOG_TITLE
@@ -69,6 +81,9 @@ Navigations.navigateToHomePage()
 
 //verify free calssifide content
 FooterValidations.verifyItemContent(FooterItems.classified,AppConstants.FREE_CLASSIFIDES)
+
+//click on classified link
+FooterActions.clickOnFooterItem(FooterItems.classified)
 
 //verify url title, and heading
 GeneralHelpers.CheckingPageURLTitleAndHeading(AppConstants.CLASSIFIDE_URL,AppConstants.CLASSIFIDE_TITLE
@@ -82,6 +97,9 @@ FooterActions.selectRegion()
 
 //verify the selected value is reflected
 FooterValidations.verifySelectedRegion()
+
+//verify region flag visibility
+FooterValidations.verifyRegionFlagIChanged()
 
 //verify the current url changed
 GeneralValidations.verifyCurrentPageURL(AppConstants.CANADA_SELECT_VALUE)
@@ -115,7 +133,7 @@ GeneralHelpers.CheckingPageURLTitleAndHeading(AppConstants.TERMS_URL,AppConstant
 Navigations.navigateToHomePage()
 
 //verify click on policy link
-FooterActions.clickOnFooterItem(FooterItems.termsLink)
+FooterActions.clickOnFooterItem(FooterItems.policyLink)
 
 //verify url title, and heading
 GeneralHelpers.CheckingPageURLTitleAndHeading(AppConstants.POLICY_URL,AppConstants.POLICY_TITLE
