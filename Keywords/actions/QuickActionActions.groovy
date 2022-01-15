@@ -1,34 +1,16 @@
 package actions
 
-import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
-import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
-import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
 
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebElement
 
-import com.kms.katalon.core.annotation.Keyword
-import com.kms.katalon.core.checkpoint.Checkpoint
-import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
-import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
-import com.kms.katalon.core.model.FailureHandling
-import com.kms.katalon.core.testcase.TestCase
-import com.kms.katalon.core.testdata.TestData
-import com.kms.katalon.core.testobject.TestObject
-import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import com.kms.katalon.core.webui.keyword.internal.WebUIAbstractKeyword
-import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
-import groovy.inspect.swingui.BytecodeCollector
 import helpers.GeneralHelpers
 import internal.GlobalVariable
 import models.Product
-import validations.GeneralValidations
-import validations.QuickOrdersValidations
 
 public class QuickActionActions {
 	/**
@@ -63,6 +45,12 @@ public class QuickActionActions {
 		this.verifySKUExistInSearchList(element , sku)
 	}
 
+	/**
+	 * verify SKU exist in search list and handle if that have bug
+	 * 
+	 * @param element
+	 * @param sku
+	 */
 	public static void verifySKUExistInSearchList(WebElement element , String sku) {
 		List<WebElement> options = element.findElements(By.cssSelector(".dropdown-menu.inner span.text"))
 		def optionsText = []
@@ -72,8 +60,10 @@ public class QuickActionActions {
 				option.click()
 			}
 		}
-		if (! optionsText.contains(sku)) {
+		if (! optionsText.contains(sku) && options.size() > 0) {
 			options.get(0).click()
+//			element.findElement(By.cssSelector(".product-table__input")).click()
+			//			WebUI.mouseOver(findTestObject('Object Repository/QuickAction/QuickOrdersBox'));
 		}
 		//		assert optionsText.contains(sku)
 	}
@@ -93,7 +83,7 @@ public class QuickActionActions {
 		product.setTitle(element.findElement(By.className("product-title")).getText())
 		product.setPrice( GeneralHelpers.convertStringToDouble(WebUI.convertWebElementToTestObject(element.findElement(By.cssSelector(".product-table__price .price-holder")))) )
 		product.setTotalPrice( GeneralHelpers.convertStringToDouble(WebUI.convertWebElementToTestObject(element.findElement(By.cssSelector(".product-table__price .price-holder")))) )
-
+		product.setQuantity(element.findElements(By.cssSelector(".quantity-container input[name=\"quantity\"]")).get(0).getAttribute("value").toInteger());
 		return product
 	}
 
@@ -104,7 +94,6 @@ public class QuickActionActions {
 	 * @author selenium
 	 */
 	public static void typeRandomQuantity(WebElement element) {
-		WebUI.waitForElementVisible(WebUI.convertWebElementToTestObject(element.findElements(By.cssSelector(".quantity-container input[name=\"quantity\"]")).get(0)),GlobalVariable.elementVisibilityTimeOut)
 		WebElement quantityInput = element.findElements(By.cssSelector(".quantity-container input[name=\"quantity\"]")).get(0)
 
 		quantityInput.sendKeys(Keys.CONTROL + "a")

@@ -45,7 +45,7 @@ QuickOrdersValidations.verifySKUFieldInEveryOrder()
 
 List<Product> orders = QuickActionsHelper.fillOrders()
 
-println("products count " + orders.toString())
+println("products count " + orders[0].getQuantity())
 //QuickActionsHelper.fillOrders()
 
 WebUI.closeBrowser()
