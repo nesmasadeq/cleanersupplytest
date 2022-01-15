@@ -37,7 +37,7 @@ public class HeaderValidations {
 	 */
 	public static void verifyTagsAndFormBackgroundColorChanged() {
 		String tagsAndFormBackgroundColor= WebUI.getCSSValue(tagsAndFormLink, 'background')
-		assert tagsAndFormBackgroundColor.contains('rgb(255, 255, 255)')
+		assert GeneralHelpers.getCssBackground(tagsAndFormLink).contains('rgb(255, 255, 255)')
 	}
 
 	/***
@@ -46,8 +46,7 @@ public class HeaderValidations {
 	 * @author nesma
 	 */
 	public static void verifyTagsAndFormColorChanged() {
-		String tagsAndFormBackgroundColor= WebUI.getCSSValue(tagsAndFormLink, 'color')
-		assert tagsAndFormBackgroundColor.equals('rgba(82, 36, 127, 1)')
+		assert GeneralHelpers.getCssTextColor(tagsAndFormLink).equals('rgba(82, 36, 127, 1)')
 	}
 
 	/***
@@ -83,14 +82,10 @@ public class HeaderValidations {
 	 */
 	public static void verifyAutoSuggestionSearchListIsVisible() {
 		TestObject div_autoSuggestionSearchList = HeaderItems.autoSuggestionSearchList
-
-		System.out.println(WebUI.getAttribute(div_autoSuggestionSearchList, 'style'))
-
+		//		System.out.println(WebUI.getAttribute(div_autoSuggestionSearchList, 'style'))
 		assert WebUI.getAttribute(div_autoSuggestionSearchList, 'style').equals('')
-
-		System.out.println('getClass: ' + WebUI.getAttribute(div_autoSuggestionSearchList, 'class'))
-
-		assert WebUI.getAttribute(div_autoSuggestionSearchList, 'class').contains('open')
+		System.out.println('getClass: ' + GeneralHelpers.getFieldCalsses(div_autoSuggestionSearchList))
+		assert GeneralHelpers.getFieldCalsses(div_autoSuggestionSearchList).contains('open')
 	}
 
 	/**
@@ -107,8 +102,7 @@ public class HeaderValidations {
 	 */
 	public static void verifyAutoSuggestionsInnerItems() {
 		List<TestObject> autoSuggestionsInnerItems = WebUI.findWebElements(HeaderItems.autoSuggestionSearchItems,GlobalVariable.elementVisibilityTimeOut)
-		System.out.println('autoSuggestionsInnerItems: ' + autoSuggestionsInnerItems.size())
-
+		//		System.out.println('autoSuggestionsInnerItems: ' + autoSuggestionsInnerItems.size())
 		for (WebElement element : autoSuggestionsInnerItems) {
 			TestObject object = WebUI.convertWebElementToTestObject(element)
 			System.out.println('autoSuggestionsInnerItems: ' + WebUI.getText(object))
@@ -121,10 +115,10 @@ public class HeaderValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyHeaderCustomerService() {
-		System.out.println(GeneralHelpers.getFieldText(HeaderItems.customerService))
-		//		assert GeneralHelpers.getFieldText(customerService).equals(GlobalVariable.siteLogo)
+		System.out.println(HeaderItems.customerService)
+		assert WebUI.getText(HeaderItems.customerService).contains(AppConstants.CUSTOMER_SERVICE_PHONE)
+		assert WebUI.getText(HeaderItems.customerService).contains(AppConstants.CUSTOMER_SERVICE_WORK_HOURS)
 	}
-
 
 	/**
 	 * Verify cart items count match expected count
@@ -134,7 +128,6 @@ public class HeaderValidations {
 	public static void verifyCartCount(String expectedCount) {
 		assert WebUI.getText(HeaderItems.cartCount).equals(expectedCount)
 	}
-
 
 	/**
 	 * Verify cart label match expected label
@@ -159,10 +152,10 @@ public class HeaderValidations {
 			// Verify Main Navigation Links
 			WebElement headerNav = driver.findElement(By.cssSelector("ul.navbar-nav.navbar-left li:nth-child("+i+") span.l1-category + a"))
 			HeaderValidations.verifyHoverOverNavGroupLink(headerNav)
-			HeaderValidations.verifyLinkPageNavigation(headerNav)
+			HeaderValidations.verifyHeaderLinkPageNavigation(null, headerNav)
 
 			//Get sub links for this Group
-			List subNavLinks = driver.findElements(By.cssSelector(HeaderItems.headerNavigation + " > li:nth-child("+i+") div.dropdown-menu a"))
+			List subNavLinks = driver.findElements(By.cssSelector("ul.navbar-nav.navbar-left > li:nth-child("+i+") div.dropdown-menu a"))
 			for(int j = 0 ; j < subNavLinks.size() ; j++) {
 				System.out.println("j = " + j)
 				// Hover Parent Navigation To Open Menu
@@ -171,27 +164,97 @@ public class HeaderValidations {
 				WebUI.mouseOver(newHeaderNav)
 
 				// Verify Sub links
-				WebElement subLink = driver.findElements(By.cssSelector(HeaderItems.headerNavigation + " > li:nth-child("+i+") div.dropdown-menu a")).get(j)
+				WebElement subLink = driver.findElements(By.cssSelector("ul.navbar-nav.navbar-left > li:nth-child("+i+") div.dropdown-menu a")).get(j)
 				HeaderValidations.verifyHoverOverNavigationSubLink(subLink)
-				HeaderValidations.verifyLinkPageNavigation(subLink)
+				HeaderValidations.verifyHeaderLinkPageNavigation(WebUI.getText(newHeaderNav), subLink)
 			}
 		}
 	}
 
 	/**
-	 * Verify clicking on link navigate to expected page 
+	 * Verify Footer navigation links
+	 * @author Eng. Amal Hamad
+	 */
+	public static void varifyFooterNavigationsLinks() {
+		WebDriver driver = DriverFactory.getWebDriver()
+		String selector = "#footer-container .footer-item > ul.list-unstyled a"
+		List<WebElement> footerLinks = driver.findElements(By.cssSelector(selector))
+		for(int i = 0 ; i < footerLinks.size() ; i++) {
+			WebElement link =  driver.findElements(By.cssSelector(selector)).get(i)
+			verifyFooterLinkPageNavigation(link)
+		}
+	}
+
+	/**
+	 * Verify clicking on footer link navigate to expected page
 	 * @param navLink
 	 * @author Eng. Amal Hamad
 	 */
-	public static void verifyLinkPageNavigation(WebElement navLink) {
+	public static void verifyFooterLinkPageNavigation(WebElement navLink) {
+		TestObject link = WebUI.convertWebElementToTestObject(navLink)
+		String href = WebUI.getAttribute(link, "href")
+		String heading = WebUI.getText(link)
+		System.out.println("footerNav: " + heading + " ,title: " + WebUI.getWindowTitle() + " ,href: " + href)
+		WebUI.click(link)
+		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimout)
+
+		switch(heading) {
+			case "Manage My Account":
+				GeneralValidations.verifyCurrentPageURL("log-in/?ReturnUrl=%2fmy-account%2f")
+				break;
+
+			case "Start A Return":
+				GeneralValidations.verifyCurrentPageURL(GlobalVariable.baseUrl)
+				break;
+
+			case "Our Story":
+			case "Customer Service":
+			case "Careers":
+				GeneralValidations.verifyCurrentPageURL(href)
+				break;
+
+			case "Favorites":
+				GeneralValidations.verifyCurrentPageURL("log-in/?ReturnUrl=%2ffavorites%2f")
+				break;
+
+			case "Previously Ordered":
+				GeneralValidations.verifyCurrentPageURL("log-in/?ReturnUrl=%2fpreviously-ordered%2f")
+				break;
+
+			case "Online Catalog":
+				WebUI.switchToWindowIndex(1)
+				assert WebUI.getUrl().contains(href)
+				WebUI.closeWindowIndex(1)
+				break;
+
+			default:
+				GeneralValidations.verifyCurrentPageURL(href)
+			//				GeneralValidations.verifyPageHeading(heading.toUpperCase())
+				break;
+		}
+		//		HeaderActions.backToHome()
+	}
+
+	/**
+	 * Verify clicking on header link navigate to expected page 
+	 * @param navLink
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifyHeaderLinkPageNavigation(String parent, WebElement navLink) {
 		TestObject link = WebUI.convertWebElementToTestObject(navLink)
 		String href = WebUI.getAttribute(link, "href")
 		String heading = WebUI.getText(link).toUpperCase()
-		System.out.println("headerNav: " + WebUI.getText(link) + " ,heading: " + WebUI.getWindowTitle() + " ,href: " + href)
+		System.out.println("headerNav: " + heading + " ,title: " + WebUI.getWindowTitle() + " ,href: " + href)
+		GeneralValidations.verifyLinkUnderlineHover(link)
 		WebUI.click(link)
 		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimout)
 		GeneralValidations.verifyCurrentPageURL(href)
-		//		GeneralValidations.verifyPageHeading(heading)
+		if(!heading.equals("TAGS & FORMS")) {
+			GeneralValidations.verifyPageHeading(heading)
+		}
+		if(parent != null){
+			GeneralValidations.verifyPageBreadcrumb(parent , " " , heading)
+		}
 		//		HeaderActions.backToHome()
 	}
 
@@ -203,12 +266,12 @@ public class HeaderValidations {
 	public static void verifyHoverOverNavGroupLink(WebElement headerNav) {
 		TestObject link = WebUI.convertWebElementToTestObject(headerNav)
 		//------ Before Hover ------
-		assert  WebUI.getCSSValue(link, "background").contains("rgba(0, 0, 0, 0)")
-		assert  WebUI.getCSSValue(link, "color").contains("rgba(255, 255, 255, 1)")
+		assert  GeneralHelpers.getCssBackground(link).contains("rgba(0, 0, 0, 0)")
+		assert  GeneralHelpers.getCssTextColor(link).contains("rgba(255, 255, 255, 1)")
 		WebUI.mouseOver(link)
 		//------ After Hover -------
-		assert  WebUI.getCSSValue(link, "background").contains("rgb(255, 255, 255)")
-		assert  WebUI.getCSSValue(link, "color").contains("rgba(82, 36, 127, 1)")
+		assert  GeneralHelpers.getCssBackground(link).contains("rgb(255, 255, 255)")
+		assert  GeneralHelpers.getCssTextColor(link).contains("rgba(82, 36, 127, 1)")
 	}
 
 	/**
@@ -219,9 +282,9 @@ public class HeaderValidations {
 	public static void verifyHoverOverNavigationSubLink(WebElement subLink) {
 		TestObject link = WebUI.convertWebElementToTestObject(subLink)
 		//------ Before Hover ------
-		assert WebUI.getCSSValue(link, "color").contains("rgba(0, 0, 0, 1)")
+		assert GeneralHelpers.getCssTextColor(link).contains("rgba(0, 0, 0, 1)")
 		WebUI.mouseOver(link)
 		//------ After Hover ------
-		assert WebUI.getCSSValue(link, "color").contains("rgba(82, 36, 127, 1)")
+		assert GeneralHelpers.getCssTextColor(link).contains("rgba(82, 36, 127, 1)")
 	}
 }
