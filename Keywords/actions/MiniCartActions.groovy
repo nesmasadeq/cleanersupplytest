@@ -1,4 +1,4 @@
-package validations
+package actions
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -18,39 +18,20 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
+import helpers.GeneralHelpers
 import internal.GlobalVariable
-import items.SearchResultsPageItems
-import models.AppConstants
+import items.MiniCartItems
 
-public class SearchResultsPageValidations {
-
+public class MiniCartActions {
+	
 	/**
-	 * Verify sub header text match expected text
+	 * Hover over MiniCart
 	 * @author Eng. Amal Hamad
 	 */
-	public static void verifySubHeader() {
-		System.out.println('subPageHeader: ' + WebUI.getText(SearchResultsPageItems.pageSubHeader))
-		assert WebUI.getText(SearchResultsPageItems.pageSubHeader).toLowerCase().contains(AppConstants.SEARCH_TERM.toLowerCase())
+	public static void hoverMiniCart() {
+		System.out.println("Before Hover: " + GeneralHelpers.getCssBackground(MiniCartItems.miniCart))
+		//		assert WebUI.getCSSValue(testObject, "color").contains("rgb(255, 255, 255)")
+		WebUI.mouseOver(MiniCartItems.miniCart)
 	}
-
-	/**
-	 * Verify bottom pagination is hidden
-	 * @author Eng. Amal Hamad
-	 */
-	public static void verifyPaginatioIsHidden() {
-		WebUI.verifyElementNotPresent(SearchResultsPageItems.paginationLinks, GlobalVariable.elementVisibilityTimeOut , FailureHandling.OPTIONAL)
-	}
-
-
-	/**
-	 * Verify shadow after product cell hovering
-	 * @param button
-	 * @author Eng. Amal Hamad
-	 */
-	public static void verifyButtonShadowHover(TestObject button) {
-		WebUI.mouseOver(button)
-		//------ After Hover -------
-		System.out.println("box-shadow: " +  WebUI.getCSSValue(button, "box-shadow"))
-		assert  WebUI.getCSSValue(button, "box-shadow").contains("rgba(0, 0, 0, 0.55) 0px 0px 10px 1px")
-	}
+	
 }

@@ -116,4 +116,16 @@ public class QuickOrdersValidations {
 	public static void verifyQuintityOfProductIsValid(WebElement element) {
 		assert !element.findElement(By.cssSelector(".validation-error")).isDisplayed();
 	}
+
+	/**
+	 * verify default value of quantity 
+	 * 
+	 * @param element
+	 * @author selenium
+	 */
+	public static void verifyDefaulQuantity(WebElement element) {
+		WebUI.waitForElementPresent(WebUI.convertWebElementToTestObject(element.findElements(By.cssSelector(".quantity-container input[name=\"quantity\"]")).get(0)),GlobalVariable.elementVisibilityTimeOut)
+
+		assert element.findElements(By.cssSelector(".quantity-container input[name=\"quantity\"]")).get(0).getAttribute("value").contentEquals("1")
+	}
 }

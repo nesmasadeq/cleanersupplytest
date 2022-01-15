@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>span_productBreadcrumb</name>
+   <name>a_miniCart</name>
    <tag></tag>
-   <elementGuidId>623a89ea-43d4-4850-9539-b354340e8448</elementGuidId>
+   <elementGuidId>11bc63dc-35d1-4bc0-ad16-9664a45e1c7a</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>ul.breadcrumb span[itemprop=&quot;name&quot;]</value>
+         <value>.navbar-nav .cart-holder a</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

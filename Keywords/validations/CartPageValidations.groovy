@@ -30,27 +30,27 @@ public class CartPageValidations {
 			System.out.println(currentProduct.toString())
 
 			TestObject productTitle = WebUI.convertWebElementToTestObject(productTitleList.get(i))
-			CartPageValidations.verifyHoverOverProductTitle(productTitle)
+			GeneralValidations.verifyLinkUnderlineHover(productTitle)
 			System.out.println('productTitle: ' + WebUI.getText(productTitle))
-			//			assert  WebUI.getText(productTitle).toLowerCase().contains(currentProduct.getTitle().toLowerCase())
+			assert  WebUI.getText(productTitle).contains(currentProduct.getTitle())
 
 			TestObject productSku = CartPageHelpers.getCartProductDataByIndex(i, CartPageItems.productSku)
 			System.out.println('productSku: ' + WebUI.getText(productSku))
 			assert  WebUI.getText(productSku).equals(currentProduct.getSku())
 
 			TestObject productPrice = CartPageHelpers.getCartProductDataByIndex(i, CartPageItems.productPrice)
-			String priceStr = WebUI.getAttribute(productPrice , 'innerText')
+			String priceStr = GeneralHelpers.getFieldInnerText(productPrice)
 			System.out.println('productPrice: ' + priceStr)
 			assert priceStr.trim().equals(GeneralHelpers.formatePrice(currentProduct.getPrice()))
 
 			TestObject productTotal = CartPageHelpers.getCartProductDataByIndex(i, CartPageItems.productTotal)
-			String totalStr = WebUI.getAttribute(productTotal , 'innerText')
+			String totalStr = GeneralHelpers.getFieldInnerText(productTotal)
 			System.out.println('productTotal: ' + totalStr)
 			double total = currentProduct.getPrice() * currentProduct.getQuantity()
 			assert totalStr.trim().equals(GeneralHelpers.formatePrice(total))
 
 			TestObject inputProductQty = CartPageHelpers.getCartProductDataByIndex(i, CartPageItems.inputProductQty)
-			String quantity = WebUI.getAttribute(inputProductQty , 'value')
+			String quantity = GeneralHelpers.getFieldInputValue(inputProductQty)
 			System.out.println('inputProductQty: ' + quantity)
 			assert quantity.equals(currentProduct.getQuantity() +"")
 
@@ -60,23 +60,10 @@ public class CartPageValidations {
 			assert stock.contains('In Stock!')
 
 			TestObject productImage = CartPageHelpers.getCartProductDataByIndex(i, CartPageItems.productImage)
-			String image = WebUI.getAttribute(productImage, "src")
+			String image = GeneralHelpers.getImageSrc(productImage)
 			System.out.println('productImage: ' + image)
 			assert  image.contains(currentProduct.getSku().toLowerCase())
-
 		}
-	}
-
-	/**
-	 * Verify hover over productTitle in cart row
-	 * @param productTitle
-	 * @author Eng. Amal Hamad
-	 */
-	public static void verifyHoverOverProductTitle(TestObject productTitle) {
-		WebUI.mouseOver(productTitle)
-		String textDecoration = WebUI.getCSSValue(productTitle, "text-decoration")
-		System.out.println("hoverOverProductTitle: " + textDecoration)
-		assert textDecoration.equals("underline solid rgb(0, 0, 0)")
 	}
 
 	/**
@@ -166,5 +153,18 @@ public class CartPageValidations {
 		System.out.println("currentQuantity: " + currentQuantity + " #expectedTotal:" + expectedTotal)
 
 		assert WebUI.getAttribute(productTotal , 'innerText').trim().equals(expectedTotal)
+	}
+
+	/**
+	 * Verify product estimation delivery date match expected date
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifyEstimationDeliveryDate() {
+		List<WebElement> estDeliveryList = WebUI.findWebElements(CartPageItems.estDelivery,GlobalVariable.elementVisibilityTimeOut)
+		System.out.println('estDeliveryList: ' + estDeliveryList.size())
+		for (int i = 0 ; i < estDeliveryList.size() ; i++) {
+			WebElement element = estDeliveryList.get(i)
+			assert element.getText().concat("Est Delivery Tuesday, Jan 18")
+		}
 	}
 }

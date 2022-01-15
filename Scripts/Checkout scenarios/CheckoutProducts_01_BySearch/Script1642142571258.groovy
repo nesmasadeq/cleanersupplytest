@@ -1,5 +1,8 @@
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
 import org.openqa.selenium.Keys
 
 import com.kms.katalon.core.testobject.TestObject
@@ -9,11 +12,11 @@ import actions.CartPageActions
 import actions.CheckoutPageActions
 import actions.HeaderActions
 import actions.ProductDetailsPageActions
-import actions.SelectCheckoutPageActions
 import helpers.CartPageHelpers
 import helpers.CheckoutPageHelpers
 import helpers.GeneralHelpers
 import helpers.HeaderHelpers
+import helpers.MiniCartHelpers
 import helpers.ProductDetailsPageHelpers
 import helpers.ProductsFiltersHelpers
 import helpers.SearchResultsPageHelpers
@@ -23,7 +26,6 @@ import items.CheckoutPageItems
 import items.HeaderItems
 import items.ProductDetailsPageItems
 import items.ProductFiltersItems
-import items.SearchResultsPageItems
 import models.AppConstants
 import models.Product
 import validations.CartPageValidations
@@ -111,6 +113,9 @@ ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(ProductFil
 
 ProductsFiltersValidations.verifyFilterProductsCountMatchResultsCount(ProductFiltersItems.countPlasticBags)
 
+//------ Verify pagination is hidden --------
+SearchResultsPageValidations.verifyPaginatioIsHidden()
+
 //------ Verify packagingProducts found in selected filters--------
 ProductsFiltersValidations.verifySelectedFilters(AppConstants.FILTER_PACKAGING_PRODUCT, AppConstants.FILTER_PLASTIC_BAGS, 
     AppConstants.FILTER_COLOR_GREEN)
@@ -138,7 +143,7 @@ System.out.println('Page Title:' + WebUI.getWindowTitle())
 //ProductDetailsPageValidations.verifyProductTitle(product.getTitle())
 //ProductDetailsPageValidations.verifyProductImage(product.getImage())
 //------ Verify Page Breadcrumb --------
-ProductDetailsPageValidations.verifyPageBreadcrumb('Bags', 'Plastic Bags', 'Comforter')
+GeneralValidations.verifyPageBreadcrumb('Bags', 'Plastic Bags', 'Comforter')
 
 //------ Verify Product Description --------
 ProductDetailsPageValidations.verifyProductDescription()
@@ -155,6 +160,9 @@ ProductDetailsPageValidations.verifyProductListValue(firstProduct)
 //ProductDetailsPageActions.saveProductSkuToObject(firstProduct)
 ProductDetailsPageValidations.verifyProductSku(firstProduct)
 
+//------ Verify Product Unit --------
+ProductDetailsPageValidations.verifyProductUnits()
+
 //------ Verify Q&A count --------
 ProductDetailsPageValidations.verifyProductQuestionsAnswersItemsCount()
 
@@ -165,7 +173,7 @@ ProductDetailsPageValidations.verifyProductSelectedSizeOption(ProductDetailsPage
 ProductDetailsPageValidations.verifyProductSelectedColorOption(ProductDetailsPageItems.optionColorBlack)
 
 //------ Verify AddToCartSection is hidden --------
-ProductDetailsPageValidations.verifyOutOfStockMessageIsVisible()
+ProductDetailsPageValidations.verifyOutOfStockMessageIsVisible(AppConstants.OUT_OF_STOCK)
 
 ProductDetailsPageValidations.verifyAddToCartSectionVisibility(false)
 
@@ -203,6 +211,8 @@ ProductDetailsPageValidations.verifyPrductQuantityInputValue(firstProduct.getQua
 ProductDetailsPageValidations.verifyProductPriceIsChanged(firstProduct)
 
 //------------------------------- Click AddToCart button  ---------------------------
+ProductDetailsPageHelpers.saveProductTitle(firstProduct)
+
 ProductDetailsPageHelpers.clickAddToCart()
 
 //ArrayList cartProducts = new ArrayList()
@@ -218,7 +228,10 @@ HeaderValidations.verifyCartCount('1')
 //------ Verify Product Price return to default price --------
 ProductDetailsPageValidations.verifyProductPriceIsChanged(firstProduct)
 
+//------ Verify MiniCart is change --------
 HeaderValidations.verifyCartLabel(HeaderHelpers.calculateCartTotal(firstProduct))
+
+MiniCartHelpers.verifyMiniCart(firstProduct)
 
 /***********************************************************************/
 /******************** Add Second Product to Cart ***********************/
@@ -231,15 +244,21 @@ ProductDetailsPageActions.selectSizeOption(ProductDetailsPageItems.optionSizeLar
 
 ProductDetailsPageValidations.verifyProductSelectedSizeOption(ProductDetailsPageItems.optionSizeLarge)
 
+//------ Verify  out of stock message appeare --------
+ProductDetailsPageValidations.verifyOutOfStockMessageIsVisible(AppConstants.OUT_OF_STOCK_TEMPORARILY)
+
 //------ Verify Product data is changed --------
 ProductDetailsPageValidations.verifyProductDataChangesAfterSizeOption(secondProduct)
 
-//------------------------------- Select Green Color Option ---------------------------
+//------------------------------- Select Blue Color Option ---------------------------
 ProductDetailsPageActions.selectColorOption(ProductDetailsPageItems.optionColorBlue)
 
 ProductDetailsPageValidations.verifyProductSelectedColorOption(ProductDetailsPageItems.optionColorBlue)
 
 ProductDetailsPageValidations.verifyProductDataChangesAfterColorOption(secondProduct)
+
+//------ Verify  out of stock message appeare --------
+ProductDetailsPageValidations.verifyInStockMessageIsVisible()
 
 //------------------------------- Type 3 in quantity input  ---------------------------
 secondProduct.setQuantity(3)
@@ -252,6 +271,8 @@ ProductDetailsPageValidations.verifyPrductQuantityInputValue(secondProduct.getQu
 ProductDetailsPageValidations.verifyProductPriceIsChanged(secondProduct)
 
 //------------------------------- Click AddToCart button  ---------------------------
+ProductDetailsPageHelpers.saveProductTitle(secondProduct)
+
 ProductDetailsPageHelpers.clickAddToCart()
 
 //cartProducts.clear()
@@ -268,21 +289,17 @@ HeaderValidations.verifyCartCount('2')
 //------ Verify Product Price return to default price --------
 ProductDetailsPageValidations.verifyProductPriceIsChanged(secondProduct)
 
+//------ Verify MiniCart is change --------
 HeaderValidations.verifyCartLabel(HeaderHelpers.calculateCartTotal(firstProduct, secondProduct))
+
+MiniCartHelpers.verifyMiniCart(secondProduct, firstProduct)
 
 /***********************************************************************/
 /***************************** Cart Page *******************************/
 /***********************************************************************/
 HeaderActions.clickCartIcon()
 
-//------ Verify Page URL --------
-GeneralValidations.verifyCurrentPageURL(AppConstants.CART_PAGE_URL)
-
-//------ Verify Page Title --------
-GeneralValidations.verifyCurrentPageTitleValue(AppConstants.CART_PAGE_TITLE)
-
-//------ Verify Page Heading --------
-GeneralValidations.verifyPageHeading(AppConstants.CART_PAGE_HEADING)
+GeneralValidations.verifyCurrentPage(AppConstants.CART_PAGE_URL, AppConstants.CART_PAGE_TITLE, AppConstants.CART_PAGE_HEADING)
 
 //------ Verify products data in cart --------
 CartPageValidations.verifyCartProductsData(secondProduct, firstProduct)
@@ -303,6 +320,11 @@ CartPageActions.clickPlusQtyButton(1)
 CartPageValidations.verifyCartSummary(true, AppConstants.SHIPPING_NOT_AVAILABLE, AppConstants.TAX_TBD)
 
 CartPageValidations.verifyProductTotalAfterChangeQty(1, firstProduct)
+
+//------ Verify MiniCart is change --------
+HeaderValidations.verifyCartLabel(HeaderHelpers.calculateCartTotal(firstProduct, secondProduct))
+
+MiniCartHelpers.verifyMiniCart(secondProduct, firstProduct)
 
 //------ Click ProceedToCheckout Button --------
 CartPageHelpers.clickProceedToCheckoutButton()
@@ -341,13 +363,11 @@ SelectCheckoutPageHelpers.clickContinueButton()
 /************************** Checkout Page ******************************/
 /***********************************************************************/
 //Order order = new Order()
-//WebUI.delay(5)
-//WebUI.navigateToUrl(GlobalVariable.checkoutUrl)
-GeneralValidations.verifyCurrentPageURL(GlobalVariable.checkoutUrl)
+GeneralValidations.verifyCurrentPageURL(AppConstants.CHECKOUT_PAGE_URL)
 
-GeneralValidations.verifyCurrentPageTitleValue(GlobalVariable.checkoutTitle)
+GeneralValidations.verifyCurrentPageTitleValue(AppConstants.CHECKOUT_PAGE_TITLE)
 
-CheckoutPageValidations.verfiyCheckoutPageHeading(GlobalVariable.checkoutHeading)
+CheckoutPageValidations.verfiyCheckoutPageHeading(AppConstants.CHECKOUT_PAGE_HEADING)
 
 //------ Verify Header CustomerSerice --------
 HeaderValidations.verifyHeaderCustomerService()
@@ -387,6 +407,12 @@ CheckoutPageActions.selectState()
 
 //verify reflected value in selection
 CheckoutPageValidations.verifyTheSelectedOptionValueIsReflected(CheckoutPageItems.stateSelect, AppConstants.CHECKOUT_STATE)
+
+//verify shipping changed in summery
+CheckoutPageValidations.verifyShippingIsChanged()
+
+//verify estimation date in cart products
+CartPageValidations.verifyEstimationDeliveryDate()
 
 //filling phone field and verify focus and values
 CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.phoneField, AppConstants.CHECKOUT_PHONE)
@@ -431,16 +457,12 @@ CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.poField, A
 CheckoutPageHelpers.fillInputAndVerifyFocusAndValue(CheckoutPageItems.commentsField, AppConstants.CHECKOUT_COMMENT)
 
 //click on review order button
-CheckoutPageActions.clickOnReviewOrderButton()
+CheckoutPageHelpers.clickOnReviewOrderButton()
 
 /***********************************************************************/
 /************************ Order Review Page ****************************/
 /***********************************************************************/
-GeneralValidations.verifyCurrentPageURL(AppConstants.ORDER_REVIEW_PAGE_URL)
-
-GeneralValidations.verifyCurrentPageTitleValue(AppConstants.ORDER_REVIEW_PAGE_TITLE)
-
-GeneralValidations.verifyPageHeading(AppConstants.ORDER_REVIEW_PAGE_HEADING)
+GeneralValidations.verifyCurrentPage(AppConstants.ORDER_REVIEW_PAGE_URL, AppConstants.ORDER_REVIEW_PAGE_TITLE, AppConstants.ORDER_REVIEW_PAGE_HEADING)
 
 //------ Verify Header CustomerSerice --------
 HeaderValidations.verifyHeaderCustomerService()
@@ -455,9 +477,11 @@ SelectCheckoutPageValidations.verifyOrderTotal()
 CartPageValidations.verifyCartSummary(false, AppConstants.SHIPPING_FREE, AppConstants.TAX_ZERO)
 
 //------ Verify Order Shipping Data --------
+System.out.println((('Selected Date:' + selectedMonth) + ' // ') + selectedYear)
+
 OrderReviewPageValidations.verifyOrderShippingData()
 
-System.out.println((('Selected Date:' + selectedMonth) + ' // ') + selectedYear)
+OrderReviewPageValidations.verifyOrderShippingCountry()
 
 //click on fast free collapse
 CheckoutPageActions.clickOnCollapse()

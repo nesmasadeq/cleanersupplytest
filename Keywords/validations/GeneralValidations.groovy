@@ -1,22 +1,9 @@
 package validations
 
-import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
-import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
-import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
-import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
+import org.openqa.selenium.WebElement
 
-import com.kms.katalon.core.annotation.Keyword
-import com.kms.katalon.core.checkpoint.Checkpoint
-import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
-import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
-import com.kms.katalon.core.model.FailureHandling
-import com.kms.katalon.core.testcase.TestCase
-import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
-import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
 import items.HeaderItems
@@ -28,6 +15,7 @@ public class GeneralValidations {
 	 * @param URL
 	 * @param title
 	 * @param heading
+	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyCurrentPage(String URL , String title , String heading) {
 		//------ Verify Page URL --------
@@ -37,6 +25,7 @@ public class GeneralValidations {
 		//------ Verify Heading --------
 		GeneralValidations.verifyPageHeading(heading)
 	}
+
 	/***
 	 * verify current page title match the expected title
 	 * @param expectedTitle
@@ -62,12 +51,27 @@ public class GeneralValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyPageHeading(String expectedHeading) {
-		TestObject pageHeader = HeaderItems.pageHeading
-		assert WebUI.getText(pageHeader).toLowerCase().contains(expectedHeading.toLowerCase())
+		assert WebUI.getText(HeaderItems.pageHeading).toLowerCase().contains(expectedHeading.toLowerCase())
 	}
 
 	/**
-	 * Verify shadow after button hovering
+	 * Verify page pageBreadcrumb links
+	 * @param breadcrumbLinks
+	 * @author Eng. Amal Hamad
+	 * @author nesma
+	 */
+	public static void verifyPageBreadcrumb(String... breadcrumbLinks) {
+		List <WebElement> breadcrumbList = WebUI.findWebElements(HeaderItems.pageBreadcrumb, GlobalVariable.elementVisibilityTimeOut)
+		for(int i = 0 ; i < breadcrumbList.size() ; i++) {
+			String currentValue =  breadcrumbList.get(i).getText()
+			if(!currentValue.equals("")) {
+				assert currentValue.toLowerCase().contains(breadcrumbLinks[i].toLowerCase())
+			}
+		}
+	}
+
+	/**
+	 * Verify shadow after hover over button
 	 * @param button
 	 * @author Eng. Amal Hamad
 	 */
@@ -76,5 +80,17 @@ public class GeneralValidations {
 		//------ After Hover -------
 		System.out.println("box-shadow: " +  WebUI.getCSSValue(button, "box-shadow"))
 		assert  WebUI.getCSSValue(button, "box-shadow").contains("rgba(0, 0, 0, 0.3) 0px 0px 10px 2px")
+	}
+	
+	/**
+	 * Verify underline after hover over link
+	 * @param link
+	 * @author Eng. Amal Hamad
+	 */
+	public static void verifyLinkUnderlineHover(TestObject link) {
+		WebUI.mouseOver(link)
+		String textDecoration = WebUI.getCSSValue(link, "text-decoration")
+		System.out.println("LinkUnderlineHover: " + textDecoration)
+		assert textDecoration.equals("underline solid rgb(0, 0, 0)")
 	}
 }

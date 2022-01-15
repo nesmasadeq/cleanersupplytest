@@ -28,7 +28,7 @@ public class ProductDetailsPageItems {
 	public static TestObject productImage = findTestObject('Object Repository/ProductDetailsPage/img_productImage')
 	public static TestObject productPrice = findTestObject('Object Repository/ProductDetailsPage/span_productPrice')
 	public static TestObject productListValue =findTestObject( 'Object Repository/ProductDetailsPage/span_productListPrice')
-	public static TestObject productBreadcrumb = findTestObject('Object Repository/ProductDetailsPage/span_productBreadcrumb')
+	public static TestObject productSpecificationUnits = findTestObject('Object Repository/ProductDetailsPage/span_productSpecificationsUnits')
 	public static TestObject productSpecificationDimension = findTestObject('Object Repository/ProductDetailsPage/span_productSpecificationsDimension')
 	public static TestObject productDescription =findTestObject( 'Object Repository/ProductDetailsPage/span_productDescription')
 	public static TestObject productDescriptionLess = findTestObject('Object Repository/ProductDetailsPage/span_productDescriptionLess')

@@ -31,6 +31,7 @@ public class CartPageItems {
 	public static TestObject productTotal =  findTestObject('Object Repository/CartPage/td_productTotal')
 	//-----------  Cart Buttons
 	public static TestObject divProductStock =  findTestObject('Object Repository/CartPage/div_productStock')
+	public static TestObject estDelivery =  findTestObject('Object Repository/CartPage/span_estDelivery')
 	public static TestObject inputProductQty =  findTestObject('Object Repository/CartPage/input_productQuantity')
 	public static TestObject btnPlusQuantity =  findTestObject('Object Repository/CartPage/button_plusQuantity')
 	public static TestObject btnMinusQuantity =  findTestObject('Object Repository/CartPage/button_minusQuantity')

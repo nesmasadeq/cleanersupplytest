@@ -22,8 +22,12 @@ import internal.GlobalVariable
 
 public class AppConstants {
 
+	// Quick Order Page
+	public static final String QUICK_ORDER_PAGE_URL = "https://www.cleanersupply.com/quick-order/"
+	public static final String QUICK_ORDER_PAGE_TITLE = "'Quick Order - Cleaner's Supply"
+
 	// Search Results Page
-	public static final String SEARCH_TERM = "plastic"
+	public static final String SEARCH_TERM = "Plastic"
 	public static final String SEARCH_PAGE_URL = "search-results/?q=" + SEARCH_TERM
 	public static final String SEARCH_PAGE_TITLE = "Search Results - Cleaner's Supply"
 	public static final String SEARCH_PAGE_HEADING = "SEARCH RESULTS"
@@ -49,22 +53,30 @@ public class AppConstants {
 	public static final String TAX_TBD = "T.B.D."
 	public static final String TAX_ZERO = GlobalVariable.siteCurrency + ".00"
 
+	// Product Details Page
+	public static final String IN_STOCK = "In Stock!"
+	public static final String OUT_OF_STOCK = "Currently Unavailable."
+	public static final String OUT_OF_STOCK_TEMPORARILY = "Temporarily Out of Stock!"
+
+
 	// Select CheckOut Page
 	public static final String SELECT_CHECKOUT_PAGE_URL = "https://www.cleanersupply.com/checkout-interstitial/"
 	public static final String SELECT_CHECKOUT_PAGE_TITLE = "Checkout Interstitial - Cleaner's Supply"
 	public static final String SELECT_CHECKOUT_PAGE_HEADING = "SECURE CHECKOUT"
-	public static final String SELECT_STATE = "California"
 
 	// CheckOut Page
 	public static final String CHECKOUT_PAGE_URL = "https://www.cleanersupply.com/checkout/"
 	public static final String CHECKOUT_PAGE_TITLE = "Checkout - Cleaner's Supply"
-	public static final String CHECKOUT_PAGE_HEADING = "SECURE CHECKOUT"
+	public static final String CHECKOUT_PAGE_HEADING = "CHECKOUT"
 
 	// Order Review Page
 	public static final String ORDER_REVIEW_PAGE_URL = "https://www.cleanersupply.com/checkout/"
 	public static final String ORDER_REVIEW_PAGE_TITLE = "Checkout - Cleaner's Supply"
 	public static final String ORDER_REVIEW_PAGE_HEADING = "CHECKOUT"
 
+	// ContactUs Data
+	public static final String CUSTOMER_SERVICE_PHONE = "1-800-388-5410"
+	public static final String CUSTOMER_SERVICE_WORK_HOURS = "Monday - Friday 8am - 8pm EST"
 
 	// Fake CheckOut Data
 	public static final String CHECKOUT_COMPANY  = "test company";
@@ -73,6 +85,7 @@ public class AppConstants {
 	public static final String CHECKOUT_ADDRESS_1 = "address1";
 	public static final String CHECKOUT_ADDRESS_2 = "address2";
 	public static final String CHECKOUT_POSTAL_CODE = "12345";
+	public static final String CHECKOUT_COUNTRY = "United States";
 	public static final String CHECKOUT_CITY = "testCity";
 	public static final String CHECKOUT_STATE = "California";
 	public static final String CHECKOUT_PHONE =  "555-555-5555";
@@ -119,14 +132,6 @@ public class AppConstants {
 	public static final String POLICY_URL ="https://www.cleanersupply.com/privacy-policy/"
 	public static final String POLICY_TITLE ="Privacy Policy - Cleaner's Supply"
 	public static final String POLICY_HEADING ="Privacy Policy"
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 
 }

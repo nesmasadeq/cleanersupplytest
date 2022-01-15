@@ -6,7 +6,9 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import actions.CheckoutPageActions
+import items.CheckoutPageItems
 import validations.CheckoutPageValidations
+import validations.GeneralValidations
 
 public class CheckoutPageHelpers {
 	/***
@@ -30,7 +32,16 @@ public class CheckoutPageHelpers {
 		String optionValue= CheckoutPageActions.selectOptionRandomly(selectOptions)
 		// verify the selected value is reflected
 		CheckoutPageValidations.verifyTheSelectedOptionValueIsReflected(selectField, optionValue)
-		
+
 		return optionValue
+	}
+
+	/***
+	 * click on review order button
+	 * @author nesma
+	 */
+	public static void clickOnReviewOrderButton() {
+//		GeneralValidations.verifyButtonShadowHover(CheckoutPageItems.reviewOrderButton)
+		CheckoutPageActions.clickOnReviewOrderButton()
 	}
 }

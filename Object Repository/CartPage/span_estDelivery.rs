@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>span_productSpecificationsDimension</name>
+   <name>span_estDelivery</name>
    <tag></tag>
-   <elementGuidId>6cee682d-5498-4a01-8355-31652981ecfc</elementGuidId>
+   <elementGuidId>5160ce66-2e6d-49dd-b79b-786e29011c93</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//span[text() = 'Size / Dimension:']/following-sibling::span</value>
+         <value>table.product-table td.product-item__details div.stock-notification span</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>
