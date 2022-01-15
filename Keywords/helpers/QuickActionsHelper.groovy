@@ -37,6 +37,8 @@ public class QuickActionsHelper {
 			WebElement orderRow = orders[i]
 			QuickActionActions.fillSKUNumber(orderRow, bulkSKUOrders[i])
 
+			QuickOrdersValidations.verifyDefaulQuantity(orderRow)
+
 			QuickActionActions.typeRandomQuantity(orderRow)
 
 			QuickOrdersValidations.verifyRemoveButton(orderRow)
@@ -45,7 +47,7 @@ public class QuickActionsHelper {
 
 			QuickOrdersValidations.verifyQuintityOfProductIsValid(orderRow)
 
-//									Product product = QuickActionActions.getProductInfo(orderRow)
+			//									Product product = QuickActionActions.getProductInfo(orderRow)
 			products.push(QuickActionActions.getProductInfo(orderRow))
 		}
 

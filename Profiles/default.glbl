@@ -5,33 +5,23 @@
    <tag></tag>
    <defaultProfile>true</defaultProfile>
    <GlobalVariableEntity>
-      <description>site baseUrl</description>
+      <description></description>
       <initValue>'https://www.cleanersupply.com/'</initValue>
       <name>baseUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
-      <description>site window title</description>
-      <initValue>'Cleaner\'s Supply - Dry Cleaning Supplies'</initValue>
-      <name>siteTitle</name>
-   </GlobalVariableEntity>
-   <GlobalVariableEntity>
-      <description>site logo src url</description>
-      <initValue>'/49857c/globalassets/csius/homepage/logo.svg'</initValue>
-      <name>siteLogo</name>
-   </GlobalVariableEntity>
-   <GlobalVariableEntity>
-      <description>timeout for page to loading</description>
+      <description></description>
       <initValue>10</initValue>
       <name>pageLoadTimout</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
-      <description>timeout for elements actions</description>
+      <description></description>
       <initValue>5</initValue>
       <name>actionsTimeout</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
-      <description>timeout for elements visibility conditions</description>
-      <initValue>5</initValue>
+      <description></description>
+      <initValue>10</initValue>
       <name>elementVisibilityTimeOut</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -96,7 +86,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'555-555-5555'</initValue>
+      <initValue>'555-999-9999'</initValue>
       <name>phone</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -116,17 +106,17 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'4532575933141889'</initValue>
+      <initValue>'333344444211'</initValue>
       <name>cardNumber</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'100'</initValue>
+      <initValue>'332'</initValue>
       <name>securityCode</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'1234'</initValue>
+      <initValue>'234'</initValue>
       <name>po</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -168,5 +158,10 @@
       <description></description>
       <initValue>'Ink Ribbons'</initValue>
       <name>casioBeadcrumb</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>['MNSS151AS', 'NED1005', 'SMNR70512', 'MNB135120', 'NEDBA9']</initValue>
+      <name>bulk_SKU_orders</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>
