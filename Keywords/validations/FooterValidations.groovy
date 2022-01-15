@@ -161,6 +161,6 @@ public class FooterValidations {
 	 * verify region flag is visible
 	 */
 	public static void verifyRegionFlagIChanged() {
-		WebUI.verifyElementVisible(null)
+		WebUI.verifyElementVisible(FooterItems.regionFlag)
 	}
 }
