@@ -116,11 +116,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-<<<<<<< HEAD
       <initValue>'4532575933141889'</initValue>
-=======
-      <initValue>'4242424242424242'</initValue>
->>>>>>> 7e2b5356ee08dbf332996d55e371861be88eb47d
       <name>cardNumber</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
