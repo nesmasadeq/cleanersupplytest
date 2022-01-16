@@ -18,6 +18,8 @@ public class GeneralValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyCurrentPage(String URL , String title , String heading) {
+		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimout)
+
 		//------ Verify Page URL --------
 		GeneralValidations.verifyCurrentPageURL(URL)
 		//------ Verify Page Title --------
@@ -41,6 +43,7 @@ public class GeneralValidations {
 	 * @author nesma
 	 */
 	public static void verifyCurrentPageURL(String expectedURL) {
+		Thread.sleep(3000)
 		assert WebUI.getUrl().contains(expectedURL)
 		HeaderValidations.verifyHeaderLogo()
 	}

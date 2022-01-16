@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
    <description></description>
-   <name>CheckoutPlasticProductsScenario</name>
+   <name>FooterTestSuite</name>
    <tag></tag>
    <isRerun>false</isRerun>
    <mailRecipient></mailRecipient>
-   <numberOfRerun>0</numberOfRerun>
+   <numberOfRerun>3</numberOfRerun>
    <pageLoadTimeout>30</pageLoadTimeout>
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
-   <rerunImmediately>false</rerunImmediately>
-   <testSuiteGuid>2098a48a-ad8a-4694-97c3-e759d757def7</testSuiteGuid>
+   <rerunImmediately>true</rerunImmediately>
+   <testSuiteGuid>d3869318-aa00-4e48-9bb6-642a767c94fa</testSuiteGuid>
    <testCaseLink>
-      <guid>7445c3d4-264d-4303-a995-1f45167c88bb</guid>
+      <guid>3fc90aca-9c0b-4a3f-928c-b6bc6f89b80d</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Checkout scenarios/CheckoutProductsWithSearch</testCaseId>
+      <testCaseId>Test Cases/Footer testCases/FooterTestCases</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

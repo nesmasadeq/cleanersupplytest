@@ -116,6 +116,7 @@ public class AppConstants {
 	public static final String USA = "USA"
 	public static final String CANADA = "Canada"
 	public static final String CANADA_SELECT_VALUE = "https://www.cleanersupply.ca/"
+	//  int year=new Date().getYear();
 	public static final String COPY_RIGHTS = "© 2022 Cleaner’s Supply ® All Rights Reserved"
 	public static final String TERM_OF_USE ="Terms of Use"
 	public static final String POLICY ="Privacy Policy"

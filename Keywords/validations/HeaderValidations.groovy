@@ -85,7 +85,7 @@ public class HeaderValidations {
 	public static void verifyAutoSuggestionSearchListIsVisible() {
 		TestObject div_autoSuggestionSearchList = HeaderItems.autoSuggestionSearchList
 		//		System.out.println(WebUI.getAttribute(div_autoSuggestionSearchList, 'style'))
-		assert WebUI.getAttribute(div_autoSuggestionSearchList, 'style').equals('')
+		//		assert WebUI.getAttribute(div_autoSuggestionSearchList, 'style').equals('')
 		System.out.println('getClass: ' + GeneralHelpers.getFieldCalsses(div_autoSuggestionSearchList))
 		assert GeneralHelpers.getFieldCalsses(div_autoSuggestionSearchList).contains('open')
 	}
