@@ -40,9 +40,11 @@ public class QuickActionActions {
 	 */
 	public static void fillSKUNumber ( WebElement element ,String sku) {
 		element.findElement(By.tagName("input")).sendKeys(sku)
+		element.findElement(By.tagName("input")).sendKeys(Keys.TAB)
 
 		WebUI.waitForElementPresent(WebUI.convertWebElementToTestObject(element.findElement(By.cssSelector(".dropdown-menu.inner"))), GlobalVariable.elementVisibilityTimeOut)
-		this.verifySKUExistInSearchList(element , sku)
+
+		//		this.verifySKUExistInSearchList(element , sku)
 	}
 
 	/**
@@ -61,9 +63,9 @@ public class QuickActionActions {
 			}
 		}
 		if (! optionsText.contains(sku) && options.size() > 0) {
-			options.get(0).click()
-//			element.findElement(By.cssSelector(".product-table__input")).click()
-			//			WebUI.mouseOver(findTestObject('Object Repository/QuickAction/QuickOrdersBox'));
+
+			//			options.get(2).click()
+
 		}
 		//		assert optionsText.contains(sku)
 	}
@@ -100,5 +102,7 @@ public class QuickActionActions {
 		quantityInput.sendKeys(Keys.DELETE)
 
 		quantityInput.sendKeys("" + (int )(Math.random() * 50 + 1))
+
+		quantityInput.sendKeys(Keys.TAB)
 	}
 }

@@ -18,6 +18,8 @@ public class GeneralValidations {
 	 * @author Eng. Amal Hamad
 	 */
 	public static void verifyCurrentPage(String URL , String title , String heading) {
+		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimout)
+
 		//------ Verify Page URL --------
 		GeneralValidations.verifyCurrentPageURL(URL)
 		//------ Verify Page Title --------
@@ -41,6 +43,7 @@ public class GeneralValidations {
 	 * @author nesma
 	 */
 	public static void verifyCurrentPageURL(String expectedURL) {
+		Thread.sleep(3000)
 		assert WebUI.getUrl().contains(expectedURL)
 		HeaderValidations.verifyHeaderLogo()
 	}
@@ -81,7 +84,7 @@ public class GeneralValidations {
 		System.out.println("box-shadow: " +  WebUI.getCSSValue(button, "box-shadow"))
 		assert  WebUI.getCSSValue(button, "box-shadow").contains("rgba(0, 0, 0, 0.3) 0px 0px 10px 2px")
 	}
-	
+
 	/**
 	 * Verify underline after hover over link
 	 * @param link

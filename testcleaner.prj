@@ -6,6 +6,7 @@
    <UUID>f49d2efd-b5a6-4388-9753-53de1911d164</UUID>
    <migratedVersion>5.9.0</migratedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
+   <projectFileLocation>/home/selenium/QATraining/cleanersupplytest/testcleaner.prj</projectFileLocation>
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>

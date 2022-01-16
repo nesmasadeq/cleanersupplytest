@@ -86,7 +86,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'555-999-9999'</initValue>
+      <initValue>'555-555-5555'</initValue>
       <name>phone</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -106,7 +106,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'333344444211'</initValue>
+      <initValue>'4242424242424242'</initValue>
       <name>cardNumber</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -116,7 +116,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'234'</initValue>
+      <initValue>'1234'</initValue>
       <name>po</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -161,7 +161,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>['MNSS151AS', 'NED1005', 'SMNR70512', 'MNB135120', 'NEDBA9']</initValue>
+      <initValue>['MNSS151AS', 'BOB7', 'SMNR70512', 'MNB135120', 'NEDBA9']</initValue>
       <name>bulk_SKU_orders</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

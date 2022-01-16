@@ -112,6 +112,7 @@ public class QuickOrdersValidations {
 	 * verify quantity of product is valid 
 	 * 
 	 * @param WebElement
+	 * @author selenium
 	 */
 	public static void verifyQuintityOfProductIsValid(WebElement element) {
 		assert !element.findElement(By.cssSelector(".validation-error")).isDisplayed();
@@ -124,7 +125,7 @@ public class QuickOrdersValidations {
 	 * @author selenium
 	 */
 	public static void verifyDefaulQuantity(WebElement element) {
-		WebUI.waitForElementPresent(WebUI.convertWebElementToTestObject(element.findElements(By.cssSelector(".quantity-container input[name=\"quantity\"]")).get(0)),GlobalVariable.elementVisibilityTimeOut)
+		WebUI.waitForElementVisible(WebUI.convertWebElementToTestObject(element.findElements(By.cssSelector(".quantity-container input[name=\"quantity\"]")).get(0)),GlobalVariable.elementVisibilityTimeOut)
 
 		assert element.findElements(By.cssSelector(".quantity-container input[name=\"quantity\"]")).get(0).getAttribute("value").contentEquals("1")
 	}
