@@ -173,69 +173,6 @@ public class HeaderValidations {
 		}
 	}
 
-	/**
-	 * Verify Footer navigation links
-	 * @author Eng. Amal Hamad
-	 */
-	public static void varifyFooterNavigationsLinks() {
-		WebDriver driver = DriverFactory.getWebDriver()
-		String selector = "#footer-container .footer-item > ul.list-unstyled a"
-		List<WebElement> footerLinks = driver.findElements(By.cssSelector(selector))
-		for(int i = 0 ; i < footerLinks.size() ; i++) {
-			WebElement link =  driver.findElements(By.cssSelector(selector)).get(i)
-			verifyFooterLinkPageNavigation(link)
-		}
-	}
-
-	/**
-	 * Verify clicking on footer link navigate to expected page
-	 * @param navLink
-	 * @author Eng. Amal Hamad
-	 */
-	public static void verifyFooterLinkPageNavigation(WebElement navLink) {
-		TestObject link = WebUI.convertWebElementToTestObject(navLink)
-		String href = WebUI.getAttribute(link, "href")
-		String heading = WebUI.getText(link)
-		System.out.println("footerNav: " + heading + " ,title: " + WebUI.getWindowTitle() + " ,href: " + href)
-		WebUI.click(link)
-		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimout)
-
-		switch(heading) {
-			case "Manage My Account":
-				GeneralValidations.verifyCurrentPageURL("log-in/?ReturnUrl=%2fmy-account%2f")
-				break;
-
-			case "Start A Return":
-				GeneralValidations.verifyCurrentPageURL(GlobalVariable.baseUrl)
-				break;
-
-			case "Our Story":
-			case "Customer Service":
-			case "Careers":
-				GeneralValidations.verifyCurrentPageURL(href)
-				break;
-
-			case "Favorites":
-				GeneralValidations.verifyCurrentPageURL("log-in/?ReturnUrl=%2ffavorites%2f")
-				break;
-
-			case "Previously Ordered":
-				GeneralValidations.verifyCurrentPageURL("log-in/?ReturnUrl=%2fpreviously-ordered%2f")
-				break;
-
-			case "Online Catalog":
-				WebUI.switchToWindowIndex(1)
-				assert WebUI.getUrl().contains(href)
-				WebUI.closeWindowIndex(1)
-				break;
-
-			default:
-				GeneralValidations.verifyCurrentPageURL(href)
-			//				GeneralValidations.verifyPageHeading(heading.toUpperCase())
-				break;
-		}
-		//		HeaderActions.backToHome()
-	}
 
 	/**
 	 * Verify clicking on header link navigate to expected page 

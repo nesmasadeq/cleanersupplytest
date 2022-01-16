@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_instegram</name>
+   <name>span_infoHelper</name>
    <tag></tag>
-   <elementGuidId>f68df1cd-5382-4210-8a92-ad41af898cba</elementGuidId>
+   <elementGuidId>b4fc424c-0256-455d-ba8f-034e56cd8395</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
@@ -11,7 +11,7 @@
       </entry>
       <entry>
          <key>CSS</key>
-         <value>.icon-instagram</value>
+         <value>.info-holder span</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>CheckoutCasioProduct</name>
+   <name>CheckoutProductWithCategory</name>
    <tag></tag>
    <comment></comment>
    <testCaseGuid>9f2dd3b8-edbb-48d2-a656-dcc5841a9e02</testCaseGuid>
