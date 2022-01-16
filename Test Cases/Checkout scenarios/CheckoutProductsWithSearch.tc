@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>CheckoutProducts_01_BySearch</name>
+   <name>CheckoutProductsWithSearch</name>
    <tag></tag>
    <comment></comment>
    <testCaseGuid>97ce4967-edb2-487d-9afe-30a6c024dd08</testCaseGuid>
